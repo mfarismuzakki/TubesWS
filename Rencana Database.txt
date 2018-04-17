@@ -1,0 +1,10 @@
+DB Name: db_tubes_ws(atau apajalah)
+DBMS : MySQL
+Tabel:
+1. Penulis
+2. Judul
+3. Kategori
+4. Bahasa
+5. Deskripsi
+6. Penerbit
+7. v_buku
