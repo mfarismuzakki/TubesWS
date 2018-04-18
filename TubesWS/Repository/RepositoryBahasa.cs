@@ -7,13 +7,14 @@ using Dapper;
 
 namespace TubesWS.Repository
 {
-    public class RepositoryKategori
+    public class RepositoryBahasa
     {
+
         //atribut
         MySqlConnection connection;
 
         //konstruktor deklarasi hak akses
-        public RepositoryKategori()
+        public RepositoryBahasa()
         {
             connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root");
         }
@@ -45,13 +46,13 @@ namespace TubesWS.Repository
         }
 
         //memasukan input ke database
-        public void InsertKategori(Object.Kategori kategori)
+        public void InsertBahasa(Object.Bahasa bahasa)
         {
             try
             {
-                string nama_kategori = kategori.Nama_kategori;
+                string nama_bahasa = bahasa.Nama_bahasa;
 
-                string query = "insert into penerbit values(null,'" + nama_kategori + "')";
+                string query = "insert into bahasa values(null,'" + nama_bahasa + "')";
                 OpenConnection();
 
                 connection.Execute(query);
@@ -66,16 +67,16 @@ namespace TubesWS.Repository
         }
 
         //get All penulis
-        public List<Object.Kategori> GetAllKategori()
+        public List<Object.Bahasa> GetAllBahasa()
         {
-            List<Object.Kategori> kategori = new List<Object.Kategori>();
+            List<Object.Bahasa> bahasa = new List<Object.Bahasa>();
 
             try
             {
-                string query = "select *from kategori";
+                string query = "select *from bahasa";
                 OpenConnection();
 
-                kategori = connection.Query<Object.Kategori>(query).ToList();
+                bahasa = connection.Query<Object.Bahasa>(query).ToList();
 
                 CloseConnection();
             }
@@ -85,20 +86,20 @@ namespace TubesWS.Repository
             }
 
 
-            return kategori;
+            return bahasa;
         }
 
         //get one penulis
-        public Object.Kategori GetOneKategori(int cari)
+        public Object.Bahasa GetOneBahasa(int cari)
         {
-            Object.Kategori kategori = new Object.Kategori();
+            Object.Bahasa penulis = new Object.Bahasa();
 
             try
             {
-                string query = "select *from kategori where id_kategori =" + cari;
+                string query = "select *from bahasa where id_bahasa=" + cari;
                 OpenConnection();
 
-                kategori = connection.Query<Object.Kategori>(query, new { cari }).FirstOrDefault();
+                penulis = connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
 
                 CloseConnection();
             }
@@ -107,18 +108,18 @@ namespace TubesWS.Repository
 
             }
 
-            return kategori;
+            return penulis;
         }
 
         //update penulis
-        public void UpdateKategori(Object.Kategori kategori)
+        public void UpdateBahasa(Object.Bahasa bahasa)
         {
-            int id = kategori.Id_kategori;
-            string nama_kategori = kategori.Nama_kategori;
-
+            int id = bahasa.Id_bahasa;
+            string nama_bahasa = bahasa.Nama_bahasa;
+            
             try
             {
-                string query = "update kategori set id_kategori = " + id + ", nama_kategori = '" + nama_kategori + "' where id_kategori =" + id;
+                string query = "update bahasa set id_bahasa=" + id + ", nama_bahasa = '" + nama_bahasa + "')";
                 OpenConnection();
 
                 connection.Execute(query);
@@ -132,12 +133,12 @@ namespace TubesWS.Repository
         }
 
         //delete penulis
-        public void DeleteKategori(int id)
+        public void DeleteBahasa(int id)
         {
 
             try
             {
-                string query = "delete from kategori where id_kategori = " + id;
+                string query = "delete from bahasa where id_bahasa= " + id;
                 OpenConnection();
 
                 connection.Execute(query);
@@ -149,6 +150,5 @@ namespace TubesWS.Repository
 
             }
         }
-
     }
 }

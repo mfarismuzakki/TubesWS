@@ -23,7 +23,7 @@ namespace TubesWS.Controllers
         }
 
         // GET: api/Penulis/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetPenulis")]
         public Object.Penulis Get(int id)
         {
             //deklarais variabel untuk return

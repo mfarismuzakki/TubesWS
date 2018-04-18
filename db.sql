@@ -9,6 +9,14 @@ create table penulis(
 	domisili varchar(30) not null
 ); 
 
+	insert into penulis values(null,'faris','bandung','14/07/1998','bandung');
+	insert into penulis values(null,'teguh','karawang','14/07/1998','bandung');
+	insert into penulis values(null,'resky','karawang','14/07/1998','bandung');
+	insert into penulis values(null,'gitgit','tasik','14/07/1998','bandung');
+
+
+
+
 create table kategori(
 	id_kategori int primary key AUTO_INCREMENT,
 	nama_kategori varchar(30) not null
