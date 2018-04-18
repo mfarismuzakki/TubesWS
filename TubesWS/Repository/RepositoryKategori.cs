@@ -45,15 +45,13 @@ namespace TubesWS.Repository
         }
 
         //memasukan input ke database
-        public void InsertPenerbit(Object.Penerbit penerbit)
+        public void InsertKategori(Object.Kategori kategori)
         {
             try
             {
-                string nama_penerbit = penerbit.Nama_penerbit;
-                string lokasi_percetakan = penerbit.Lokasi_percetakan;
-                string notelepon = penerbit.Notelepon;
+                string nama_kategori = kategori.Nama_kategori;
 
-                string query = "insert into penerbit values(null,'" + nama_penerbit + "','" + lokasi_percetakan + "','" + notelepon + "')";
+                string query = "insert into penerbit values(null,'" + nama_kategori + "')";
                 OpenConnection();
 
                 connection.Execute(query);
@@ -68,16 +66,16 @@ namespace TubesWS.Repository
         }
 
         //get All penulis
-        public List<Object.Penerbit> GetAllPenerbit()
+        public List<Object.Kategori> GetAllKategori()
         {
-            List<Object.Penerbit> penerbit = new List<Object.Penerbit>();
+            List<Object.Kategori> kategori = new List<Object.Kategori>();
 
             try
             {
-                string query = "select *from penerbit";
+                string query = "select *from kategori";
                 OpenConnection();
 
-                penerbit = connection.Query<Object.Penerbit>(query).ToList();
+                kategori = connection.Query<Object.Kategori>(query).ToList();
 
                 CloseConnection();
             }
@@ -87,20 +85,20 @@ namespace TubesWS.Repository
             }
 
 
-            return penerbit;
+            return kategori;
         }
 
         //get one penulis
-        public Object.Penerbit GetOnePenerbit(int cari)
+        public Object.Kategori GetOneKategori(int cari)
         {
-            Object.Penerbit penerbit = new Object.Penerbit();
+            Object.Kategori kategori = new Object.Kategori();
 
             try
             {
-                string query = "select *from penerbit where id_penerbit =" + cari;
+                string query = "select *from kategori where id_kategori =" + cari;
                 OpenConnection();
 
-                penerbit = connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
+                kategori = connection.Query<Object.Kategori>(query, new { cari }).FirstOrDefault();
 
                 CloseConnection();
             }
@@ -109,20 +107,18 @@ namespace TubesWS.Repository
 
             }
 
-            return penerbit;
+            return kategori;
         }
 
         //update penulis
-        public void UpdatePenerbit(Object.Penerbit penerbit)
+        public void UpdateKategori(Object.Kategori kategori)
         {
-            int id = penerbit.Id_penerbit;
-            string nama_penerbit = penerbit.Nama_penerbit;
-            string lokasi_percetakan = penerbit.Lokasi_percetakan;
-            string notelepon = penerbit.Notelepon;
+            int id = kategori.Id_kategori;
+            string nama_kategori = kategori.Nama_kategori;
 
             try
             {
-                string query = "update penerbit set id_penerbit=" + id + ", nama_penerbit = '" + nama_penerbit + "', lokasi_penerbit = '" + lokasi_percetakan + "', notelepon = '" + notelepon + "' where id_penerbit =" + id;
+                string query = "update kategori set id_kategori = " + id + ", nama_kategori = '" + nama_kategori + "' where id_kategori =" + id;
                 OpenConnection();
 
                 connection.Execute(query);
@@ -136,12 +132,12 @@ namespace TubesWS.Repository
         }
 
         //delete penulis
-        public void DeletePenerbit(int id)
+        public void DeleteKategori(int id)
         {
 
             try
             {
-                string query = "delete from penerbit where id_penerbit = " + id;
+                string query = "delete from kategori where id_kategori = " + id;
                 OpenConnection();
 
                 connection.Execute(query);
