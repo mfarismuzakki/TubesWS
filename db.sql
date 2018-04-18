@@ -13,6 +13,7 @@ create table penulis(
 	insert into penulis values(null,'teguh','karawang','14/07/1998','bandung');
 	insert into penulis values(null,'resky','karawang','14/07/1998','bandung');
 	insert into penulis values(null,'gitgit','tasik','14/07/1998','bandung');
+	insert into penulis values(null,'Rifqi','Bekasi','08/03/1998','bandung');
 
 
 
