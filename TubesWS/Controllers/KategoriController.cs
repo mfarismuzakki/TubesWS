@@ -8,37 +8,37 @@ using Microsoft.AspNetCore.Mvc;
 namespace TubesWS.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Penerbit")]
-    public class PenerbitController : Controller
+    [Route("api/Kategori")]
+    public class KategoriController : Controller
     {
-        // GET: api/Penerbit
+        // GET: api/Kategori
         [HttpGet]
-        public IEnumerable<Object.Penerbit> Get()
+        public IEnumerable<Object.Kategori> Get()
         {
-            Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
+            Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
 
-            return penerbit.GetAllPenerbit();
+            return kategori.GetAllKategori();
         }
 
-        // GET: api/Penerbit/5
-        [HttpGet("{id}", Name = "GetPenerbit")]
-        public Object.Penerbit Get(int id)
+        // GET: api/Kategori/5
+        [HttpGet("{id}", Name = "GetKategori")]
+        public Object.Kategori Get(int id)
         {
-            Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
+            Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
 
-            return penerbit.GetOnePenerbit(id);
+            return kategori.GetOneKategori(id);
         }
         
-        // POST: api/Penerbit
+        // POST: api/Kategori
         [HttpPost]
-        public string Post([FromBody]Object.Penerbit value)
+        public string Post([FromBody]Object.Kategori value)
         {
             try
             {
                 //deklarasi variavel untuk post
-                Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
+                Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
 
-                penerbit.InsertPenerbit(value);
+                kategori.InsertKategori(value);
                 return "Data Berhasil Diinput";
             }
             catch (Exception e)
@@ -47,15 +47,16 @@ namespace TubesWS.Controllers
             }
         }
         
-        // PUT: api/Penerbit/5
+        // PUT: api/Kategori/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Object.Penerbit value)
+        public string Put(int id, [FromBody]Object.Kategori value)
         {
             try
             {
                 //deklarasi variabel untuk update
-                Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
-                penerbit.UpdatePenerbit(value);
+                Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
+
+                kategori.UpdateKategori(value);
                 return "Update berhasil";
 
             }
@@ -65,17 +66,17 @@ namespace TubesWS.Controllers
             }
         }
         
-        // DELETE: api/Penerbit/5
+        // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public string Delete(int id)
         {
             try
             {
                 //deklarasi variabel untuk delete
-                Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
+                Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
 
                 //eksekusi delete
-                penerbit.DeletePenerbit(id);
+                kategori.DeleteKategori(id);
 
                 return "Delete berhasil";
             }
