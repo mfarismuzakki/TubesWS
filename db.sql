@@ -85,14 +85,34 @@ create table pustakawan(
 	alamat varchar(500) not null	 
 );
 
-
 create table peminjaman(
 	id_peminjaman int primary key AUTO_INCREMENT,
-	id_buku int not null, 
 	id_anggota int not null, 
 	id_pustakawan int not null, 
 	tanggalpinjam varchar(30) not null, 
 	tanggalkembali varchar(30) not null
 );
 
+create table detail_peminjaman(
+	id_detail_peminjaman int primary key AUTO_INCREMENT,
+	id_peminjaman not null,
+	id_copy_buku not null,
 
+	foreign key (id_peminjaman) references peminjaman(id_peminjaman),
+	foreign key (id_copy_buku) references copy_buku(id_copy_buku)
+);
+
+create table stok_buku(
+	id_stok int primary key AUTO_INCREMENT,
+	id_buku int not null,
+	stok int not null,
+
+	foreign key (id_buku) references judulbuku(id_buku)
+);
+
+create table copy_buku(
+	id_copy_buku int primary key AUTO_INCREMENT,
+	id_buku int not null,
+
+	foreign key (id_buku) references judulbuku(id_buku)
+);

@@ -1,0 +1,25 @@
+Pembagian tugas 2
+
+Teguh : - Repo + control + objek => judul buku
+	- desktop app
+
+Resky : - Repo + control + objek => deskripsi
+	- lanjutin aplikasi CI (ini bakalan jadi program utama)
+
+basthatan : - Repo + control + objek => anggotaperpus + pustakawan
+            - pelajari + aplikasiin token
+
+Rifki : - Repo + control + objek => peminjaman + detail_peminjaman
+	- bantu resky selesain CI
+
+dayud : - Repo + control + objek => stok_buku + copy_buku
+	- bantu teguh selesain dekstop app
+
+faris : - buat aplikasi mobile
+
+*wajib pake dapper ya buat repositorinya
+*gimana cara ngerjainnya?, tiru aja dari penerbit, tinggal ganti2 aja
+*buat respo+control+objek, karena ringan & gampang (tinggal edit2) sabtu selesai ya
+*buat yang lain2 minggu (se selesainya aja, asal ada progress) 
+*kalau ada yang engga ngerti tanyain di sini oce
+*kalau ada yang engga ngerjain & tidaks berkabar.. :v ya wajiblah ya, minimal berkabar
