@@ -15,7 +15,11 @@ create table penulis(
 	insert into penulis values(null,'gitgit','tasik','14/07/1998','bandung');
 	insert into penulis values(null,'Rifqi','Bekasi','08/03/1998','bandung');
 
-
+	insert into bahasa values(null,'indonesia');
+	insert into bahasa values(null,'inggris');
+	insert into bahasa values(null,'sunda');
+	insert into bahasa values(null,'jawa');
+	insert into bahasa values(null,'batak');
 
 
 create table kategori(
@@ -57,4 +61,38 @@ create table deskripsi(
 	id_buku int not null,
 	foreign key (id_buku) references judulbuku(id_buku)
 );
+
+
+--------------------------- Tambahan tahap 2 ---------------------------
+create table anggotaperpustakaan(
+	id_anggota int primary key AUTO_INCREMENT,
+	nama_anggota varchar(50) not null,
+	jenis_kelamin varchar(2) not null,
+	tempat_lahir varchar(50) not null,
+	tanggal_lahir varchar(30) null null,
+	notelepon varchar(20) not null,
+	alamat varchar(500) not null 
+);
+
+
+create table pustakawan(
+	id_pustakawan int primary key AUTO_INCREMENT,
+	nama_pustakawan varchar(50) not null,
+	jenis_kelamin varchar(2) not null,
+	tempat_lahir varchar(50) not null,
+	tanggal_lahir varchar(30) null null,
+	notelepon varchar(20) not null,
+	alamat varchar(500) not null	 
+);
+
+
+create table peminjaman(
+	id_peminjaman int primary key AUTO_INCREMENT,
+	id_buku int not null, 
+	id_anggota int not null, 
+	id_pustakawan int not null, 
+	tanggalpinjam varchar(30) not null, 
+	tanggalkembali varchar(30) not null
+);
+
 

@@ -1,0 +1,10 @@
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (35, 'Mahir Java 24 Jam', 1, '2014', 38, 33, 1, 4);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (36, 'Apakah Tujuanmu?', 1, '2013', 39, 34, 1, 6);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (37, 'Mahir PhotoShop 1 Jam', 1, '2014', 40, 35, 1, 4);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (38, 'Belajar PHP Mudah', 1, '2014', 41, 36, 1, 4);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (39, 'Perkalian Kuadrat', 1, '2011', 42, 37, 1, 1);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (40, 'Matematika Itu Mudah', 1, '2014', 43, 38, 1, 1);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (41, 'Belajar Renang', 1, '2014', 44, 39, 1, 12);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (42, 'Trik-Trik Sepakbola', 1, '2014', 45, 40, 1, 12);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (43, 'C# Itu Menyenangkan', 1, '2014', 46, 41, 1, 4);
+INSERT INTO `judulbuku`(`id_buku`, `judul_buku`, `cetakan`, `tanggalterbit`, `id_penulis`, `id_penerbit`, `id_bahasa`, `id_kategori`) VALUES (44, 'Dasar-Dasar HTML', 1, '2013', 47, 42, 1, 4);

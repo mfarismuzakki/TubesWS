@@ -1,0 +1,10 @@
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (33, 'Media Kita', 'Subang', '0226514911');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (34, 'Harapan Palsu', 'Bandung', '0226514912');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (35, 'Bintang Sinar', 'Bandung', '0226514913');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (36, 'Harapan Bintang', 'Yogyakarta', '0226514914');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (37, 'Melodi Star', 'Jakarta', '0226514915');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (38, 'Rising Star', 'Bandung', '0226514916');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (39, 'Sinar Matahari', 'Bandung', '0226514917');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (40, 'Dunia Indah', 'Jakarta', '0226514918');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (41, 'Kertas Putih', 'Bandung', '0226514919');
+INSERT INTO `penerbit`(`id_penerbit`, `nama_penerbit`, `lokasipercetakan`, `notelepon`) VALUES (42, 'Tinta Hitam', 'Solo', '0226514920');
