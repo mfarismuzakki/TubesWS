@@ -1,0 +1,16 @@
+INSERT INTO `bahasa` VALUES (1, 'Indonesia');
+INSERT INTO `bahasa` VALUES (2, 'Inggris');
+INSERT INTO `bahasa` VALUES (3, 'Jepang');
+INSERT INTO `bahasa` VALUES (4, 'Perancis');
+INSERT INTO `bahasa` VALUES (5, 'Korea');
+INSERT INTO `bahasa` VALUES (6, 'Arab');
+INSERT INTO `bahasa` VALUES (7, 'Melayu');
+INSERT INTO `bahasa` VALUES (8, 'Afrika');
+INSERT INTO `bahasa` VALUES (9, 'Italia');
+INSERT INTO `bahasa` VALUES (10, 'Jepang');
+INSERT INTO `bahasa` VALUES (11, 'Korea');
+INSERT INTO `bahasa` VALUES (12, 'China');
+INSERT INTO `bahasa` VALUES (13, 'Perancis');
+INSERT INTO `bahasa` VALUES (14, 'Kamboja');
+INSERT INTO `bahasa` VALUES (15, 'Arab');
+INSERT INTO `bahasa` VALUES (16, 'Rusia');
