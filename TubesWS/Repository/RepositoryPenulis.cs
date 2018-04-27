@@ -45,67 +45,42 @@ namespace TubesWS.Repository
         //memasukan input ke database
         public void InsertPenulis(Object.Penulis penulis)
         {
-            try
-            {
-                string nama_penulis = penulis.Nama_penulis;
-                string tempat_lahir = penulis.Tempat_lahir;
-                string tanggal_lahir = penulis.Tanggal_lahir;
-                string domisili = penulis.Domisili;
+            string nama_penulis = penulis.Nama_penulis;
+            string tempat_lahir = penulis.Tempat_lahir;
+            string tanggal_lahir = penulis.Tanggal_lahir;
+            string domisili = penulis.Domisili;
 
-                string query = "insert into penulis values(null,'" + nama_penulis + "','" + tempat_lahir + "','" + tanggal_lahir + "','" + domisili + "')";
+            using (connection)
+            {
                 OpenConnection();
-
+                string query = "insert into penulis values(null,'" + nama_penulis + "','" + tempat_lahir + "','" + tanggal_lahir + "','" + domisili + "')";
                 connection.Execute(query);
-
-                CloseConnection();
-            }catch(Exception e)
-            {
-
             }
-           
+            
         }
 
         //get All penulis
         public List<Object.Penulis> GetAllPenulis()
         {
-            List<Object.Penulis> penulis = new List<Object.Penulis>();
-
-            try
+            using (connection)
             {
-                string query = "select *from penulis";
                 OpenConnection();
-
-                penulis = connection.Query<Object.Penulis>(query).ToList();
-
-                CloseConnection();
-            }catch(Exception e)
-            {
-
+                string query = "select *from penulis";
+                return connection.Query<Object.Penulis>(query).ToList();
             }
-           
-
-            return penulis;
+            
         }
 
-        //get one penulis
+        //get One By id penulis
         public Object.Penulis GetOnePenulis(int cari)
         {
-            Object.Penulis penulis = new Object.Penulis();
-
-            try
+            using (connection)
             {
-                string query = "select *from penulis where id_penulis ="+cari;
                 OpenConnection();
-
-                penulis = connection.Query<Object.Penulis>(query, new {cari}).FirstOrDefault();
-
-                CloseConnection();
-            }catch(Exception e)
-            {
-
+                string query = "select *from penulis where id_penulis =" + cari;
+                return connection.Query<Object.Penulis>(query, new { cari }).FirstOrDefault();
             }
-
-            return penulis;
+            
         }
 
         //update penulis
@@ -117,36 +92,25 @@ namespace TubesWS.Repository
             string tanggal_lahir = penulis.Tanggal_lahir;
             string domisili = penulis.Domisili;
 
-            try
+            using (connection)
             {
-                string query = "update penulis set id_penulis=" + id + ", nama_penulis = '" + nama_penulis + "', tempat_lahir = '" + tempat_lahir + "', tanggal_lahir = '" + tanggal_lahir + "', domisili = '" + domisili + "' where id_penulis =" + id;
                 OpenConnection();
-
+                string query = "update penulis set id_penulis=" + id + ", nama_penulis = '" + nama_penulis + "', tempat_lahir = '" + tempat_lahir + "', tanggal_lahir = '" + tanggal_lahir + "', domisili = '" + domisili + "' where id_penulis =" + id;
                 connection.Execute(query);
-
-                CloseConnection();
-            }catch(Exception e)
-            {
-
             }
+            
         }
 
         //delete penulis
         public void DeletePenulis(int id)
         {
-            
-            try
+            using (connection)
             {
-                string query = "delete from penulis where id_penulis = " + id;
                 OpenConnection();
-
+                string query = "delete from penulis where id_penulis = " + id;
                 connection.Execute(query);
-
-                CloseConnection();
-            }catch(Exception e)
-            {
-
             }
+            
         }
     }
 }

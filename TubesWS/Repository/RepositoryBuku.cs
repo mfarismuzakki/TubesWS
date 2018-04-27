@@ -7,7 +7,7 @@ using Dapper;
 
 namespace TubesWS.Repository
 {
-    public class RepositoryPenerbit
+    public class RepositoryBuku
     {
         //atribut
         MySqlConnection connection;
@@ -95,7 +95,7 @@ namespace TubesWS.Repository
                 string query = "update penerbit set id_penerbit=" + id + ", nama_penerbit = '" + nama_penerbit + "', lokasi_penerbit = '" + lokasi_percetakan + "', notelepon = '" + notelepon + "' where id_penerbit =" + id;
                 connection.Execute(query);
             }
-            
+
         }
 
         //delete Penerbit
@@ -108,6 +108,5 @@ namespace TubesWS.Repository
                 connection.Execute(query);
             }
         }
-
     }
 }

@@ -9,3 +9,14 @@ D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcor
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.AssemblyInfo.cs
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.dll
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.pdb
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\bin\Release\netcoreapp2.0\TubesWS.deps.json
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\bin\Release\netcoreapp2.0\TubesWS.runtimeconfig.json
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\bin\Release\netcoreapp2.0\TubesWS.runtimeconfig.dev.json
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\bin\Release\netcoreapp2.0\TubesWS.dll
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\bin\Release\netcoreapp2.0\TubesWS.pdb
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.csprojResolveAssemblyReference.cache
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.csproj.CoreCompileInputs.cache
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.AssemblyInfoInputs.cache
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.AssemblyInfo.cs
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.dll
+D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.pdb
