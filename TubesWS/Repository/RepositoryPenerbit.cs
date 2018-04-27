@@ -47,72 +47,41 @@ namespace TubesWS.Repository
         //memasukan input ke database
         public void InsertPenerbit(Object.Penerbit penerbit)
         {
-            try
-            {
-                string nama_penerbit = penerbit.Nama_penerbit;
-                string lokasi_percetakan = penerbit.Lokasi_percetakan;
-                string notelepon = penerbit.Notelepon;
+            string nama_penerbit = penerbit.Nama_penerbit;
+            string lokasi_percetakan = penerbit.Lokasi_percetakan;
+            string notelepon = penerbit.Notelepon;
 
-                string query = "insert into penerbit values(null,'" + nama_penerbit + "','" + lokasi_percetakan + "','" + notelepon + "')";
+            using (connection)
+            {
                 OpenConnection();
-
+                string query = "insert into penerbit values(null,'" + nama_penerbit + "','" + lokasi_percetakan + "','" + notelepon + "')";
                 connection.Execute(query);
-
-                CloseConnection();
             }
-            catch (Exception e)
-            {
-
-            }
-
         }
 
-        //get All penulis
+        //get All Penerbit
         public List<Object.Penerbit> GetAllPenerbit()
         {
-            List<Object.Penerbit> penerbit = new List<Object.Penerbit>();
-
-            try
+            using (connection)
             {
-                string query = "select *from penerbit";
                 OpenConnection();
-
-                penerbit = connection.Query<Object.Penerbit>(query).ToList();
-
-                CloseConnection();
+                string query = "select *from penerbit";
+                return connection.Query<Object.Penerbit>(query).ToList();
             }
-            catch (Exception e)
-            {
-
-            }
-
-
-            return penerbit;
         }
 
-        //get one penulis
+        //get One by Id Penerbit
         public Object.Penerbit GetOnePenerbit(int cari)
         {
-            Object.Penerbit penerbit = new Object.Penerbit();
-
-            try
+            using (connection)
             {
-                string query = "select *from penerbit where id_penerbit =" + cari;
                 OpenConnection();
-
-                penerbit = connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
-
-                CloseConnection();
+                string query = "select *from penerbit where id_penerbit =" + cari;
+                return connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
             }
-            catch (Exception e)
-            {
-
-            }
-
-            return penerbit;
         }
 
-        //update penulis
+        //update Penerbit
         public void UpdatePenerbit(Object.Penerbit penerbit)
         {
             int id = penerbit.Id_penerbit;
@@ -120,37 +89,23 @@ namespace TubesWS.Repository
             string lokasi_percetakan = penerbit.Lokasi_percetakan;
             string notelepon = penerbit.Notelepon;
 
-            try
+            using (connection)
             {
-                string query = "update penerbit set id_penerbit=" + id + ", nama_penerbit = '" + nama_penerbit + "', lokasi_penerbit = '" + lokasi_percetakan + "', notelepon = '" + notelepon + "' where id_penerbit =" + id;
                 OpenConnection();
-
+                string query = "update penerbit set id_penerbit=" + id + ", nama_penerbit = '" + nama_penerbit + "', lokasi_penerbit = '" + lokasi_percetakan + "', notelepon = '" + notelepon + "' where id_penerbit =" + id;
                 connection.Execute(query);
-
-                CloseConnection();
             }
-            catch (Exception e)
-            {
-
-            }
+            
         }
 
-        //delete penulis
+        //delete Penerbit
         public void DeletePenerbit(int id)
         {
-
-            try
+            using (connection)
             {
-                string query = "delete from penerbit where id_penerbit = " + id;
                 OpenConnection();
-
+                string query = "delete from penerbit where id_penerbit = " + id;
                 connection.Execute(query);
-
-                CloseConnection();
-            }
-            catch (Exception e)
-            {
-
             }
         }
 

@@ -48,107 +48,66 @@ namespace TubesWS.Repository
         //memasukan input ke database
         public void InsertBahasa(Object.Bahasa bahasa)
         {
-            try
-            {
-                string nama_bahasa = bahasa.Nama_bahasa;
+            string nama_bahasa = bahasa.Nama_bahasa;
 
-                string query = "insert into bahasa values(null,'" + nama_bahasa + "')";
+            using (connection)
+            {
                 OpenConnection();
-
+                string query = "insert into bahasa values(null,'" + nama_bahasa + "')";
                 connection.Execute(query);
-
-                CloseConnection();
             }
-            catch (Exception e)
-            {
-
-            }
-
+            
         }
 
-        //get All penulis
+        //get All Bahasa
         public List<Object.Bahasa> GetAllBahasa()
         {
-            List<Object.Bahasa> bahasa = new List<Object.Bahasa>();
-
-            try
+            using (connection)
             {
-                string query = "select *from bahasa";
                 OpenConnection();
-
-                bahasa = connection.Query<Object.Bahasa>(query).ToList();
-
-                CloseConnection();
+                string query = "select *from bahasa";
+                return connection.Query<Object.Bahasa>(query).ToList();
             }
-            catch (Exception e)
-            {
-
-            }
-
-
-            return bahasa;
+            
         }
 
-        //get one penulis
+        //get One By Id Bahasa
         public Object.Bahasa GetOneBahasa(int cari)
         {
-            Object.Bahasa penulis = new Object.Bahasa();
-
-            try
+            using (connection)
             {
-                string query = "select *from bahasa where id_bahasa=" + cari;
                 OpenConnection();
-
-                penulis = connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
-
-                CloseConnection();
+                string query = "select *from bahasa where id_bahasa=" + cari;
+                 return connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
             }
-            catch (Exception e)
-            {
-
-            }
-
-            return penulis;
+            
         }
 
-        //update penulis
+        //update Bahasa
         public void UpdateBahasa(Object.Bahasa bahasa)
         {
             int id = bahasa.Id_bahasa;
             string nama_bahasa = bahasa.Nama_bahasa;
-            
-            try
+
+            using (connection)
             {
-                string query = "update bahasa set id_bahasa=" + id + ", nama_bahasa = '" + nama_bahasa + "')";
                 OpenConnection();
-
+                string query = "update bahasa set id_bahasa=" + id + ", nama_bahasa = '" + nama_bahasa + "')";
                 connection.Execute(query);
-
-                CloseConnection();
             }
-            catch (Exception e)
-            {
-
-            }
+            
         }
 
-        //delete penulis
+        //delete Bahasa
         public void DeleteBahasa(int id)
         {
-
-            try
+            using (connection)
             {
-                string query = "delete from bahasa where id_bahasa= " + id;
                 OpenConnection();
-
+                string query = "delete from bahasa where id_bahasa= " + id;
                 connection.Execute(query);
-
-                CloseConnection();
             }
-            catch (Exception e)
-            {
-
-            }
+            
         }
     }
 }
