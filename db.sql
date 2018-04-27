@@ -69,7 +69,7 @@ create table anggotaperpustakaan(
 	nama_anggota varchar(50) not null,
 	jenis_kelamin varchar(2) not null,
 	tempat_lahir varchar(50) not null,
-	tanggal_lahir varchar(30) null null,
+	tanggal_lahir varchar(30) not null,
 	notelepon varchar(20) not null,
 	alamat varchar(500) not null 
 );
@@ -80,7 +80,7 @@ create table pustakawan(
 	nama_pustakawan varchar(50) not null,
 	jenis_kelamin varchar(2) not null,
 	tempat_lahir varchar(50) not null,
-	tanggal_lahir varchar(30) null null,
+	tanggal_lahir varchar(30) not null,
 	notelepon varchar(20) not null,
 	alamat varchar(500) not null	 
 );
@@ -93,14 +93,6 @@ create table peminjaman(
 	tanggalkembali varchar(30) not null
 );
 
-create table detail_peminjaman(
-	id_detail_peminjaman int primary key AUTO_INCREMENT,
-	id_peminjaman not null,
-	id_copy_buku not null,
-
-	foreign key (id_peminjaman) references peminjaman(id_peminjaman),
-	foreign key (id_copy_buku) references copy_buku(id_copy_buku)
-);
 
 create table stok_buku(
 	id_stok int primary key AUTO_INCREMENT,
@@ -115,4 +107,13 @@ create table copy_buku(
 	id_buku int not null,
 
 	foreign key (id_buku) references judulbuku(id_buku)
+);
+
+create table detail_peminjaman(
+	id_detail_peminjaman int primary key AUTO_INCREMENT,
+	id_peminjaman int not null,
+	id_copy_buku int not null,
+
+	foreign key (id_peminjaman) references peminjaman(id_peminjaman),
+	foreign key (id_copy_buku) references copy_buku(id_copy_buku)
 );
