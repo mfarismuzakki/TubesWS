@@ -13,7 +13,7 @@ namespace TubesWS.Repository
         MySqlConnection connection;
 
         //konstruktor deklarasi hak akses
-        public void RepositoryPenerbit()
+        public RepositoryBuku()
         {
             connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root");
         }
@@ -45,54 +45,52 @@ namespace TubesWS.Repository
         }
 
         //memasukan input ke database
-        public void InsertPenerbit(Object.Penerbit penerbit)
+        public void InsertBuku(Object.Buku buku)
         {
-            string nama_penerbit = penerbit.Nama_penerbit;
-            string lokasi_percetakan = penerbit.Lokasi_percetakan;
-            string notelepon = penerbit.Notelepon;
+            string judul = buku.Judul;
+            int cetakan = buku.Cetakan;
+            string tanggalterbit = buku.Tanggalterbit;
+            List<Object.Penulis> penulis = new List<Object.Penulis>();
+            Object.Penulis tempPenulis = new Object.Penulis();
 
             using (connection)
             {
                 OpenConnection();
-                string query = "insert into penerbit values(null,'" + nama_penerbit + "','" + lokasi_percetakan + "','" + notelepon + "')";
+                string query = "";
                 connection.Execute(query);
             }
         }
 
-        //get All Penerbit
-        public List<Object.Penerbit> GetAllPenerbit()
+        //get All Buku
+        public List<Object.Buku> GetAllBuku()
         {
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from penerbit";
-                return connection.Query<Object.Penerbit>(query).ToList();
+                string query = "select *from judulbuku";
+                return connection.Query<Object.Buku>(query).ToList();
             }
         }
 
-        //get One by Id Penerbit
-        public Object.Penerbit GetOnePenerbit(int cari)
+        //get One by Id Buku
+        public Object.Buku GetOneBuku(int cari)
         {
             using (connection)
             {
                 OpenConnection();
                 string query = "select *from penerbit where id_penerbit =" + cari;
-                return connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
+                return connection.Query<Object.Buku>(query, new { cari }).FirstOrDefault();
             }
         }
 
         //update Penerbit
-        public void UpdatePenerbit(Object.Penerbit penerbit)
+        public void UpdatePenerbit(Object.Buku penerbit)
         {
-            int id = penerbit.Id_penerbit;
-            string nama_penerbit = penerbit.Nama_penerbit;
-            string lokasi_percetakan = penerbit.Lokasi_percetakan;
-            string notelepon = penerbit.Notelepon;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "update penerbit set id_penerbit=" + id + ", nama_penerbit = '" + nama_penerbit + "', lokasi_penerbit = '" + lokasi_percetakan + "', notelepon = '" + notelepon + "' where id_penerbit =" + id;
+                string query = "";
                 connection.Execute(query);
             }
 
