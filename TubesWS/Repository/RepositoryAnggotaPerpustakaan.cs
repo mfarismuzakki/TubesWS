@@ -7,13 +7,13 @@ using Dapper;
 
 namespace TubesWS.Repository
 {
-    public class RepositoryPustakawan
+    public class RepositoryAnggotaPerpustakaan
     {
         //atribut
         MySqlConnection connection;
 
         //konstruktor deklarasi hak akses
-        public RepositoryPustakawan()
+        public RepositoryAnggotaPerpustakaan()
         {
             connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root");
         }

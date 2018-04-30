@@ -13,20 +13,21 @@ namespace TubesWS.Controllers
     {
         // GET: api/Penerbit
         [HttpGet]
-        public IEnumerable<Object.Penerbit> Get()
+        public IActionResult Get()
         {
             Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
 
-            return penerbit.GetAllPenerbit();
+            return Ok(penerbit.GetAllPenerbit());
         }
 
         // GET: api/Penerbit/5
         [HttpGet("{id}", Name = "GetPenerbit")]
-        public Object.Penerbit Get(int id)
+        public IActionResult Get(int id)
         {
             Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
-
-            return penerbit.GetOnePenerbit(id);
+            var temp = penerbit.GetOnePenerbit(id);
+            if (temp == null) return NotFound();
+            return Ok(temp);
         }
         
         // POST: api/Penerbit
