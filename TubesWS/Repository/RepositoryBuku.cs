@@ -51,6 +51,7 @@ namespace TubesWS.Repository
             int cetakan = buku.Cetakan;
             string tanggalterbit = buku.Tanggalterbit;
             List<Object.Penulis> penulis = new List<Object.Penulis>();
+            Object.Penulis tempPenulis = new Object.Penulis();
 
             using (connection)
             {
