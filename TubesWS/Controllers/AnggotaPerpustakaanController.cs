@@ -28,7 +28,7 @@ namespace TubesWS.Controllers
 
             return anggotaperpus.GetOneAnggotaPerpustakaan(id);
         }
-        
+
         // POST: api/AnggotaPerpustakaan
         [HttpPost]
         public string Post([FromBody]Object.AnggotaPerpustakaan value)
@@ -46,7 +46,7 @@ namespace TubesWS.Controllers
                 return e.Message;
             }
         }
-        
+
         // PUT: api/AnggotaPerpustakaan/5
         [HttpPut("{id}")]
         public string Put(int id, [FromBody]Object.AnggotaPerpustakaan value)
@@ -64,7 +64,7 @@ namespace TubesWS.Controllers
                 return e.Message;
             }
         }
-        
+
         // DELETE: api/AnggotaPerpustakaan/5
         [HttpDelete("{id}")]
         public string Delete(int id)
