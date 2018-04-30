@@ -28,7 +28,7 @@ namespace TubesWS.Controllers
 
             return pustakawan.GetOnePustakawan(id);
         }
-        
+
         // POST: api/Pustakawan
         [HttpPost]
         public string Post([FromBody]Object.Pustakawan value)
@@ -46,7 +46,7 @@ namespace TubesWS.Controllers
                 return e.Message;
             }
         }
-        
+
         // PUT: api/Pustakawan/5
         [HttpPut("{id}")]
         public string Put(int id, [FromBody]Object.Pustakawan value)
@@ -64,7 +64,7 @@ namespace TubesWS.Controllers
                 return e.Message;
             }
         }
-        
+
         // DELETE: api/Pustakawan/5
         [HttpDelete("{id}")]
         public string Delete(int id)
