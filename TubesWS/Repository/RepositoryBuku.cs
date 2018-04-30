@@ -13,7 +13,11 @@ namespace TubesWS.Repository
         MySqlConnection connection;
 
         //konstruktor deklarasi hak akses
+<<<<<<< HEAD
         public RepositoryBuku()
+=======
+        public void RepositoryPenerbit()
+>>>>>>> e4b282690dd4ae324ffb5fd4baf31b36cd89bf9d
         {
             connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root");
         }
