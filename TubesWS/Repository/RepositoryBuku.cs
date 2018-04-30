@@ -13,7 +13,7 @@ namespace TubesWS.Repository
         MySqlConnection connection;
 
         //konstruktor deklarasi hak akses
-        public RepositoryPenerbit()
+        public RepositoryBuku()
         {
             connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root");
         }
@@ -45,16 +45,16 @@ namespace TubesWS.Repository
         }
 
         //memasukan input ke database
-        public void InsertPenerbit(Object.Penerbit penerbit)
+        public void InsertBuku(Object.Buku buku)
         {
-            string nama_penerbit = penerbit.Nama_penerbit;
-            string lokasi_percetakan = penerbit.Lokasi_percetakan;
-            string notelepon = penerbit.Notelepon;
+            string judul = buku.Judul;
+            int cetakan = buku.Cetakan;
+            string tanggalterbit = buku.Tanggalterbit;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "insert into penerbit values(null,'" + nama_penerbit + "','" + lokasi_percetakan + "','" + notelepon + "')";
+                string query = "";
                 connection.Execute(query);
             }
         }
