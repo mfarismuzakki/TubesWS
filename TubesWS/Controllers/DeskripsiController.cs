@@ -73,7 +73,7 @@ namespace TubesWS.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -83,11 +83,11 @@ namespace TubesWS.Controllers
                 //eksekusi delete
                 deskripsi.DeleteDeskripsi(id);
 
-                return "Delete berhasil";
+                return Ok();
             }
             catch (Exception e)
             {
-                return e.Message;
+                return BadRequest();
             }
 
         }
