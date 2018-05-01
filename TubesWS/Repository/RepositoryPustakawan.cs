@@ -15,7 +15,7 @@ namespace TubesWS.Repository
         //konstruktor deklarasi hak akses
         public RepositoryPustakawan()
         {
-            connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root");
+            connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root;SslMode=none");
         }
 
         //membuka koneksi
