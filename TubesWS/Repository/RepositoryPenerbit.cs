@@ -81,6 +81,17 @@ namespace TubesWS.Repository
             }
         }
 
+        //get One by Nama Penerbit
+        public Object.Penerbit GetOneNamaPenerbit(string cari)
+        {
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select *from penerbit where nama_penerbit =" + cari;
+                return connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
+            }
+        }
+
         //update Penerbit
         public void UpdatePenerbit(Object.Penerbit penerbit)
         {

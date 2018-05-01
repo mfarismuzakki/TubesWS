@@ -9,7 +9,6 @@ namespace TubesWS.Repository
 {
     public class RepositoryBahasa
     {
-
         //atribut
         MySqlConnection connection;
 
@@ -83,6 +82,18 @@ namespace TubesWS.Repository
             
         }
 
+        //get One By Id Bahasa
+        public Object.Bahasa GetOneNamaBahasa(string cari)
+        {
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select *from bahasa where nama_bahasa=" + cari;
+                return connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
+            }
+
+        }
+
         //update Bahasa
         public void UpdateBahasa(Object.Bahasa bahasa)
         {
@@ -92,7 +103,7 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "update bahasa set id_bahasa=" + id + ", nama_bahasa = '" + nama_bahasa + "')";
+                string query = "update bahasa set id_bahasa=" + id + ", nama_bahasa = " + nama_bahasa + "";
                 connection.Execute(query);
             }
             

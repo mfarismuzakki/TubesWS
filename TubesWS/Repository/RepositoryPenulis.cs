@@ -83,6 +83,18 @@ namespace TubesWS.Repository
             
         }
 
+        //get One By nama penulis
+        public Object.Penulis GetOneNamaPenulis(string cari)
+        {
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select *from penulis where nama_penulis =" + cari;
+                return connection.Query<Object.Penulis>(query, new { cari }).FirstOrDefault();
+            }
+
+        }
+
         //update penulis
         public void UpdatePenulis(Object.Penulis penulis)
         {
