@@ -32,7 +32,7 @@ namespace TubesWS.Controllers
         
         // POST: api/Penerbit
         [HttpPost]
-        public string Post([FromBody]Object.Penerbit value)
+        public IActionResult Post([FromBody]Object.Penerbit value)
         {
             try
             {
@@ -40,35 +40,34 @@ namespace TubesWS.Controllers
                 Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
 
                 penerbit.InsertPenerbit(value);
-                return "Data Berhasil Diinput";
+                return Created("Data Berhasil Diinput", value);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
         }
         
         // PUT: api/Penerbit/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Object.Penerbit value)
+        public IActionResult Put(int id, [FromBody]Object.Penerbit value)
         {
             try
             {
                 //deklarasi variabel untuk update
                 Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
                 penerbit.UpdatePenerbit(value);
-                return "Update berhasil";
-
+                return Created("Update berhasil", value);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
         }
         
         // DELETE: api/Penerbit/5
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -78,11 +77,11 @@ namespace TubesWS.Controllers
                 //eksekusi delete
                 penerbit.DeletePenerbit(id);
 
-                return "Delete berhasil";
+                return Ok();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
         }
     }

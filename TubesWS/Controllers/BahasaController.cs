@@ -13,28 +13,29 @@ namespace TubesWS.Controllers
     {
         // GET: api/Bahasa
         [HttpGet]
-        public IEnumerable<Object.Bahasa> Get()
+        public IActionResult Get()
         {
             //deklarasi variabel untuk return
             Repository.RepositoryBahasa bahasa = new Repository.RepositoryBahasa();
 
             //lempar hasil
-            return bahasa.GetAllBahasa();
+            return Ok(bahasa.GetAllBahasa());
         }
 
         // GET: api/Bahasa/5
         [HttpGet("{id}", Name = "GetBahasa")]
-        public Object.Bahasa Get(int id)
+        public IActionResult Get(int id)
         {
             //deklarais variabel untuk return
             Repository.RepositoryBahasa bahasa = new Repository.RepositoryBahasa();
-
-            return bahasa.GetOneBahasa(id);
+            var temp = bahasa.GetOneBahasa(id);
+            if (temp == null) return NotFound();
+            return Ok(temp);
         }
 
         // POST: api/Bahasa
         [HttpPost]
-        public string Post([FromBody]Object.Bahasa value)
+        public IActionResult Post([FromBody]Object.Bahasa value)
         {
             try
             {
@@ -42,38 +43,36 @@ namespace TubesWS.Controllers
                 Repository.RepositoryBahasa bahasa = new Repository.RepositoryBahasa();
 
                 bahasa.InsertBahasa(value);
-                return "Data Berhasil Diinput";
+                return Created(" ", value);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
-
-
         }
 
         // PUT: api/Bahasa/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Object.Bahasa value)
+        public IActionResult Put(int id, [FromBody]Object.Bahasa value)
         {
             try
             {
                 //deklarasi variabel untuk update
                 Repository.RepositoryBahasa bahasa = new Repository.RepositoryBahasa();
                 bahasa.UpdateBahasa(value);
-                return "Update berhasil";
+                return Created(" ", value);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
 
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -83,11 +82,11 @@ namespace TubesWS.Controllers
                 //eksekusi delete
                 bahasa.DeleteBahasa(id);
 
-                return "Delete berhasil";
+                return Ok();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
 
         }

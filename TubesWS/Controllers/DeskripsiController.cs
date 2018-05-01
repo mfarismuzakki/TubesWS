@@ -13,28 +13,29 @@ namespace TubesWS.Controllers
     {
         // GET: api/Deskripsi
         [HttpGet]
-        public IEnumerable<Object.Deskripsi> Get()
+        public IActionResult Get()
         {
             //deklarasi variabel untuk return
             Repository.RepositoryDeskripsi deskripsi = new Repository.RepositoryDeskripsi();
 
             //lempar hasil
-            return deskripsi.GetAllDeskripsi();
+            return Ok(deskripsi.GetAllDeskripsi());
         }
 
         // GET: api/Deskripsi/5
         [HttpGet("{id}", Name = "GetDeskripsi")]
-        public Object.Deskripsi Get(int id)
+        public IActionResult Get(int id)
         {
             //deklarais variabel untuk return
             Repository.RepositoryDeskripsi deskripsi = new Repository.RepositoryDeskripsi();
-
-            return deskripsi.GetOneDeskripsi(id);
+            var temp = deskripsi.GetOneDeskripsi(id);
+            if (temp == null) return NotFound();
+            return Ok(temp);
         }
 
         // POST: api/Deskripsi
         [HttpPost]
-        public string Post([FromBody]Object.Deskripsi value)
+        public IActionResult Post([FromBody]Object.Deskripsi value)
         {
             try
             {
@@ -42,11 +43,11 @@ namespace TubesWS.Controllers
                 Repository.RepositoryDeskripsi deskripsi = new Repository.RepositoryDeskripsi();
 
                 deskripsi.InsertDeskripsi(value);
-                return "Data Berhasil Diinput";
+                return Created("", value);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
 
 
@@ -54,19 +55,18 @@ namespace TubesWS.Controllers
 
         // PUT: api/Deskripsi/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Object.Deskripsi value)
+        public IActionResult Put(int id, [FromBody]Object.Deskripsi value)
         {
             try
             {
                 //deklarasi variabel untuk update
                 Repository.RepositoryDeskripsi deskripsi = new Repository.RepositoryDeskripsi();
                 deskripsi.UpdateDeskripsi(value);
-                return "Update berhasil";
-
+                return Created("", value);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
 
         }
@@ -85,7 +85,7 @@ namespace TubesWS.Controllers
 
                 return Ok();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return BadRequest();
             }

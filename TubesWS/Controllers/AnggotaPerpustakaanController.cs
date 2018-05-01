@@ -13,25 +13,26 @@ namespace TubesWS.Controllers
     {
         // GET: api/AnggotaPerpustakaan
         [HttpGet]
-        public IEnumerable<Object.AnggotaPerpustakaan> Get()
+        public IActionResult Get()
         {
             Repository.RepositoryAnggotaPerpustakaan anggotaperpus = new Repository.RepositoryAnggotaPerpustakaan();
 
-            return anggotaperpus.GetAllAnggotaPerpustakaan();
+            return Ok(anggotaperpus.GetAllAnggotaPerpustakaan());
         }
 
         // GET: api/AnggotaPerpustakaan/5
         [HttpGet("{id}", Name = "GetAnggotaPerpustakaan")]
-        public Object.AnggotaPerpustakaan Get(int id)
+        public IActionResult Get(int id)
         {
             Repository.RepositoryAnggotaPerpustakaan anggotaperpus = new Repository.RepositoryAnggotaPerpustakaan();
-
-            return anggotaperpus.GetOneAnggotaPerpustakaan(id);
+            var temp = anggotaperpus.GetOneAnggotaPerpustakaan(id);
+            if (temp == null) return NotFound();
+            return Ok(temp);
         }
 
         // POST: api/AnggotaPerpustakaan
         [HttpPost]
-        public string Post([FromBody]Object.AnggotaPerpustakaan value)
+        public IActionResult Post([FromBody]Object.AnggotaPerpustakaan value)
         {
             try
             {
@@ -39,35 +40,34 @@ namespace TubesWS.Controllers
                 Repository.RepositoryAnggotaPerpustakaan anggotaperpus = new Repository.RepositoryAnggotaPerpustakaan();
 
                 anggotaperpus.InsertAnggotaPerpustakaan(value);
-                return "Data Berhasil Diinput";
+                return Created(" ", value);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
         }
 
         // PUT: api/AnggotaPerpustakaan/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Object.AnggotaPerpustakaan value)
+        public IActionResult Put(int id, [FromBody]Object.AnggotaPerpustakaan value)
         {
             try
             {
                 //deklarasi variabel untuk update
                 Repository.RepositoryAnggotaPerpustakaan anggotaperpus = new Repository.RepositoryAnggotaPerpustakaan();
                 anggotaperpus.UpdateAnggotaPerpustakaan(value);
-                return "Update berhasil";
-
+                return Created(" ", value);
             }
-            catch (Exception e)
+            catch (Exception )
             {
-                return e.Message;
+                return BadRequest();
             }
         }
 
         // DELETE: api/AnggotaPerpustakaan/5
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -77,11 +77,11 @@ namespace TubesWS.Controllers
                 //eksekusi delete
                 anggotaperpus.DeleteAnggotaPerpustakaan(id);
 
-                return "Delete berhasil";
+                return Ok();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
         }
     }
