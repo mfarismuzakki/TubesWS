@@ -50,13 +50,27 @@ namespace TubesWS.Repository
             string judul = buku.Judul;
             int cetakan = buku.Cetakan;
             string tanggalterbit = buku.Tanggalterbit;
-            List<Object.Penulis> penulis = new List<Object.Penulis>();
+
+            RepositoryPenulis tempRepoPenulis = new RepositoryPenulis();
             Object.Penulis tempPenulis = new Object.Penulis();
+            tempPenulis =  tempRepoPenulis.GetOneNamaPenulis(buku.Penulis);
+
+            RepositoryPenerbit tempRepoPenerbit = new RepositoryPenerbit();
+            Object.Penerbit tempPenerbit = new Object.Penerbit();
+            tempPenerbit = tempRepoPenerbit.GetOneNamaPenerbit(buku.Penerbit);
+
+            RepositoryKategori tempRepoKategori = new RepositoryKategori();
+            Object.Kategori tempKategori = new Object.Kategori();
+            tempKategori = tempRepoKategori.GetOneNamaKategori(buku.Kategori);
+
+            RepositoryBahasa tempRepoBahasa = new RepositoryBahasa();
+            Object.Bahasa tempBahasa = new Object.Bahasa();
+            tempBahasa = tempRepoBahasa.GetOneNamaBahasa(buku.Bahasa);
 
             using (connection)
             {
                 OpenConnection();
-                string query = "";
+                string query = "insert into judulbuku values(null,'" + judul + "','" + cetakan + "','" + tanggalterbit + "','" + tempPenulis.Id_penulis + "','" + tempPenerbit.Id_penerbit + "','" + tempKategori.Id_kategori + "','" + tempBahasa.Id_bahasa + "')";
                 connection.Execute(query);
             }
         }
@@ -67,7 +81,19 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from judulbuku";
+                string query = "select judulbuku.id_buku AS `id_buku`," +
+                    "judulbuku.judul_buku AS `judul`," +
+                    "judulbuku.cetakan AS `cetakan`," +
+                    "judulbuku.tanggalterbit AS `tanggalterbit`," +
+                    "penulis.nama_penulis AS `penulis`," +
+                    "penerbit.nama_penerbit AS `penerbit`," +
+                    "bahasa.nama_bahasa AS `bahasa`," +
+                    "kategori.nama_kategori AS `kategori`" +
+                    " from ((((`judulbuku` join `penulis`) join `penerbit`) join `bahasa`) join `kategori`)" +
+                    " where ((judulbuku.id_penulis = penulis.id_penulis) and" +
+                    " (judulbuku.id_penerbit = penerbit.id_penerbit) and" +
+                    " (judulbuku.id_bahasa = bahasa.id_bahasa) and" +
+                    " (judulbuku.id_kategori = kategori.id_kategori))";
                 return connection.Query<Object.Buku>(query).ToList();
             }
         }
@@ -78,31 +104,65 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from penerbit where id_penerbit =" + cari;
+                string query = "select judulbuku.id_buku AS `id_buku`," +
+                    "judulbuku.judul_buku AS `judul`," +
+                    "judulbuku.cetakan AS `cetakan`," +
+                    "judulbuku.tanggalterbit AS `tanggalterbit`," +
+                    "penulis.nama_penulis AS `penulis`," +
+                    "penerbit.nama_penerbit AS `penerbit`," +
+                    "bahasa.nama_bahasa AS `bahasa`," +
+                    "kategori.nama_kategori AS `kategori`" +
+                    " from ((((`judulbuku` join `penulis`) join `penerbit`) join `bahasa`) join `kategori`)" +
+                    " where ((judulbuku.id_penulis = penulis.id_penulis) and" +
+                    " (judulbuku.id_penerbit = penerbit.id_penerbit) and" +
+                    " (judulbuku.id_bahasa = bahasa.id_bahasa) and" +
+                    " (judulbuku.id_kategori = kategori.id_kategori)) and " +
+                    "judulbuku.id_penerbit =" + cari;
                 return connection.Query<Object.Buku>(query, new { cari }).FirstOrDefault();
             }
         }
 
-        //update Penerbit
-        public void UpdatePenerbit(Object.Buku penerbit)
+        //update Buku
+        public void UpdateBuku(Object.Buku buku)
         {
+            int id_buku = buku.Id_buku;
+            string judul = buku.Judul;
+            int cetakan = buku.Cetakan;
+            string tanggalterbit = buku.Tanggalterbit;
+
+            RepositoryPenulis tempRepoPenulis = new RepositoryPenulis();
+            Object.Penulis tempPenulis = new Object.Penulis();
+            tempPenulis = tempRepoPenulis.GetOneNamaPenulis(buku.Penulis);
+
+            RepositoryPenerbit tempRepoPenerbit = new RepositoryPenerbit();
+            Object.Penerbit tempPenerbit = new Object.Penerbit();
+            tempPenerbit = tempRepoPenerbit.GetOneNamaPenerbit(buku.Penerbit);
+
+
+            RepositoryKategori tempRepoKategori = new RepositoryKategori();
+            Object.Kategori tempKategori = new Object.Kategori();
+            tempKategori = tempRepoKategori.GetOneNamaKategori(buku.Kategori);
+
+            RepositoryBahasa tempRepoBahasa = new RepositoryBahasa();
+            Object.Bahasa tempBahasa = new Object.Bahasa();
+            tempBahasa = tempRepoBahasa.GetOneNamaBahasa(buku.Bahasa);
 
             using (connection)
             {
                 OpenConnection();
-                string query = "";
+                string query = "update judulbuku set id_buku =" + id_buku + ", judul =" + judul + ", cetakan =" + cetakan + ", tanggalterbit =" + tanggalterbit + ", id_penulis =" + tempPenulis.Id_penulis + ", id_penerbit =" + tempPenerbit.Id_penerbit + ", id_kategori =" + tempKategori.Id_kategori + ", id_bahasa =" + tempBahasa.Id_bahasa + " where id_buku =" + id_buku;
                 connection.Execute(query);
             }
 
         }
 
-        //delete Penerbit
-        public void DeletePenerbit(int id)
+        //delete Buku
+        public void DeleteBuku(int id)
         {
             using (connection)
             {
                 OpenConnection();
-                string query = "delete from penerbit where id_penerbit = " + id;
+                string query = "delete from judulbuku where id_buku = " + id;
                 connection.Execute(query);
             }
         }

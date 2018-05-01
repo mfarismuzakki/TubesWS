@@ -14,6 +14,7 @@ namespace TubesWS.Controllers
         // GET: api/Pustakawan
         [HttpGet]
         public IEnumerable<Object.Pustakawan> Get()
+        public IActionResult Get()
         {
             Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
 
