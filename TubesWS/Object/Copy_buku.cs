@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TubesWS.Object
 {
-    public class copy_buku
+    public class Copy_buku
     {
         private int id_copy_buku;
         private int id_buku;
