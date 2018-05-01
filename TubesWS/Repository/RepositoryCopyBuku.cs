@@ -7,13 +7,14 @@ using Dapper;
 
 namespace TubesWS.Repository
 {
-    public class RepositoryBahasa
+    public class RepositoryCopyBuku
     {
+
         //atribut
         MySqlConnection connection;
 
         //konstruktor deklarasi hak akses
-        public RepositoryBahasa()
+        public RepositoryCopyBuku()
         {
             connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root;SslMode=none");
         }
@@ -45,80 +46,68 @@ namespace TubesWS.Repository
         }
 
         //memasukan input ke database
-        public void InsertBahasa(Object.Bahasa bahasa)
+        public void InsertCopyBuku(Object.Copy_buku copy)
         {
-            string nama_bahasa = bahasa.Nama_bahasa;
+            int id_buku = copy.Id_buku;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "insert into bahasa values(null,'" + nama_bahasa + "')";
+                string query = "insert into copy_buku values(null,'" + id_buku + "')";
                 connection.Execute(query);
             }
-            
+
         }
 
-        //get All Bahasa
-        public List<Object.Bahasa> GetAllBahasa()
+        //get All Copy Buku
+        public List<Object.Copy_buku> GetAllCopyBuku()
         {
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from bahasa";
-                return connection.Query<Object.Bahasa>(query).ToList();
-            }
-            
-        }
-
-        //get One By Id Bahasa
-        public Object.Bahasa GetOneBahasa(int cari)
-        {
-            using (connection)
-            {
-                OpenConnection();
-                string query = "select *from bahasa where id_bahasa=" + cari;
-                 return connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
-            }
-            
-        }
-
-        //get One By Id Bahasa
-        public Object.Bahasa GetOneNamaBahasa(string cari)
-        {
-            using (connection)
-            {
-                OpenConnection();
-                string query = "select *from bahasa where nama_bahasa=" + cari;
-                return connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
+                string query = "select *from copy_buku";
+                return connection.Query<Object.Copy_buku>(query).ToList();
             }
 
         }
 
-        //update Bahasa
-        public void UpdateBahasa(Object.Bahasa bahasa)
+        //get One By Id Copy Buku
+        public Object.Copy_buku GetOneCopyBuku(int cari)
         {
-            int id = bahasa.Id_bahasa;
-            string nama_bahasa = bahasa.Nama_bahasa;
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select *from copy_buku where id_copy_buku=" + cari;
+                return connection.Query<Object.Copy_buku>(query, new { cari }).FirstOrDefault();
+            }
+
+        }
+
+        //update Copy Buku
+        public void UpdateCopyBuku(Object.Copy_buku copy)
+        {
+            int id_copy_buku = copy.Id_copy_buku;
+            int id_buku = copy.Id_buku;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "update bahasa set id_bahasa=" + id + ", nama_bahasa = " + nama_bahasa + "";
+                string query = "update copy_buku set id_copy_buku =" + id_copy_buku + ", id_buku =" + id_buku + "";
                 connection.Execute(query);
             }
-            
+
         }
 
-        //delete Bahasa
-        public void DeleteBahasa(int id)
+        //delete Copy Buku
+        public void DeleteCopyBuku(int id)
         {
             using (connection)
             {
                 OpenConnection();
-                string query = "delete from bahasa where id_bahasa= " + id;
+                string query = "delete from copy_buku where id_copy_buku = " + id;
                 connection.Execute(query);
             }
-            
+
         }
     }
 }

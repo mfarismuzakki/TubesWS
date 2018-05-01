@@ -13,25 +13,26 @@ namespace TubesWS.Controllers
     {
         // GET: api/Kategori
         [HttpGet]
-        public IEnumerable<Object.Kategori> Get()
+        public IActionResult Get()
         {
             Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
 
-            return kategori.GetAllKategori();
+            return Ok(kategori.GetAllKategori());
         }
 
         // GET: api/Kategori/5
         [HttpGet("{id}", Name = "GetKategori")]
-        public Object.Kategori Get(int id)
+        public IActionResult Get(int id)
         {
             Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
-
-            return kategori.GetOneKategori(id);
+            var temp = kategori.GetOneKategori(id);
+            if (temp == null) return NotFound();
+            return Ok(temp);
         }
         
         // POST: api/Kategori
         [HttpPost]
-        public string Post([FromBody]Object.Kategori value)
+        public IActionResult Post([FromBody]Object.Kategori value)
         {
             try
             {
@@ -39,17 +40,17 @@ namespace TubesWS.Controllers
                 Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
 
                 kategori.InsertKategori(value);
-                return "Data Berhasil Diinput";
+                return Created("", value);
             }
-            catch (Exception e)
+            catch (Exception )
             {
-                return e.Message;
+                return BadRequest();
             }
         }
         
         // PUT: api/Kategori/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Object.Kategori value)
+        public IActionResult Put(int id, [FromBody]Object.Kategori value)
         {
             try
             {
@@ -57,18 +58,18 @@ namespace TubesWS.Controllers
                 Repository.RepositoryKategori kategori = new Repository.RepositoryKategori();
 
                 kategori.UpdateKategori(value);
-                return "Update berhasil";
+                return Created("", value);
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
-                return e.Message;
+                return BadRequest();
             }
         }
         
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -78,11 +79,11 @@ namespace TubesWS.Controllers
                 //eksekusi delete
                 kategori.DeleteKategori(id);
 
-                return "Delete berhasil";
+                return Ok();
             }
-            catch (Exception e)
+            catch (Exception )
             {
-                return e.Message;
+                return BadRequest();
             }
         }
     }

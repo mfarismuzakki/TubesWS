@@ -13,25 +13,26 @@ namespace TubesWS.Controllers
     {
         // GET: api/Peminjaman
         [HttpGet]
-        public IEnumerable<Object.Peminjaman> Get()
+        public IActionResult Get()
         {
             Repository.RepositoryPeminjaman peminjaman = new Repository.RepositoryPeminjaman();
 
-            return peminjaman.GetAllPeminjaman();
+            return Ok(peminjaman.GetAllPeminjaman());
         }
 
         // GET: api/Peminjaman/5
         [HttpGet("{id}", Name = "GetPeminjaman")]
-        public Object.Peminjaman Get(int id)
+        public IActionResult Get(int id)
         {
             Repository.RepositoryPeminjaman peminjaman = new Repository.RepositoryPeminjaman();
-
-            return peminjaman.GetOnePeminjaman(id);
+            var temp = peminjaman.GetOnePeminjaman(id);
+            if (temp == null) return NotFound();
+            return Ok(temp);
         }
         
         // POST: api/Peminjaman
         [HttpPost]
-        public string Post([FromBody]Object.Peminjaman value)
+        public IActionResult Post([FromBody]Object.Peminjaman value)
         {
             try
             {
@@ -39,35 +40,35 @@ namespace TubesWS.Controllers
                 Repository.RepositoryPeminjaman peminjaman = new Repository.RepositoryPeminjaman();
 
                 peminjaman.InsertPeminjaman(value);
-                return "Data Berhasil Diinput";
+                return Created("", value);
             }
-            catch (Exception e)
+            catch (Exception )
             {
-                return e.Message;
+                return BadRequest();
             }
         }
         
         // PUT: api/Peminjaman/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Object.Peminjaman value)
+        public IActionResult Put(int id, [FromBody]Object.Peminjaman value)
         {
             try
             {
                 //deklarasi variabel untuk update
                 Repository.RepositoryPeminjaman peminjaman = new Repository.RepositoryPeminjaman();
                 peminjaman.UpdatePeminjaman(value);
-                return "Update berhasil";
+                return Created("", value);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
         }
         
         // DELETE: api/Peminjaman/5
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -77,11 +78,11 @@ namespace TubesWS.Controllers
                 //eksekusi delete
                 peminjaman.DeletePeminjaman(id);
 
-                return "Delete berhasil";
+                return Ok();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
         }
     }

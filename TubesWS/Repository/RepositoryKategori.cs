@@ -80,6 +80,18 @@ namespace TubesWS.Repository
             }
         }
 
+        //get One By Nama Kategori
+        public Object.Kategori GetOneNamaKategori(string cari)
+        {
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select *from kategori where nama_kategori =" + cari;
+                return connection.Query<Object.Kategori>(query, new { cari }).FirstOrDefault();
+
+            }
+        }
+
         //update Kategori
         public void UpdateKategori(Object.Kategori kategori)
         {

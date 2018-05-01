@@ -13,28 +13,29 @@ namespace TubesWS.Controllers
     {
         // GET: api/Penulis
         [HttpGet]
-        public IEnumerable<Object.Penulis> Get()
+        public IActionResult Get()
         {
             //deklarasi variabel untuk return
             Repository.RepositoryPenulis penulis = new Repository.RepositoryPenulis();
 
             //lempar hasil
-            return penulis.GetAllPenulis();
+            return Ok(penulis.GetAllPenulis());
         }
 
         // GET: api/Penulis/5
         [HttpGet("{id}", Name = "GetPenulis")]
-        public Object.Penulis Get(int id)
+        public IActionResult Get(int id)
         {
             //deklarais variabel untuk return
             Repository.RepositoryPenulis penulis = new Repository.RepositoryPenulis();
-
-            return penulis.GetOnePenulis(id);
+            var temp = penulis.GetOnePenulis(id);
+            if (temp == null) return NotFound();
+            return Ok(temp);
         }
         
         // POST: api/Penulis
         [HttpPost]
-        public string Post([FromBody]Object.Penulis value)
+        public IActionResult Post([FromBody]Object.Penulis value)
         {
             try
             {
@@ -42,10 +43,10 @@ namespace TubesWS.Controllers
                 Repository.RepositoryPenulis penulis = new Repository.RepositoryPenulis();
 
                 penulis.InsertPenulis(value);
-                return "Data Berhasil Diinput";
-            }catch(Exception e)
+                return Created("", value);
+            }catch(Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
             
 
@@ -53,25 +54,25 @@ namespace TubesWS.Controllers
         
         // PUT: api/Penulis/5
         [HttpPut("{id}")]
-        public string Put(int id, [FromBody]Object.Penulis value)
+        public IActionResult Put(int id, [FromBody]Object.Penulis value)
         {
             try
             {
                 //deklarasi variabel untuk update
                 Repository.RepositoryPenulis penulis = new Repository.RepositoryPenulis();
                 penulis.UpdatePenulis(value);
-                return "Update berhasil";
+                return Created("", value);
 
-            }catch(Exception e)
+            }catch(Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
             
         }
         
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -81,10 +82,10 @@ namespace TubesWS.Controllers
                 //eksekusi delete
                 penulis.DeletePenulis(id);
 
-                return "Delete berhasil";
-            }catch(Exception e)
+                return Ok();
+            }catch(Exception)
             {
-                return e.Message;
+                return BadRequest();
             }
            
         }

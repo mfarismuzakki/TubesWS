@@ -7,13 +7,13 @@ using Dapper;
 
 namespace TubesWS.Repository
 {
-    public class RepositoryBahasa
+    public class RepositoryStokBuku
     {
         //atribut
         MySqlConnection connection;
 
         //konstruktor deklarasi hak akses
-        public RepositoryBahasa()
+        public RepositoryStokBuku()
         {
             connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root;SslMode=none");
         }
@@ -45,80 +45,70 @@ namespace TubesWS.Repository
         }
 
         //memasukan input ke database
-        public void InsertBahasa(Object.Bahasa bahasa)
+        public void InsertStokBuku(Object.Stok_buku stok_buku)
         {
-            string nama_bahasa = bahasa.Nama_bahasa;
+            int id_buku = stok_buku.Id_buku;
+            int stok = stok_buku.Stok;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "insert into bahasa values(null,'" + nama_bahasa + "')";
+                string query = "insert into stok_buku values(null,'" + id_buku + "','" + stok + "')";
                 connection.Execute(query);
             }
-            
+
         }
 
-        //get All Bahasa
-        public List<Object.Bahasa> GetAllBahasa()
+        //get All Stok Buku
+        public List<Object.Stok_buku> GetAllStokBuku()
         {
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from bahasa";
-                return connection.Query<Object.Bahasa>(query).ToList();
-            }
-            
-        }
-
-        //get One By Id Bahasa
-        public Object.Bahasa GetOneBahasa(int cari)
-        {
-            using (connection)
-            {
-                OpenConnection();
-                string query = "select *from bahasa where id_bahasa=" + cari;
-                 return connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
-            }
-            
-        }
-
-        //get One By Id Bahasa
-        public Object.Bahasa GetOneNamaBahasa(string cari)
-        {
-            using (connection)
-            {
-                OpenConnection();
-                string query = "select *from bahasa where nama_bahasa=" + cari;
-                return connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
+                string query = "select *from stok_buku";
+                return connection.Query<Object.Stok_buku>(query).ToList();
             }
 
         }
 
-        //update Bahasa
-        public void UpdateBahasa(Object.Bahasa bahasa)
+        //get One By Id Stok Buku
+        public Object.Stok_buku GetOneStokBuku(int cari)
         {
-            int id = bahasa.Id_bahasa;
-            string nama_bahasa = bahasa.Nama_bahasa;
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select *from stok_buku where id_stok_buku=" + cari;
+                return connection.Query<Object.Stok_buku>(query, new { cari }).FirstOrDefault();
+            }
+
+        }
+
+        //update Stok Buku
+        public void UpdateStokBuku(Object.Stok_buku stok_buku)
+        {
+            int id_stok_buku = stok_buku.Id_stok_buku;
+            int id_buku = stok_buku.Id_buku;
+            int stok = stok_buku.Stok;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "update bahasa set id_bahasa=" + id + ", nama_bahasa = " + nama_bahasa + "";
+                string query = "update stok_buku set id_stok_buku =" + id_stok_buku + ", id_buku =" + id_buku + ", stok =" + stok + "";
                 connection.Execute(query);
             }
-            
+
         }
 
-        //delete Bahasa
-        public void DeleteBahasa(int id)
+        //delete Stok Buku
+        public void DeleteStokBuku(int id)
         {
             using (connection)
             {
                 OpenConnection();
-                string query = "delete from bahasa where id_bahasa= " + id;
+                string query = "delete from stok_buku where id_stok_buku = " + id;
                 connection.Execute(query);
             }
-            
+
         }
     }
 }
