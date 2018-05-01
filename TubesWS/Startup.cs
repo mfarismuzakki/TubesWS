@@ -33,6 +33,12 @@ namespace TubesWS
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler();
+            }
+
+            app.UseStatusCodePages();
 
             app.UseMvc();
         }

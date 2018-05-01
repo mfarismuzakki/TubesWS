@@ -14,7 +14,7 @@ namespace TubesWS.Repository
 
         public RepositoryPerpustakaan()
         {
-            //connection = new MySqlConnection("Server=localhost; Database=perpustakaan; Uid=root");
+            connection = new MySqlConnection("server=localhost;Database=perpustakaan;Uid=root;SslMode=none");
         }
 
     }
