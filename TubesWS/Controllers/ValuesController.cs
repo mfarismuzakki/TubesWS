@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TubesWS.Controllers
@@ -10,7 +11,7 @@ namespace TubesWS.Controllers
     public class ValuesController : Controller
     {
         // GET api/values
-        [HttpGet]
+        [HttpGet,Authorize]
         public IEnumerable<Object.Penulis> Get()
         {
             //deklarasi objek

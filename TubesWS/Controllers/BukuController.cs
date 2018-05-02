@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +13,7 @@ namespace TubesWS.Controllers
     public class BukuController : Controller
     {
         // GET: api/Buku
-        [HttpGet]
+        [HttpGet,Authorize]
         public IActionResult Get()
         {
             Repository.RepositoryBuku buku = new Repository.RepositoryBuku();
@@ -20,7 +21,7 @@ namespace TubesWS.Controllers
         }
 
         // GET: api/Buku/5
-        [HttpGet("{id}", Name = "GetBuku")]
+        [HttpGet("{id}", Name = "GetBuku"),Authorize]
         public IActionResult Get(int id)
         {
             Repository.RepositoryBuku buku = new Repository.RepositoryBuku();
@@ -30,7 +31,7 @@ namespace TubesWS.Controllers
         }
         
         // POST: api/Buku
-        [HttpPost]
+        [HttpPost,Authorize]
         public IActionResult Post([FromBody]Object.Buku value)
         {
             try
@@ -47,7 +48,7 @@ namespace TubesWS.Controllers
         }
         
         // PUT: api/Buku/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}"),Authorize]
         public IActionResult Put(int id, [FromBody]Object.Buku value)
         {
             try
@@ -63,7 +64,7 @@ namespace TubesWS.Controllers
         }
         
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"),Authorize]
         public IActionResult Delete(int id)
         {
             try

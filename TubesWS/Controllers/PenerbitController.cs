@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +13,7 @@ namespace TubesWS.Controllers
     public class PenerbitController : Controller
     {
         // GET: api/Penerbit
-        [HttpGet]
+        [HttpGet,Authorize]
         public IActionResult Get()
         {
             Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
@@ -21,7 +22,7 @@ namespace TubesWS.Controllers
         }
 
         // GET: api/Penerbit/5
-        [HttpGet("{id}", Name = "GetPenerbit")]
+        [HttpGet("{id}", Name = "GetPenerbit"),Authorize]
         public IActionResult Get(int id)
         {
             Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
@@ -31,7 +32,7 @@ namespace TubesWS.Controllers
         }
         
         // POST: api/Penerbit
-        [HttpPost]
+        [HttpPost,Authorize]
         public IActionResult Post([FromBody]Object.Penerbit value)
         {
             try
@@ -49,7 +50,7 @@ namespace TubesWS.Controllers
         }
         
         // PUT: api/Penerbit/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}"),Authorize]
         public IActionResult Put(int id, [FromBody]Object.Penerbit value)
         {
             try
@@ -66,7 +67,7 @@ namespace TubesWS.Controllers
         }
         
         // DELETE: api/Penerbit/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"),Authorize]
         public IActionResult Delete(int id)
         {
             try

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +13,7 @@ namespace TubesWS.Controllers
     public class PustakawanController : Controller
     {
         // GET: api/Pustakawan
-        [HttpGet]
+        [HttpGet,Authorize]
         public IActionResult Get()
         {
             Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
@@ -21,7 +22,7 @@ namespace TubesWS.Controllers
         }
 
         // GET: api/Pustakawan/5
-        [HttpGet("{id}", Name = "GetPustakawan")]
+        [HttpGet("{id}", Name = "GetPustakawan"),Authorize]
         public IActionResult Get(int id)
         {
             Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
@@ -31,7 +32,7 @@ namespace TubesWS.Controllers
         }
 
         // POST: api/Pustakawan
-        [HttpPost]
+        [HttpPost,Authorize]
         public IActionResult Post([FromBody]Object.Pustakawan value)
         {
             try
@@ -49,7 +50,7 @@ namespace TubesWS.Controllers
         }
 
         // PUT: api/Pustakawan/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}"),Authorize]
         public IActionResult Put(int id, [FromBody]Object.Pustakawan value)
         {
             try
@@ -67,7 +68,7 @@ namespace TubesWS.Controllers
         }
 
         // DELETE: api/Pustakawan/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"),Authorize]
         public IActionResult Delete(int id)
         {
             try
