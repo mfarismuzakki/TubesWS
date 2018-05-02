@@ -113,13 +113,7 @@ create table detail_peminjaman(
 	id_detail_peminjaman int primary key AUTO_INCREMENT,
 	id_peminjaman int not null,
 	id_copy_buku int not null,
-<<<<<<< HEAD
 
 	foreign key (id_peminjaman) references peminjaman(id_peminjaman),
 	foreign key (id_copy_buku) references copy_buku(id_copy_buku)
 );
-=======
-	foreign key (id_peminjaman) references peminjaman(id_peminjaman),
-	foreign key (id_copy_buku) references copy_buku(id_copy_buku)
-);
->>>>>>> efee7c17ca52653a64570ef2062eecc3234510eb
