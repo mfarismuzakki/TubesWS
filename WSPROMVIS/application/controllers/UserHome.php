@@ -5,9 +5,28 @@ class UserHome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->helper('url');
+		if($this->session->loged_in){
+			redirect('CUsercari');
+		}else{
+			$this->load->view('user/VUheader');
+			$this->load->view('Vlogin');
+		}
+	}
 
-		$this->load->view('user/header');
-		$this->load->view('user/sidebar');
+	public function Cek(){
+
+		if((($this->input->post('username')) =='admin' && ($this->input->post('password') =='admin'))){
+			$userdata = array(
+				'username' => 'admin',
+				'password' => 'admin',
+				'loged_in' => TRUE
+			);
+			$this->session->set_userdata($userdata);
+
+			redirect('CUserCari');
+		}else{
+			$this->index();
+		}
+
 	}
 }

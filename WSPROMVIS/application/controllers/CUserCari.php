@@ -23,16 +23,28 @@ class CUserCari extends CI_Controller {
 		$this->load->model('MBuku');
 	}
 		
+	function Login_Check(){
+
+		if(!$this->session->loged_in){
+			redirect('UserHome');
+		}
+
+	} 
+
 	//index
 	public function index(){
+		$this->Login_Check();
+
+		$active['status'] = $this->current;
 		$this->load->view('user/VUheader');
-		// $this->load->view('user/VUsidebar');
-		$this->load->view('user/VUcaripenulis');	
+		$this->load->view('user/VUsidebar',$active);
 	
 	}
 
 	//view penulis
 	public function Penulis(){
+
+		$this->Login_Check();
 
 		$active['status'] = $this->current;
 		$active['status']['penulis'] = 'active';
@@ -60,6 +72,8 @@ class CUserCari extends CI_Controller {
 
 	public function Penerbit(){
 
+		$this->Login_Check();
+
 		$active['status'] = $this->current;
 		$active['status']['penerbit'] = 'active';
 
@@ -84,6 +98,8 @@ class CUserCari extends CI_Controller {
 	}
 
 	public function Bahasa(){
+
+		$this->Login_Check();
 
 		$active['status'] = $this->current;
 		$active['status']['bahasa'] = 'active';
@@ -111,6 +127,8 @@ class CUserCari extends CI_Controller {
 
 	public function Kategori(){
 
+		$this->Login_Check();
+
 		$active['status'] = $this->current;
 		$active['status']['kategori'] = 'active';
 
@@ -135,6 +153,8 @@ class CUserCari extends CI_Controller {
 
 	public function Buku(){
 
+		$this->Login_Check();
+
 		$active['status'] = $this->current;
 		$active['status']['buku'] = 'active';
 
@@ -157,7 +177,14 @@ class CUserCari extends CI_Controller {
 		$this->load->view('user/VUhasilcaribuku',$data);
 	}
 
+	public function TambahBuku($id_buku){
+
+
+	}
+
 	public function DaftarPeminjaman(){
+
+		$this->Login_Check();
 
 		$active['status'] = $this->current;
 		$active['status']['daftar_peminjaman'] = 'active';
@@ -183,6 +210,8 @@ class CUserCari extends CI_Controller {
 
 	public function WaktuPengembalian(){
 
+		$this->Login_Check();
+
 		$active['status'] = $this->current;
 		$active['status']['waktu_pengembalian'] = 'active';
 
@@ -207,6 +236,8 @@ class CUserCari extends CI_Controller {
 
 	public function DaftarTransaksi(){
 
+		$this->Login_Check();
+
 		$active['status'] = $this->current;
 		$active['status']['daftar_transaksi'] = 'active';
 
@@ -227,6 +258,12 @@ class CUserCari extends CI_Controller {
 		//load tampilan
 		$this->penerbit();
 		$this->load->view('user/VUhasilcaridaftartransaksi',$data);
+	}
+
+	public function Logout(){
+
+		$this->session->sess_destroy();
+		redirect('UserHome');
 	}
 
 }
