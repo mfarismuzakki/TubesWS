@@ -38,7 +38,7 @@ namespace TubesWS.Controllers
                 issuer: "http://localhost:50062/",
                 audience: "http://localhost:50062/",
                 signingCredentials:credentials,
-                expires:DateTime.Now.AddMinutes(10)
+                expires:DateTime.Now.AddHours(12)
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(jwtToken);
