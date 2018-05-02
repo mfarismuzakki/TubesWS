@@ -13334,39 +13334,23 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\mfari\\.nuget\\packages\\": {},
-=======
-    "C:\\Users\\Silmi Queen\\.nuget\\packages\\": {},
->>>>>>> 922d72ddc02b0069cb62690e432b7bd7e1bb9ca2
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\TubesWS.csproj",
+      "projectUniqueName": "D:\\UPI\\Semester 4\\Pemrograman Visual\\TubesWS\\TubesWS\\TubesWS.csproj",
       "projectName": "TubesWS",
-      "projectPath": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\TubesWS.csproj",
-      "packagesPath": "C:\\Users\\mfari\\.nuget\\packages\\",
-      "outputPath": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\obj\\",
-=======
-      "projectUniqueName": "C:\\xampp\\htdocs\\TubesWS\\TubesWS\\TubesWS.csproj",
-      "projectName": "TubesWS",
-      "projectPath": "C:\\xampp\\htdocs\\TubesWS\\TubesWS\\TubesWS.csproj",
-      "packagesPath": "C:\\Users\\Silmi Queen\\.nuget\\packages\\",
-      "outputPath": "C:\\xampp\\htdocs\\TubesWS\\TubesWS\\obj\\",
->>>>>>> 922d72ddc02b0069cb62690e432b7bd7e1bb9ca2
+      "projectPath": "D:\\UPI\\Semester 4\\Pemrograman Visual\\TubesWS\\TubesWS\\TubesWS.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\UPI\\Semester 4\\Pemrograman Visual\\TubesWS\\TubesWS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\mfari\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-        "C:\\Users\\Silmi Queen\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 922d72ddc02b0069cb62690e432b7bd7e1bb9ca2
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
