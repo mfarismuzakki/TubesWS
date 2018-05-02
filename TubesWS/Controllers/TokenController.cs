@@ -34,8 +34,11 @@ namespace TubesWS.Controllers
 
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var jwtToken = new JwtSecurityToken(issuer: "http://localhost:50062/",audience: "http://localhost:50062/",
-                signingCredentials:credentials,expires:DateTime.Now.AddMinutes(10)
+            var jwtToken = new JwtSecurityToken(
+                issuer: "http://localhost:50062/",
+                audience: "http://localhost:50062/",
+                signingCredentials:credentials,
+                expires:DateTime.Now.AddMinutes(10)
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(jwtToken);
