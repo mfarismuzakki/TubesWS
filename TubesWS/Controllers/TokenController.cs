@@ -19,13 +19,22 @@ namespace TubesWS.Controllers
             Configuration = config;
         }
         // GET : token/CreateToken
-        public IActionResult CreateToken()
+        [HttpPost("{username}/{password}")]
+        public IActionResult CreateToken(string username, string password)
         {
-            var jwttoken = JwtTokenBuilder();
+            Repository.RepositoryUser user = new Repository.RepositoryUser();
+            Object.User temp = user.GetByNamaUser(username);
 
-            IActionResult respon = Ok(new { acces_token = jwttoken });
+            if (temp.Username == username && temp.Password == password )
+            {
+                var jwttoken = JwtTokenBuilder();
+
+                IActionResult respon = Ok(new { acces_token = jwttoken });
+
+                return respon;
+            }
+            return BadRequest("Username atau Password Salah");
             
-            return respon;
         }
 
         private string JwtTokenBuilder()
