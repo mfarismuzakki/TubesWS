@@ -117,3 +117,9 @@ create table detail_peminjaman(
 	foreign key (id_peminjaman) references peminjaman(id_peminjaman),
 	foreign key (id_copy_buku) references copy_buku(id_copy_buku)
 );
+
+create table user(
+	id_user int primary key AUTO_INCREMENT,
+	username varchar(13) not null,
+	password varchar(9) not null
+);
