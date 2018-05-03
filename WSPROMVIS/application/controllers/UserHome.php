@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UserHome extends CI_Controller {
 
+	function __construct(){
+		parent::__construct();
+		$this->load->library('curl');
+		$this->curl->create('http://localhost:50062/api/');
+	}
+
+
 	public function index()
 	{
 		if($this->session->loged_in){
@@ -15,7 +22,12 @@ class UserHome extends CI_Controller {
 
 	public function Cek(){
 
-		if((($this->input->post('username')) =='admin' && ($this->input->post('password') =='admin'))){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+
+
+		if(($username =='admin' && $password =='admin')){
+			$this->curl->http_login($username,$password);
 			$userdata = array(
 				'username' => 'admin',
 				'password' => 'admin',

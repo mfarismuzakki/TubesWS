@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace TubesWS.Controllers
 {
     [Produces("application/json")]
+ 
     public class TokenController : Controller
     {
         private IConfiguration Configuration;   

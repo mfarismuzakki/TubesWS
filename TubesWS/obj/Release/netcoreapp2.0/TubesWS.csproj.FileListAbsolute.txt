@@ -3,7 +3,6 @@ D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\bin\Release\netcor
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\bin\Release\netcoreapp2.0\TubesWS.runtimeconfig.dev.json
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\bin\Release\netcoreapp2.0\TubesWS.dll
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\bin\Release\netcoreapp2.0\TubesWS.pdb
-D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.csprojResolveAssemblyReference.cache
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.csproj.CoreCompileInputs.cache
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.AssemblyInfoInputs.cache
 D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.AssemblyInfo.cs
@@ -31,3 +30,4 @@ C:\xampp\htdocs\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.AssemblyInfo.c
 C:\xampp\htdocs\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.dll
 C:\xampp\htdocs\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.pdb
 D:\UPI\Semester 4\Pemrograman Visual\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.csprojResolveAssemblyReference.cache
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS\TubesWS\obj\Release\netcoreapp2.0\TubesWS.csprojResolveAssemblyReference.cache

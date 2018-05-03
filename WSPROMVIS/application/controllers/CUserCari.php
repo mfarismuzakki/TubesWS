@@ -14,6 +14,7 @@ class CUserCari extends CI_Controller {
 		'daftar_transaksi' => null
 		);
 
+		var $penampung = array();
 
 	//konstruktor
 	function __construct(){
@@ -164,7 +165,6 @@ class CUserCari extends CI_Controller {
 	}
 
 	public function CariBuku(){
-
 		//pencarian berdasarkan
 		$berdasarkan = $this->input->post('berdasarkan');
 		$key = $this->input->post('cari');
@@ -179,6 +179,21 @@ class CUserCari extends CI_Controller {
 
 	public function TambahBuku($id_buku){
 
+		//memasukan data kedalam array
+		$data = $this->MBuku->CariBuku(null,$id_buku);
+
+		$this->MBuku->TampungBuku($data);
+
+
+		$this->CariBuku();
+
+	}
+
+	public function DeleteTambahBuku($id_buku){
+
+		$this->MBuku->deleteTampungBuku($id_buku);
+
+		$this->DaftarPeminjaman();
 
 	}
 
@@ -189,23 +204,33 @@ class CUserCari extends CI_Controller {
 		$active['status'] = $this->current;
 		$active['status']['daftar_peminjaman'] = 'active';
 
+		$data['buku'] = $this->MBuku->getTampungBuku()->result();
+
 		$this->load->view('user/VUheader');
 		$this->load->view('user/VUsidebar',$active);
-		$this->load->view('user/VUcaridaftarpeminjaman');
+		$this->load->view('user/VUcaridaftarpeminjaman',$data);
 	}
 
 	public function CariDaftarPeminjaman(){
 
-		//pencarian berdasarkan
-		$berdasarkan = $this->input->post('berdasarkan');
-		$key = $this->input->post('cari');
+		//input 
+		$pustakawan = $this->input->post('pustakawan');
+		$peminjam = $this->input->post('peminjam');
 
-		//memasukan data kedalam array
-		$data['buku'] = $this->MBuku->CariDaftarPeminjaman($berdasarkan,$key);
+		$tanggalpinjam = date('y-m-d');
+		$tanggalkembali = date('y-m-d' ,strtotime("+1 Weeks"));
 
-		//load tampilan
+		//pemindahan isi keadalam array
+		$data = array(
+			'id_anggota' => $peminjam,
+			'id_pustakawan' => $pustakawan,
+			'tanggalpinjam' => $tanggalpinjam,
+			'tanggalkembali' => $tanggalkembali
+		);
+
+		$this->MBuku->TambahPeminjaman($data);
+		$this->MBuku->TrunCate();
 		$this->DaftarPeminjaman();
-		$this->load->view('user/VUhasilcaridaftarpeminjaman',$data);
 	}
 
 	public function WaktuPengembalian(){

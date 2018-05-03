@@ -11,7 +11,7 @@ namespace TubesWS.Controllers
     public class ValuesController : Controller
     {
         // GET api/values
-        [HttpGet,Authorize]
+        [HttpGet]
         public IEnumerable<Object.Penulis> Get()
         {
             //deklarasi objek
