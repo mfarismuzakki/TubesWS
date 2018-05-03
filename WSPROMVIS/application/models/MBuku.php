@@ -2,7 +2,7 @@
 	
 	class MBuku extends CI_Model{
 
-		var $api ='http://localhost:5000/api/';
+		var $api ='http://944c3584.ngrok.io/api/';
 
 		//konstruktor
 		function __construct(){
@@ -46,8 +46,20 @@
 			if($berdasarkan == null){
 				return json_decode($this->curl->simple_get($this->api.'buku/'.$key));
 			}else{
-				return json_decode($this->curl->simple_get($this->api.'buku'));
+				// return json_decode($this->curl->simple_get($this->api.'buku'));
 				
+				$uri = $this->api.'buku';
+				$ch = curl_init($uri);
+				curl_setopt_array($ch, array(
+				    CURLOPT_HTTPHEADER  => array('Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjUzNTcyMjcsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwNjIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MDA2Mi8ifQ.5KWYJ0ct_04UkMzn2YCvekRn5gDjHkA9WJhcnodVzDs'),
+				    CURLOPT_RETURNTRANSFER  =>true,
+				    CURLOPT_VERBOSE     => 1
+				));
+				$out = curl_exec($ch);
+				curl_close($ch);
+				// echo response output
+				echo $out;
+
 			}
 		}
 
