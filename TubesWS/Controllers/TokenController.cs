@@ -11,21 +11,38 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace TubesWS.Controllers
 {
+    [Produces("application/json")]
     public class TokenController : Controller
     {
-        private IConfiguration Configuration;
+        private IConfiguration Configuration;   
         public TokenController(IConfiguration config)
         {
             Configuration = config;
         }
-        // GET : token/CreateToken
-        public IActionResult CreateToken()
-        {
-            var jwttoken = JwtTokenBuilder();
 
-            IActionResult respon = Ok(new { acces_token = jwttoken });
-            
-            return respon;
+        // POST : token/CreateToken/
+        [HttpPost]
+        public IActionResult CreateToken([FromBody]Object.User pengguna)
+        {
+            try
+            {
+                Repository.RepositoryUser user = new Repository.RepositoryUser();
+                Object.User temp = user.GetByNamaUser(pengguna.Username);
+
+                if (temp.Username == pengguna.Username && temp.Password == pengguna.Password)
+                {
+                    var jwttoken = JwtTokenBuilder();
+
+                    IActionResult respon = Ok(new { acces_token = jwttoken });
+
+                    return respon;
+                }
+                return BadRequest("Username atau Password Salah");
+            }
+            catch (Exception)
+            {
+                return BadRequest("Username atau Password Salah");
+            }
         }
 
         private string JwtTokenBuilder()
