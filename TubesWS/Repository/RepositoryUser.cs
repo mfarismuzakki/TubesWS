@@ -77,7 +77,7 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from user where username=" + cari;
+                string query = "select *from user where username ='" + cari +"'";
                 return connection.Query<Object.User>(query, new { cari }).FirstOrDefault();
             }
 
