@@ -40,5 +40,5 @@
 							<td><a href="<?php echo site_url('CUserCari/DeleteTambahBuku/').$var->id_buku; ?>" class="btn btn-danger">Hapus</a></td>
 						</tr>
 
-						<?php } ?>
+						<?php $i++;} ?>
 					</table>

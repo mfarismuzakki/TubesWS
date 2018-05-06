@@ -13,7 +13,7 @@ namespace TubesWS.Controllers
     public class PeminjamanController : Controller
     {
         // GET: api/Peminjaman
-        [HttpGet]
+        [HttpGet, Authorize]
         public IActionResult Get()
         {
             Repository.RepositoryPeminjaman peminjaman = new Repository.RepositoryPeminjaman();
@@ -22,7 +22,7 @@ namespace TubesWS.Controllers
         }
 
         // GET: api/Peminjaman/5
-        [HttpGet("{id}", Name = "GetPeminjaman")]
+        [HttpGet("{id}", Name = "GetPeminjaman"), Authorize]
         public IActionResult Get(int id)
         {
             Repository.RepositoryPeminjaman peminjaman = new Repository.RepositoryPeminjaman();
@@ -32,7 +32,7 @@ namespace TubesWS.Controllers
         }
         
         // POST: api/Peminjaman
-        [HttpPost]
+        [HttpPost, Authorize]
         public IActionResult Post([FromBody]Object.Peminjaman value)
         {
             try
@@ -50,7 +50,7 @@ namespace TubesWS.Controllers
         }
         
         // PUT: api/Peminjaman/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public IActionResult Put(int id, [FromBody]Object.Peminjaman value)
         {
             try
@@ -68,7 +68,7 @@ namespace TubesWS.Controllers
         }
         
         // DELETE: api/Peminjaman/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public IActionResult Delete(int id)
         {
             try

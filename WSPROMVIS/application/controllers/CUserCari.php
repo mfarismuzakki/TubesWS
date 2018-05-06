@@ -175,6 +175,7 @@ class CUserCari extends CI_Controller {
 		//load tampilan
 		$this->Buku();
 		$this->load->view('user/VUhasilcaribuku',$data);
+		echo $key;
 	}
 
 	public function TambahBuku($id_buku){

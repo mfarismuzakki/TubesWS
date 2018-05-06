@@ -2,7 +2,7 @@
 	
 	class MBuku extends CI_Model{
 
-		var $api ='http://944c3584.ngrok.io/api/';
+		var $api ='http://localhost:50062/api/';
 
 		//konstruktor
 		function __construct(){
@@ -14,28 +14,80 @@
 		//pengecekan penulis berdasarkan
 		public function CariPenulis($berdasarkan,$key){
 
-			return json_decode($this->curl->simple_get($this->api.'penulis'));
+			if($key != ""){
+				$uri = $this->api.'penulis/'.$key;
+			}else{
+				$uri = $this->api.'penulis';
+			}
+
+			$ch = curl_init($uri);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    		
+			$data = curl_exec($ch);
+			curl_close($ch);
+			// echo response output
+			return json_decode($data);
 
 		}
 
 		//pengecekan penerbit berdasarkan
 		public function CariPenerbit($berdasarkan,$key){
 
-			return json_decode($this->curl->simple_get($this->api.'penerbit'));
+			if($key != ""){
+				$uri = $this->api.'penerbit/'.$key;
+			}else{
+				$uri = $this->api.'penerbit';
+			}
+
+			$ch = curl_init($uri);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    		
+			$data = curl_exec($ch);
+			curl_close($ch);
+			// echo response output
+			return json_decode($data);
 
 		}
 
 		//pengecekan bahasa berdasarkan
 		public function CariBahasa($berdasarkan,$key){
 
-			return json_decode($this->curl->simple_get($this->api.'bahasa'));
+			if($key != ""){
+				$uri = $this->api.'bahasa/'.$key;
+			}else{
+				$uri = $this->api.'bahasa';
+			}
+
+			$ch = curl_init($uri);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    		
+			$data = curl_exec($ch);
+			curl_close($ch);
+			// echo response output
+			return json_decode($data);
 
 		}
 
 		//pengecekan kategori berdasarkan
 		public function CariKategori($berdasarkan,$key){
 
-			return json_decode($this->curl->simple_get($this->api.'kategori'));
+			if($key != ""){
+				$uri = $this->api.'kategori/'.$key;
+			}else{
+				$uri = $this->api.'kategori';
+			}
+
+			$ch = curl_init($uri);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    		
+			$data = curl_exec($ch);
+			curl_close($ch);
+			// echo response output
+			return json_decode($data);
 
 		}
 
@@ -43,47 +95,58 @@
 		//pengecekan Buku berdasarkan
 		public function CariBuku($berdasarkan,$key){
 
-			if($berdasarkan == null){
-				return json_decode($this->curl->simple_get($this->api.'buku/'.$key));
+			if($key != ""){
+				$uri = $this->api.'buku/'.$key;
 			}else{
-				// return json_decode($this->curl->simple_get($this->api.'buku'));
-				
 				$uri = $this->api.'buku';
-				$ch = curl_init($uri);
-				curl_setopt_array($ch, array(
-				    CURLOPT_HTTPHEADER  => array('Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjUzNTcyMjcsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwNjIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MDA2Mi8ifQ.5KWYJ0ct_04UkMzn2YCvekRn5gDjHkA9WJhcnodVzDs'),
-				    CURLOPT_RETURNTRANSFER  =>true,
-				    CURLOPT_VERBOSE     => 1
-				));
-				$out = curl_exec($ch);
-				curl_close($ch);
-				// echo response output
-				echo $out;
-
 			}
+
+			$ch = curl_init($uri);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    		
+			$data = curl_exec($ch);
+			curl_close($ch);
+			// echo response output
+			return json_decode($data);
 		}
 
 
 		//menambah peminjam
 		public function TambahPeminjaman($data){
 			
-			//encode input ke json
+			// encode input ke json
 			$data = json_encode($data);
 
-			$this->curl->create($this->api.'peminjaman');
-			$this->curl->option(CURLOPT_HTTPHEADER, array('Content-type: application/json; Charset=UTF-8'));
-			$this->curl->post($data);
+			$ch = curl_init($this->api.'peminjaman');
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Authorization: bearer '.$this->session->token));
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    		
+			$data = curl_exec($ch);
+			curl_close($ch);
 
-			$this->curl->execute();	
-			$this->curl->error_string;	
-		
-			if($this->curl->error_string == "ok"){
-
-			}else{
-				echo $this->curl->error_string;
-			}
+			$this->DetailPeminjaman();
 		}
 
+		public function DetailPeminjaman(){
+
+			//menampung data
+			$data = json_encode($this->db->get('t_tmp')->result());
+
+			$ch = curl_init($this->api.'Detail_Peminjaman');
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Authorization: bearer '.$this->session->token));
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    		
+			$data = curl_exec($ch);
+			curl_close($ch);
+		}
+
+
+		//penampungan buku
 		public function TampungBuku($data){
 			$this->db->insert('t_tmp',$data);
 		}

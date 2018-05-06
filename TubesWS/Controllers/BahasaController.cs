@@ -13,7 +13,7 @@ namespace TubesWS.Controllers
     public class BahasaController : Controller
     {
         // GET: api/Bahasa
-        [HttpGet,Authorize]
+        [HttpGet, Authorize]
         public IActionResult Get()
         {
             //deklarasi variabel untuk return
@@ -24,7 +24,7 @@ namespace TubesWS.Controllers
         }
 
         // GET: api/Bahasa/5
-        [HttpGet("{id}", Name = "GetBahasa"),Authorize]
+        [HttpGet("{id}", Name = "GetBahasa"), Authorize]
         public IActionResult Get(int id)
         {
             //deklarais variabel untuk return
@@ -35,7 +35,7 @@ namespace TubesWS.Controllers
         }
 
         // POST: api/Bahasa
-        [HttpPost,Authorize]
+        [HttpPost, Authorize]
         public IActionResult Post([FromBody]Object.Bahasa value)
         {
             try
@@ -53,7 +53,7 @@ namespace TubesWS.Controllers
         }
 
         // PUT: api/Bahasa/5
-        [HttpPut("{id}"),Authorize]
+        [HttpPut("{id}"), Authorize]
         public IActionResult Put(int id, [FromBody]Object.Bahasa value)
         {
             try
@@ -72,7 +72,7 @@ namespace TubesWS.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}"),Authorize]
+        [HttpDelete("{id}"), Authorize]
         public IActionResult Delete(int id)
         {
             try

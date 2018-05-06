@@ -6,7 +6,7 @@ class UserHome extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->library('curl');
-		$this->curl->create('http://944c3584.ngrok.io/token/createtoken');
+		$this->curl->create('http://localhost:50062/token/CreateToken');
 	}
 
 
@@ -33,11 +33,12 @@ class UserHome extends CI_Controller {
 			$this->curl->option(CURLOPT_HTTPHEADER, array('Content-type: application/json; Charset=UTF-8'));
 			$this->curl->post($data);	
 			$token = $this->curl->execute();	
+			$token = (json_decode($token));
 
 			$userdata = array(
 				'username' => 'admin',
 				'password' => 'admin',
-				'token' => $token,
+				'token' => $token->acces_token,
 				'loged_in' => TRUE
 			);
 			$this->session->set_userdata($userdata);
