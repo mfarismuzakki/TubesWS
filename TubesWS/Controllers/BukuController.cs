@@ -20,16 +20,66 @@ namespace TubesWS.Controllers
             return Ok(buku.GetAllBuku());
         }
 
-        // GET: api/Buku/5
-        [HttpGet("{id}", Name = "GetBuku"),Authorize]
-        public IActionResult Get(int id)
+        // GET: api/Buku/GetByIdBuku/{Id}
+        [HttpGet("GetByIdBuku/{id}", Name = "GetByIdBuku"),Authorize]
+        public IActionResult GetByIdBuku(int id)
         {
             Repository.RepositoryBuku buku = new Repository.RepositoryBuku();
             var temp = buku.GetOneBuku(id);
             if (temp == null) return NotFound();
             return Ok(temp);
         }
-        
+
+        // GET: api/Buku/GetByJudulBuku/{cari}
+        [HttpGet("GetByJudulBuku/{cari}", Name = "GetByJudulBuku"), Authorize]
+        public IActionResult GetByJudulBuku(string cari)
+        {
+            Repository.RepositoryBuku buku = new Repository.RepositoryBuku();
+            var temp = buku.GetByJudulBuku(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+
+        // GET: api/Buku/GetByPenulisBuku/{cari}
+        [HttpGet("GetByPenulisBuku/{cari}", Name = "GetByPenulisBuku"), Authorize]
+        public IActionResult GetByPenulisBuku(string cari)
+        {
+            Repository.RepositoryBuku buku = new Repository.RepositoryBuku();
+            var temp = buku.GetByPenulisBuku(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+
+        // GET: api/Buku/GetByPenerbitBuku/{cari}
+        [HttpGet("GetByPenerbitBuku/{cari}", Name = "GetByPenerbitBuku"), Authorize]
+        public IActionResult GetByPenerbitBuku(string cari)
+        {
+            Repository.RepositoryBuku buku = new Repository.RepositoryBuku();
+            var temp = buku.GetByPenerbitBuku(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+
+        // GET: api/Buku/GetByBahasaBuku/{cari}
+        [HttpGet("GetByBahasaBuku/{cari}", Name = "GetByBahasaBuku"), Authorize]
+        public IActionResult GetByBahasaBuku(string cari)
+        {
+            Repository.RepositoryBuku buku = new Repository.RepositoryBuku();
+            var temp = buku.GetByBahasaBuku(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+
+        // GET: api/Buku/GetByKategoriBuku/{cari}
+        [HttpGet("GetByKategoriBuku/{cari}", Name = "GetByKategoriBuku"), Authorize]
+        public IActionResult GetByKategoriBuku(string cari)
+        {
+            Repository.RepositoryBuku buku = new Repository.RepositoryBuku();
+            var temp = buku.GetByKategoriBuku(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+
         // POST: api/Buku
         [HttpPost,Authorize]
         public IActionResult Post([FromBody]Object.Buku value)
