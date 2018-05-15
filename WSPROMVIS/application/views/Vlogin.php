@@ -3,6 +3,7 @@
     <body class="text-center">
       <form class="form-signin" method="post" action="<?php echo site_url('UserHome/cek'); ?>">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <p class="h4 mb-3 font-weight-normal"><?php echo $status; ?></p>
         <label for="inputEmail" class="sr-only">Username</label>
         <input type="text"  class="form-control" placeholder="Username" required autofocus name="username">
         <label for="inputPassword" class="sr-only">Password</label>

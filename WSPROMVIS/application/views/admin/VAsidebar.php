@@ -27,26 +27,9 @@
 			<div class="row">
 				
 				<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+		
 		          <ul class="nav nav-pills flex-column">
-		            <li class="nav-item">
-		              <a class="nav-link <?php echo element('buku',$status)?>" href="<?php echo site_url();?>/CUserCari/cariBuku">Buku</a>
-		            </li>
-		            <li class="nav-item">
-		              <a class="nav-link <?php echo element('penulis',$status)?>" href="<?php echo site_url();?>/CUserCari/caripenulis">Penulis</a>
-		            </li>
-		            <li class="nav-item">
-		              <a class="nav-link <?php echo element('penerbit',$status)?>" href="<?php echo site_url();?>/CUserCari/caripenerbit">Penerbit</a>
-		            </li>
-		            <li class="nav-item">
-		              <a class="nav-link <?php echo element('kategori',$status)?>" href="<?php echo site_url();?>/CUserCari/cariKategori">Kategori</a>
-		            </li>
-		            <li class="nav-item">
-		              <a class="nav-link <?php echo element('bahasa',$status)?>" href="<?php echo site_url();?>/CUserCari/cariBahasa">Bahasa</a>
-		            </li>
-		          </ul>
-
-		          <ul class="nav nav-pills flex-column">
-		            <li class="nav-item">
+		<!--             <li class="nav-item">
 		              <a class="nav-link <?php echo element('daftar_peminjaman',$status)?>" href="<?php echo site_url();?>/CUserCari/DaftarPeminjaman">Daftar Peminjaman</a>
 		            </li>
 		            <li class="nav-item">
@@ -54,9 +37,9 @@
 		            </li>
 		            <li class="nav-item">
 		              <a class="nav-link <?php echo element('daftar_transakasi',$status)?>" href="<?php echo site_url();?>/CUserCari/Transaksi">Daftar Transaksi</a>
-		            </li>
+		            </li> -->
 		            <li class="nav-item">
-		              <a class="nav-link" href="<?php echo site_url();?>/CUserCari/Logout">Logout</a>
+		              <a class="nav-link" href="<?php echo site_url();?>/CAdmin/Logout">Logout</a>
 		            </li>
 		          </ul>
 		     	</nav>

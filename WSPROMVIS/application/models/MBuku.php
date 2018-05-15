@@ -95,8 +95,16 @@
 		//pengecekan Buku berdasarkan
 		public function CariBuku($berdasarkan,$key){
 
-			if($key != ""){
-				$uri = $this->api.'buku/'.$key;
+			if($berdasarkan == "Judul Buku"){
+				$uri = $this->api.'buku/GetByJudulBuku/'.$key;
+			}else if($berdasarkan == "Penulis"){
+				$uri = $this->api.'buku/GetByPenulisBuku/'.$key;
+			}else if($berdasarkan == "Penerbit"){
+				$uri = $this->api.'buku/GetByPenerbitBuku/'.$key;
+			}else if($berdasarkan == "Bahasa"){
+				$uri = $this->api.'buku/GetByBahasaBuku/'.$key;
+			}else if($berdasarkan == "Kategori"){
+				$uri = $this->api.'buku/GetByKategoriBuku/'.$key;
 			}else{
 				$uri = $this->api.'buku';
 			}
@@ -127,13 +135,21 @@
 			$data = curl_exec($ch);
 			curl_close($ch);
 
-			$this->DetailPeminjaman();
+			// $this->DetailPeminjaman($data);
 		}
 
-		public function DetailPeminjaman(){
+		public function DetailPeminjaman($data2){
 
 			//menampung data
-			$data = json_encode($this->db->get('t_tmp')->result());
+			$data = $this->db->get('t_tmp')->result();
+			$data = json_encode($data);
+
+			$upload = array(
+				'id_peminjaman' => $data2,
+				'id_copy_buku' => '1'.
+				''
+			);
+
 
 			$ch = curl_init($this->api.'Detail_Peminjaman');
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Authorization: bearer '.$this->session->token));
@@ -143,6 +159,7 @@
     		
 			$data = curl_exec($ch);
 			curl_close($ch);
+
 		}
 
 

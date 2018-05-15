@@ -11,7 +11,7 @@
 						<div class="row">
 							<div class="col-4">
 								<label>Pustakawan</label><br>
-								<input type="text" name="pustakawan" placeholder="pustakawan" class="form-control"><br>
+								<input type="text" name="pustakawan" placeholder="pustakawan" class="form-control" readonly="" value="2" ><br>
 							</div>
 							<div class="offset-3 col-2">
 								

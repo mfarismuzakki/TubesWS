@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UserHome extends CI_Controller {
 
+	var $status = "";
+
 	function __construct(){
 		parent::__construct();
 		$this->load->library('curl');
@@ -15,8 +17,9 @@ class UserHome extends CI_Controller {
 		if($this->session->loged_in){
 			redirect('CUsercari');
 		}else{
+			$stat['status'] = $this->status;
 			$this->load->view('user/VUheader');
-			$this->load->view('Vlogin');
+			$this->load->view('Vlogin',$stat);
 		}
 	}
 
@@ -26,26 +29,37 @@ class UserHome extends CI_Controller {
 		$password = $this->input->post('password');
 
 
-		if(($username =='admin' && $password =='admin')){
 
-			$data = '{"username" : "admin" , "password" : "admin"}' ;
+		$data = '{"username" : "'.$username.'" , "password" : "'.$password.'" }'   ;
 
-			$this->curl->option(CURLOPT_HTTPHEADER, array('Content-type: application/json; Charset=UTF-8'));
-			$this->curl->post($data);	
-			$token = $this->curl->execute();	
+
+		$this->curl->option(CURLOPT_HTTPHEADER, array('Content-type: application/json; Charset=UTF-8'));
+		$this->curl->post($data);	
+		$token = $this->curl->execute();
+		
+		if($token == ""){
+				
+			$this->status = "Username / password tidak valid";
+			$this->index();
+
+		}else{
+
 			$token = (json_decode($token));
 
 			$userdata = array(
-				'username' => 'admin',
-				'password' => 'admin',
+				'username' => $username,
+				'password' => $password,
 				'token' => $token->acces_token,
 				'loged_in' => TRUE
 			);
 			$this->session->set_userdata($userdata);
-			redirect('CUserCari');
-		}else{
-			$this->index();
-		}
+			if($username != "admin"){
+				redirect('CUserCari');
+			}else{
+				redirect('CAdmin');
+			}
 
+
+		}
 	}
 }

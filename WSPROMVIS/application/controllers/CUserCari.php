@@ -3,18 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CUserCari extends CI_Controller {
 
-		var $current = array(
-		'buku' => null,
-		'penulis' => null,
-		'penerbit' => null,
-		'kategori' => null,
-		'bahasa' => null,
-		'daftar_peminjaman' => null,
-		'waktu_pengembalian' => null,
-		'daftar_transaksi' => null
-		);
-
-		var $penampung = array();
+	var $current = array(
+	'buku' => null,
+	'penulis' => null,
+	'penerbit' => null,
+	'kategori' => null,
+	'bahasa' => null,
+	'daftar_peminjaman' => null,
+	'waktu_pengembalian' => null,
+	'daftar_transaksi' => null
+	);
 
 	//konstruktor
 	function __construct(){
@@ -26,10 +24,9 @@ class CUserCari extends CI_Controller {
 		
 	function Login_Check(){
 
-		if(!$this->session->loged_in){
+		if(!$this->session->loged_in && $this->session->username != "admin"){
 			redirect('UserHome');
 		}
-
 	} 
 
 	//index
@@ -175,7 +172,6 @@ class CUserCari extends CI_Controller {
 		//load tampilan
 		$this->Buku();
 		$this->load->view('user/VUhasilcaribuku',$data);
-		echo $key;
 	}
 
 	public function TambahBuku($id_buku){
@@ -206,6 +202,7 @@ class CUserCari extends CI_Controller {
 		$active['status']['daftar_peminjaman'] = 'active';
 
 		$data['buku'] = $this->MBuku->getTampungBuku()->result();
+		$data['pustakawan'] = $this->session->username;
 
 		$this->load->view('user/VUheader');
 		$this->load->view('user/VUsidebar',$active);
