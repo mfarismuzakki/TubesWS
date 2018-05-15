@@ -13334,23 +13334,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mfari\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\TubesWS.csproj",
+      "projectUniqueName": "D:\\UPI\\Semester 4\\Pemrograman Visual\\TubesWS\\TubesWS\\TubesWS.csproj",
       "projectName": "TubesWS",
-      "projectPath": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\TubesWS.csproj",
-      "packagesPath": "C:\\Users\\mfari\\.nuget\\packages\\",
-      "outputPath": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\obj\\",
+      "projectPath": "D:\\UPI\\Semester 4\\Pemrograman Visual\\TubesWS\\TubesWS\\TubesWS.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\UPI\\Semester 4\\Pemrograman Visual\\TubesWS\\TubesWS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mfari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13403,13 +13403,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\obj\\TubesWS.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
