@@ -99,7 +99,7 @@ namespace TubesWS.Repository
         }
 
         //get One by Id Buku
-        public Object.Buku GetOneBuku(int cari)
+        public List<Object.Buku> GetOneBuku(int cari)
         {
             using (connection)
             {
@@ -118,7 +118,8 @@ namespace TubesWS.Repository
                     " (judulbuku.id_bahasa = bahasa.id_bahasa) and" +
                     " (judulbuku.id_kategori = kategori.id_kategori)) and " +
                     "judulbuku.id_buku ='" + cari + "'";
-                return connection.Query<Object.Buku>(query, new { cari }).FirstOrDefault();
+                return connection.Query<Object.Buku>(query, new { cari }).ToList();
+                //FirstOrDefault()
             }
         }
 
