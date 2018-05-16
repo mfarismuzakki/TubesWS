@@ -94,6 +94,75 @@ namespace TubesWS.Repository
             }
 
         }
+		
+		
+		//get by tempat lahir
+        public Object.Penulis GetByTempatLahir(string cari)
+        {
+            Object.Penulis penulis = new Object.Penulis();
+
+            try
+            {
+                string query = "select *from penulis where tempat_lahir LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                penulis = connection.Query<Object.Penulis>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return penulis;
+        }
+		
+		//get by tanggal lahir
+        public Object.Penulis GetByTanggalLahir(string cari)
+        {
+            Object.Penulis penulis = new Object.Penulis();
+
+            try
+            {
+                string query = "select *from penulis where tanggal_lahir LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                penulis = connection.Query<Object.Penulis>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return penulis;
+        }
+		
+		//get by domisili
+        public Object.Penulis GetByDomisili(string cari)
+        {
+            Object.Penulis penulis = new Object.Penulis();
+
+            try
+            {
+                string query = "select *from penulis where domisili LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                penulis = connection.Query<Object.Penulis>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return penulis;
+        }
+		
+		
 
         //update penulis
         public void UpdatePenulis(Object.Penulis penulis)
