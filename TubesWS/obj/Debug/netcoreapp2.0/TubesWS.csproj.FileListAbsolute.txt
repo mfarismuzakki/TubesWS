@@ -39,3 +39,14 @@ C:\xampp\htdocs\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.AssemblyInfoInpu
 C:\xampp\htdocs\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.AssemblyInfo.cs
 C:\xampp\htdocs\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.dll
 C:\xampp\htdocs\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.pdb
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.AssemblyInfoInputs.cache
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.AssemblyInfo.cs
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.dll
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.pdb
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.deps.json
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.runtimeconfig.json
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.runtimeconfig.dev.json
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.dll
+C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.pdb

@@ -13334,24 +13334,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mfari\\.nuget\\packages\\": {},
+    "C:\\Users\\Asus\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\TubesWS.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\Documents\\GitHub\\TubesWS\\TubesWS\\TubesWS.csproj",
       "projectName": "TubesWS",
-      "projectPath": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\TubesWS.csproj",
-      "packagesPath": "C:\\Users\\mfari\\.nuget\\packages\\",
-      "outputPath": "D:\\Kuliah\\Semester 4\\Pemrograman Visual\\Tugas\\TubesWS\\TubesWS\\obj\\",
+      "projectPath": "C:\\Users\\Asus\\Documents\\GitHub\\TubesWS\\TubesWS\\TubesWS.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Asus\\Documents\\GitHub\\TubesWS\\TubesWS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mfari\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

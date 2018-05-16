@@ -34,6 +34,16 @@ namespace TubesWS.Controllers
             return Ok(temp);
         }
 
+        // GET: api/Bahasa/GetOneNamaBahasa/{cari}
+        [HttpGet("GetOneNamaBahasa/{cari}", Name = "GetOneNamaBahasa"), Authorize]
+        public IActionResult GetByNamaBahasa(string cari)
+        {
+            Repository.RepositoryBahasa bahasa = new Repository.RepositoryBahasa();
+            var temp = bahasa.GetOneNamaBahasa(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+
         // POST: api/Bahasa
         [HttpPost, Authorize]
         public IActionResult Post([FromBody]Object.Bahasa value)

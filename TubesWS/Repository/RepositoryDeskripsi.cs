@@ -112,6 +112,50 @@ namespace TubesWS.Repository
             return deskripsi;
         }
 
+        //get by isi deskripsi
+        public Object.Deskripsi GetByIsiDeskripsi(string cari)
+        {
+            Object.Deskripsi deskripsi = new Object.Deskripsi();
+
+            try
+            {
+                string query = "select *from deskripsi where isi LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                deskripsi = connection.Query<Object.Deskripsi>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return deskripsi;
+        }
+
+        //get by isi deskripsi
+        public Object.Deskripsi GetByIDBuku(int cari)
+        {
+            Object.Deskripsi deskripsi = new Object.Deskripsi();
+
+            try
+            {
+                string query = "select *from deskripsi where id_buku =" + cari;
+                OpenConnection();
+
+                deskripsi = connection.Query<Object.Deskripsi>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return deskripsi;
+        }
+
         //update deskripsi
         public void UpdateDeskripsi(Object.Deskripsi deskripsi)
         {

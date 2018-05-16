@@ -82,13 +82,13 @@ namespace TubesWS.Repository
             
         }
 
-        //get One By Id Bahasa
+        //get One By Nama Bahasa
         public Object.Bahasa GetOneNamaBahasa(string cari)
         {
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from bahasa where nama_bahasa=" + cari;
+                string query = "select *from bahasa where nama_bahasa LIKE '%" + cari + "%'";
                 return connection.Query<Object.Bahasa>(query, new { cari }).FirstOrDefault();
             }
 
