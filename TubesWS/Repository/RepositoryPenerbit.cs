@@ -87,7 +87,29 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from penerbit where nama_penerbit =" + cari;
+                string query = "select *from penerbit where nama_penerbit LIKE '%" + cari + "%'";
+                return connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
+            }
+        }
+		
+		//get by Lokasi Percetakan
+        public Object.Penerbit GetByLokasiPercetakan(string cari)
+        {
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select *from penerbit where lokasi_percetakan LIKE '%" + cari + "%'";
+                return connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
+            }
+        }
+		
+		//get by No Kontak
+        public Object.Penerbit GetByNoKontak(string cari)
+        {
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select *from penerbit where notelepon =" + cari;
                 return connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
             }
         }
