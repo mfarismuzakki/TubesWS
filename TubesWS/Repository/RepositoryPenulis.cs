@@ -94,75 +94,49 @@ namespace TubesWS.Repository
             }
 
         }
-		
-		
-		//get by tempat lahir
-        public Object.Penulis GetByTempatLahir(string cari)
+
+        //get all By nama penulis
+        public List<Object.Penulis> GetByNamaPenulis(string cari)
         {
-            Object.Penulis penulis = new Object.Penulis();
-
-            try
+            using (connection)
             {
-                string query = "select *from penulis where tempat_lahir LIKE '%" + cari + "%'";
                 OpenConnection();
-
-                penulis = connection.Query<Object.Penulis>(query, new { cari }).FirstOrDefault();
-
-                CloseConnection();
+                string query = "select *from penulis where nama_penulis =" + cari;
+                return connection.Query<Object.Penulis>(query, new { cari }).ToList();
             }
-            catch (Exception e)
-            {
+        }
 
+        //get all by tempat lahir
+        public List<Object.Penulis> GetByTempatLahir(string cari)
+        {
+            using (connection) {
+                OpenConnection();
+                string query = "select *from penulis where tempat_lahir LIKE '%" + cari + "%'";
+                return connection.Query<Object.Penulis>(query, new { cari }).ToList();
             }
-
-            return penulis;
         }
 		
 		//get by tanggal lahir
-        public Object.Penulis GetByTanggalLahir(string cari)
+        public List<Object.Penulis> GetByTanggalLahir(string cari)
         {
-            Object.Penulis penulis = new Object.Penulis();
-
-            try
+            using (connection)
             {
                 string query = "select *from penulis where tanggal_lahir LIKE '%" + cari + "%'";
                 OpenConnection();
-
-                penulis = connection.Query<Object.Penulis>(query, new { cari }).FirstOrDefault();
-
-                CloseConnection();
+                return connection.Query<Object.Penulis>(query, new { cari }).ToList();
             }
-            catch (Exception e)
-            {
-
-            }
-
-            return penulis;
         }
 		
 		//get by domisili
-        public Object.Penulis GetByDomisili(string cari)
+        public List<Object.Penulis> GetByDomisili(string cari)
         {
-            Object.Penulis penulis = new Object.Penulis();
-
-            try
+            using (connection)
             {
                 string query = "select *from penulis where domisili LIKE '%" + cari + "%'";
                 OpenConnection();
-
-                penulis = connection.Query<Object.Penulis>(query, new { cari }).FirstOrDefault();
-
-                CloseConnection();
+                return connection.Query<Object.Penulis>(query, new { cari }).ToList();
             }
-            catch (Exception e)
-            {
-
-            }
-
-            return penulis;
         }
-		
-		
 
         //update penulis
         public void UpdatePenulis(Object.Penulis penulis)
@@ -176,7 +150,7 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "update penulis set id_penulis=" + id + ", nama_penulis = '" + nama_penulis + "', tempat_lahir = '" + tempat_lahir + "', tanggal_lahir = '" + tanggal_lahir + "', domisili = '" + domisili + "' where id_penulis =" + id;
+                string query = "update penulis set id_penulis='" + id + "', nama_penulis = '" + nama_penulis + "', tempat_lahir = '" + tempat_lahir + "', tanggal_lahir = '" + tanggal_lahir + "', domisili = '" + domisili + "' where id_penulis =" + id;
                 connection.Execute(query);
             }
             
