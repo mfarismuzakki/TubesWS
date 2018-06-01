@@ -44,9 +44,9 @@ namespace TubesWS.Controllers
             return Ok(temp);
         }
 
-        // GET: api/Deskripsi/GetByIDBuku/{cari}
-        [HttpGet("GetByIDBuku/{cari}", Name = "GetByIDBuku"), Authorize]
-        public IActionResult GetByIDBuku(int cari)
+        // GET: api/Deskripsi/GetByIdBukuDes/{cari}
+        [HttpGet("GetByIdBukuDes/{cari}", Name = "GetByIdBukuDes"), Authorize]
+        public IActionResult GetByIdBukuDes(int cari)
         {
             Repository.RepositoryDeskripsi deskripsi = new Repository.RepositoryDeskripsi();
             var temp = deskripsi.GetByIDBuku(cari);

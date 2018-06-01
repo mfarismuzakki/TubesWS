@@ -51,9 +51,9 @@ namespace TubesWS.Controllers
             return Ok(temp);
         }
 		
-		// GET: api/Pustakawan/GetByTempatLahir/{cari}
-        [HttpGet("GetByTempatLahir/{cari}", Name = "GetByTempatLahir"), Authorize]
-        public IActionResult GetByTempatLahir(string cari)
+		// GET: api/Pustakawan/GetByTempatLahirPus/{cari}
+        [HttpGet("GetByTempatLahirPus/{cari}", Name = "GetByTempatLahirPus"), Authorize]
+        public IActionResult GetByTempatLahirPus(string cari)
         {
             Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
             var temp = pustakawan.GetByTempatLahir(cari);
@@ -62,9 +62,9 @@ namespace TubesWS.Controllers
         }
 		
 		
-		// GET: api/Pustakawan/GetByTanggalLahir/{cari}
-        [HttpGet("GetByTanggalLahir/{cari}", Name = "GetByTanggalLahir"), Authorize]
-        public IActionResult GetByTanggalLahir(string cari)
+		// GET: api/Pustakawan/GetByTanggalLahirPus/{cari}
+        [HttpGet("GetByTanggalLahirPus/{cari}", Name = "GetByTanggalLahirPus"), Authorize]
+        public IActionResult GetByTanggalLahirPus(string cari)
         {
             Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
             var temp = pustakawan.GetByTanggalLahir(cari);
