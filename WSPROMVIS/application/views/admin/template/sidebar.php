@@ -13,6 +13,21 @@
                                                     <a href="<?php echo site_url('CAdmin/Anggota');?>">Anggota</a>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="<?php echo site_url('CAdmin/Pustakawan');?>">Pustakawan</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="<?php echo site_url('CAdmin/Penulis');?>">Penulis</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="<?php echo site_url('CAdmin/Penerbit');?>">Penerbit</a>
+                                                </td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>

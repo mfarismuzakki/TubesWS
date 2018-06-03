@@ -68,19 +68,7 @@
 		}
 
 		public function CekData($id, $endLink){
-			$tmp = $this->GetData($endLink);
 			
-
-			$info=array(
-		            	'id_anggota'=>$id,
-		                'nama_anggota'=>$tmp->nama_anggota,
-		                'jenis_kelamin'=>$tmp->jenis_kelamin,
-		                'tempat_lahir'=>$tmp->tempat_lahir,
-		                'tanggal_lahir'=>$tmp->tanggal_lahir,
-		                'notelepon'=>$tmp->notelepon,
-		                'alamat'=>$tmp->alamat
-		            );
-		            return $info;
 		}
 
 		
