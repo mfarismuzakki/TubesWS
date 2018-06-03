@@ -71,6 +71,10 @@
 			
 		}
 
+		public function GetDataDB($query){
+	        return $this->db->query($query)->result();
+	    }
+
 		
 	}
 

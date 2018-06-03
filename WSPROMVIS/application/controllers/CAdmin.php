@@ -397,9 +397,9 @@
 
 			$info=array(
 		        'id_penerbit'=>$id,
-		        'nama_penerbit'=>$tmp['nama_penerbit'],
-		        'lokasipercetakan'=>$tmp['lokasipercetakan'],
-		        'notelepon'=>$tmp['notelepon']
+		        'nama_penerbit'=>$tmp->nama_penerbit,
+		        'lokasipercetakan'=>$tmp->lokasi_percetakan,
+		        'notelepon'=>$tmp->notelepon
 		    );
 		    return $info;
 		}
@@ -424,13 +424,54 @@
 	            $data['message']="<div class='alert alert-success'>Data Berhasil diupdate</div>";
 	            
 	            //tampilkan data anggota 
-	            $data['penerbit']=$this->CekPenerbit($id, $uri.'/'.$id);
+	            $data['penerbit']=$this->CekPenerbit($id, $uri.'/GetByIdPenerbit/'.$id);
 	            $this->template->display('admin/penerbit/edit',$data);
 	        }else{
-	            $data['penerbit']=$this->CekPenerbit($id, $uri.'/'.$id);
+	            $data['penerbit']=$this->CekPenerbit($id, $uri.'/GetByIdPenerbit/'.$id);
 	            $data['message']="";
 	            $this->template->display('admin/penerbit/edit',$data);
 	        }
+		}
+
+		public function Peminjaman(){
+
+			$this->Login_Check();
+
+			$query = "select peminjaman.id_peminjaman, peminjaman.tanggalpinjam, peminjaman.tanggalkembali, anggotaperpustakaan.nama_anggota, pustakawan.nama_pustakawan, detail_peminjaman.id_detail_peminjaman, detail_peminjaman.id_copy_buku, copy_buku.id_buku, judulbuku.judul_buku, penulis.nama_penulis from peminjaman join anggotaperpustakaan join pustakawan join detail_peminjaman join copy_buku join judulbuku join penulis where peminjaman.id_peminjaman=detail_peminjaman.id_peminjaman and peminjaman.id_anggota=anggotaperpustakaan.id_anggota and peminjaman.id_pustakawan=pustakawan.id_pustakawan and detail_peminjaman.id_copy_buku=copy_buku.id_copy_buku and copy_buku.id_buku=judulbuku.id_buku and judulbuku.id_penulis=penulis.id_penulis;";
+
+			$data['peminjaman'] = $this->MAdmin->GetDataDB($query);
+	        $data['title']="Data Peminjaman";
+	        
+	        $config['uri_segment']=3;
+	        $this->pagination->initialize($config);
+	        $data['pagination']=$this->pagination->create_links();
+	        
+	        
+	        if($this->uri->segment(3)=="delete_success")
+	            $data['message']="<div class='alert alert-success'>Data berhasil dihapus</div>";
+	        else
+	            $data['message']='';
+	            $this->template->display('admin/peminjaman/index',$data);	
+		}
+
+		public function HapusPeminjaman(){
+			$id=$this->input->post('id');
+			/*
+			$query2 = "select id_copy_buku from detail_peminjaman where id_detail_peminjaman=".$id.";";
+			$tmp = $this->MAdmin->GetDataDB($query);
+
+			$query3 = "select id_buku from copy_buku where id_copy_buku=".$tmp['id_copy_buku'].";";
+			$tmp = $this->MAdmin->GetDataDB($query);
+
+			$query3 = "select stok from stok_buku where id_buku=".$tmp['id_buku'].";";
+			$tmp = $this->MAdmin->GetDataDB($query);
+			$tmp['stok']++;
+
+			$query4 = "update stok_buku set stok=".$tmp['stok']." where id_buku=".$tmp['id_buku'].";";
+*/
+			$query = "delete from detail_peminjaman where id_detail_peminjaman=".$id.";";
+			$hapus = $this->MAdmin->GetDataDB($query);
+
 		}
 
 		public function Hapus($endLink){
