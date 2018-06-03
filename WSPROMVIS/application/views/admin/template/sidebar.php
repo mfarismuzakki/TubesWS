@@ -20,6 +20,27 @@
                                             </tr>
                                             <tr>
                                                 <td>
+                                                    <a href="<?php echo site_url('CAdmin/Deskripsi');?>">Deskripsi</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="<?php echo site_url('CAdmin/Buku');?>">Buku</a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <a href="<?php echo site_url('CAdmin/Kategori');?>">Kategori</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="<?php echo site_url('CAdmin/Penerbit');?>">Penerbit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                                     <a href="<?php echo site_url('CAdmin/Penulis');?>">Penulis</a>
                                                 </td>
                                             </tr>

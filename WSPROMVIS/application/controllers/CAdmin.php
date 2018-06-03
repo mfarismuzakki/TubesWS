@@ -454,6 +454,389 @@
 	            $this->template->display('admin/peminjaman/index',$data);	
 		}
 
+		public function Buku(){
+
+			$this->Login_Check();
+
+			$uri = "Buku";
+
+			$data['buku']=$this->MAdmin->GetData($uri);
+	        $data['title']="Data Buku";
+	        
+	        $config['base_url']=site_url('buku/index/');
+	        $config['uri_segment']=3;
+	        $this->pagination->initialize($config);
+	        $data['pagination']=$this->pagination->create_links();
+	        
+	        
+	        if($this->uri->segment(3)=="delete_success")
+	            $data['message']="<div class='alert alert-success'>Data berhasil dihapus</div>";
+	        else if($this->uri->segment(3)=="add_success")
+	            $data['message']="<div class='alert alert-success'>Data Berhasil disimpan</div>";
+	        else
+	            $data['message']='';
+	            $this->template->display('admin/buku/index',$data);	
+		}
+
+		function _set_rules_buku(){
+	        $this->form_validation->set_rules('id_buku','ID','max_length[10]');
+	        $this->form_validation->set_rules('judul','Judul','required|max_length[100]');
+	        $this->form_validation->set_rules('cetakan','Cetakan','required|max_length[50]');
+	        $this->form_validation->set_rules('tanggalterbit','Tempat Lahir','required');
+	        $this->form_validation->set_rules('penulis','Penulis','required|max_length[50]');
+	        $this->form_validation->set_rules('penerbit','Penerbit','required|max_length[50]');
+	        $this->form_validation->set_rules('kategori','Kategori','required|max_length[50]');
+	        $this->form_validation->set_rules('bahasa','Bahasa','required|max_length[50]');
+	        $this->form_validation->set_error_delimiters("<div class='alert alert-danger'>","</div>");
+	    }
+
+	    public function TambahBuku(){
+			$uri = "Buku";
+
+			$data['title']="Tambah Data Buku";
+	        $this->_set_rules_buku();
+
+	        if($this->form_validation->run()==true){
+	            $info=array(
+	                'judul'=>$this->input->post('judul'),
+	                'cetakan'=>$this->input->post('cetakan'),
+	                'tanggalterbit'=>$this->input->post('tanggalterbit'),
+	                'penulis'=>$this->input->post('penulis'),
+	                'penerbit'=>$this->input->post('penerbit'),
+	                'kategori'=>$this->input->post('kategori'),
+	                'bahasa'=>$this->input->post('bahasa')
+	            );
+	            $this->MAdmin->TambahData($uri, $info);
+	            redirect('CAdmin/Buku/add_success');
+	        }else{
+	            $data['message']="";
+	            $this->template->display('admin/buku/tambah',$data);
+	        }
+		}
+
+		public function CekBuku($id, $endLink){
+			$tmp = $this->MAdmin->GetData($endLink);
+			
+
+			$info=array(
+				'id_buku'=>$id,
+		    	'judul'=>$tmp->judul,
+	            'cetakan'=>$tmp->cetakan,
+	            'tanggalterbit'=>$tmp->tanggalterbit,
+	            'penulis'=>$tmp->penulis,
+	            'penerbit'=>$tmp->penerbit,
+	            'kategori'=>$tmp->kategori,
+	            'bahasa'=>$tmp->bahasa
+	        );
+		    return $info;
+		}
+
+		public function EditBuku($id){
+			$uri = "Buku";
+
+			$data['title']="Edit Data Buku";
+
+	        $this->_set_rules_buku();
+
+	        if($this->form_validation->run()==true){
+	            $info=array(
+	            	'id_buku'=>$id,
+	                'judul'=>$this->input->post('judul'),
+	                'cetakan'=>$this->input->post('cetakan'),
+	                'tanggalterbit'=>$this->input->post('tanggalterbit'),
+	                'penulis'=>$this->input->post('penulis'),
+	                'penerbit'=>$this->input->post('penerbit'),
+	                'kategori'=>$this->input->post('kategori'),
+	                'bahasa'=>$this->input->post('bahasa')
+	            );
+	            //update data buku
+	            $this->MAdmin->UpdateData($uri.'/'.$id, $info);
+	            
+	            //tampilkan pesan
+	            $data['message']="<div class='alert alert-success'>Data Berhasil diupdate</div>";
+	            
+	            //tampilkan data buku
+	            $data['buku']=$this->CekBuku($id, $uri.'/GetByIdBuku/'.$id);
+	            $this->template->display('admin/buku/edit',$data);
+	        }else{
+	            $data['buku']=$this->CekBuku($id, $uri.'/GetByIdBuku/'.$id);
+	            $data['message']="";
+	            $this->template->display('admin/buku/edit',$data);
+	        }
+		}
+
+		public function Bahasa(){
+
+			$this->Login_Check();
+
+			$uri = "Bahasa";
+
+			$data['bahasa']=$this->MAdmin->GetData($uri);
+	        $data['title']="Data Bahasa";
+	        
+	        $config['base_url']=site_url('bahasa/index/');
+	        $config['uri_segment']=3;
+	        $this->pagination->initialize($config);
+	        $data['pagination']=$this->pagination->create_links();
+	        
+	        
+	        if($this->uri->segment(3)=="delete_success")
+	            $data['message']="<div class='alert alert-success'>Data berhasil dihapus</div>";
+	        else if($this->uri->segment(3)=="add_success")
+	            $data['message']="<div class='alert alert-success'>Data Berhasil disimpan</div>";
+	        else
+	            $data['message']='';
+	            $this->template->display('admin/bahasa/index',$data);	
+		}
+
+		function _set_rules_bahasa(){
+	        $this->form_validation->set_rules('id_bahasa','ID','max_length[10]');
+	        $this->form_validation->set_rules('nama_bahasa','Nama_Bahasa','required|max_length[50]');
+	       
+	        $this->form_validation->set_error_delimiters("<div class='alert alert-danger'>","</div>");
+	    }
+
+	    public function TambahBahasa(){
+			$uri = "Bahasa";
+
+			$data['title']="Tambah Data Bahasa";
+	        $this->_set_rules_bahasa();
+
+	        if($this->form_validation->run()==true){
+	            $info=array(
+	                'nama_bahasa'=>$this->input->post('nama_bahasa')
+
+	            );
+	            $this->MAdmin->TambahData($uri, $info);
+	            redirect('CAdmin/Bahasa/add_success');
+	        }else{
+	            $data['message']="";
+	            $this->template->display('admin/bahasa/tambah',$data);
+	        }
+		}
+
+		public function CekBahasa($id, $endLink){
+			$tmp = $this->MAdmin->GetData($endLink);
+			
+
+			$info=array(
+				'id_bahasa'=>$id,
+		    	'nama_bahasa'=>$tmp->nama_bahasa
+	        );
+		    return $info;
+		}
+
+		public function EditBahasa($id){
+			$uri = "Bahasa";
+
+			$data['title']="Edit Data Bahasa";
+
+	        $this->_set_rules_bahasa();
+
+	        if($this->form_validation->run()==true){
+	            $info=array(
+	            	'id_bahasa'=>$id,
+	                'nama_bahasa'=>$this->input->post('nama_bahasa')
+	            );
+	            //update data buku
+	            $this->MAdmin->UpdateData($uri.'/'.$id, $info);
+	            
+	            //tampilkan pesan
+	            $data['message']="<div class='alert alert-success'>Data Berhasil diupdate</div>";
+	            
+	            //tampilkan data buku
+	            $data['bahasa']=$this->CekBahasa($id, $uri.'/'.$id);
+	            $this->template->display('admin/bahasa/edit',$data);
+	        }else{
+	            $data['bahasa']=$this->CekBahasa($id, $uri.'/'.$id);
+	            $data['message']="";
+	            $this->template->display('admin/bahasa/edit',$data);
+	        }
+		}
+
+		public function Kategori(){
+
+			$this->Login_Check();
+
+			$uri = "Kategori";
+
+			$data['kategori']=$this->MAdmin->GetData($uri);
+	        $data['title']="Data Kategori";
+	        
+	        $config['base_url']=site_url('kategori/index/');
+	        $config['uri_segment']=3;
+	        $this->pagination->initialize($config);
+	        $data['pagination']=$this->pagination->create_links();
+	        
+	        
+	        if($this->uri->segment(3)=="delete_success")
+	            $data['message']="<div class='alert alert-success'>Data berhasil dihapus</div>";
+	        else if($this->uri->segment(3)=="add_success")
+	            $data['message']="<div class='alert alert-success'>Data Berhasil disimpan</div>";
+	        else
+	            $data['message']='';
+	            $this->template->display('admin/kategori/index',$data);	
+		}
+
+		function _set_rules_kategori(){
+	        $this->form_validation->set_rules('id_kategori','ID','max_length[10]');
+	        $this->form_validation->set_rules('nama_kategori','Nama_Kategori','required|max_length[50]');
+	       
+	        $this->form_validation->set_error_delimiters("<div class='alert alert-danger'>","</div>");
+	    }
+
+	    public function TambahKategori(){
+			$uri = "Kategori";
+
+			$data['title']="Tambah Data Kategori";
+	        $this->_set_rules_kategori();
+
+	        if($this->form_validation->run()==true){
+	            $info=array(
+	                'nama_kategori'=>$this->input->post('nama_kategori')
+
+	            );
+	            $this->MAdmin->TambahData($uri, $info);
+	            redirect('CAdmin/Kategori/add_success');
+	        }else{
+	            $data['message']="";
+	            $this->template->display('admin/kategori/tambah',$data);
+	        }
+		}
+
+		public function CekKategori($id, $endLink){
+			$tmp = $this->MAdmin->GetData($endLink);
+			
+
+			$info=array(
+				'id_kategori'=>$id,
+		    	'nama_kategori'=>$tmp->nama_kategori
+	        );
+		    return $info;
+		}
+
+		public function EditKategori($id){
+			$uri = "Kategori";
+
+			$data['title']="Edit Data Kategori";
+
+	        $this->_set_rules_kategori();
+
+	        if($this->form_validation->run()==true){
+	            $info=array(
+	            	'id_kategori'=>$id,
+	                'nama_kategori'=>$this->input->post('nama_kategori')
+	            );
+	            //update data buku
+	            $this->MAdmin->UpdateData($uri.'/'.$id, $info);
+	            
+	            //tampilkan pesan
+	            $data['message']="<div class='alert alert-success'>Data Berhasil diupdate</div>";
+	            
+	            //tampilkan data buku
+	            $data['kategori']=$this->CekKategori($id, $uri.'/'.$id);
+	            $this->template->display('admin/kategori/edit',$data);
+	        }else{
+	            $data['kategori']=$this->CekKategori($id, $uri.'/'.$id);
+	            $data['message']="";
+	            $this->template->display('admin/kategori/edit',$data);
+	        }
+		}
+
+		public function Deskripsi(){
+
+			$this->Login_Check();
+
+			$uri = "Deskripsi";
+
+			$data['deskripsi']=$this->MAdmin->GetData($uri);
+	        $data['title']="Data Deskripsi";
+	        
+	        $config['base_url']=site_url('deskripsi/index/');
+	        $config['uri_segment']=3;
+	        $this->pagination->initialize($config);
+	        $data['pagination']=$this->pagination->create_links();
+	        
+	        
+	        if($this->uri->segment(3)=="delete_success")
+	            $data['message']="<div class='alert alert-success'>Data berhasil dihapus</div>";
+	        else if($this->uri->segment(3)=="add_success")
+	            $data['message']="<div class='alert alert-success'>Data Berhasil disimpan</div>";
+	        else
+	            $data['message']='';
+	            $this->template->display('admin/deskripsi/index',$data);	
+		}
+
+		function _set_rules_deskripsi(){
+	        $this->form_validation->set_rules('id_deskripsi','ID','max_length[10]');
+	        $this->form_validation->set_rules('isi','Isi','required|max_length[100]');
+	        $this->form_validation->set_rules('id_buku','Id_Buku','required|max_length[10]');
+	       
+	        $this->form_validation->set_error_delimiters("<div class='alert alert-danger'>","</div>");
+	    }
+
+	    public function TambahDeskripsi(){
+			$uri = "Deskripsi";
+
+			$data['title']="Tambah Data Deskripsi";
+	        $this->_set_rules_deskripsi();
+
+	        if($this->form_validation->run()==true){
+	            $info=array(
+	                'isi'=>$this->input->post('isi'),
+	                'id_buku'=>$this->input->post('id_buku')
+
+	            );
+	            $this->MAdmin->TambahData($uri, $info);
+	            redirect('CAdmin/Deskripsi/add_success');
+	        }else{
+	            $data['message']="";
+	            $this->template->display('admin/deskripsi/tambah',$data);
+	        }
+		}
+
+		public function CekDeskripsi($id, $endLink){
+			$tmp = $this->MAdmin->GetData($endLink);
+			
+
+			$info=array(
+				'id_deskripsi'=>$id,
+		    	'isi'=>$tmp->isi,
+	            'id_buku'=>$tmp->id_buku
+	        );
+		    return $info;
+		}
+
+		public function EditDeskripsi($id){
+			$uri = "Deskripsi";
+
+			$data['title']="Edit Data Deskripsi";
+
+	        $this->_set_rules_deskripsi();
+
+	        if($this->form_validation->run()==true){
+	            $info=array(
+	            	'id_deskripsi'=>$id,
+	                'isi'=>$this->input->post('isi'),
+	                'id_buku'=>$this->input->post('id_buku')
+
+	            );
+	            //update data buku
+	            $this->MAdmin->UpdateData($uri.'/'.$id, $info);
+	            
+	            //tampilkan pesan
+	            $data['message']="<div class='alert alert-success'>Data Berhasil diupdate</div>";
+	            
+	            //tampilkan data buku
+	            $data['deskripsi']=$this->CekDeskripsi($id, $uri.'/'.$id);
+	            $this->template->display('admin/deskripsi/edit',$data);
+	        }else{
+	            $data['deskripsi']=$this->CekDeskripsi($id, $uri.'/'.$id);
+	            $data['message']="";
+	            $this->template->display('admin/deskripsi/edit',$data);
+	        }
+		}
+
 		public function HapusPeminjaman(){
 			$id=$this->input->post('id');
 			/*
