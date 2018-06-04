@@ -71,6 +71,20 @@ namespace TubesWS.Repository
             }
         }
 
+        public int GetID()
+        {
+            using (connection)
+            {
+                OpenConnection();
+
+                string query = "select last_insert_id();SELECT SCOPE_IDENTITY()";
+
+                MySqlCommand cmd = new MySqlCommand(query,connection);
+                int data =Convert.ToInt32(cmd.ExecuteScalar());
+                return data;
+            }
+        }
+
         //get One by Id Peminjaman
         public Object.Peminjaman GetOnePeminjaman(int cari)
         {

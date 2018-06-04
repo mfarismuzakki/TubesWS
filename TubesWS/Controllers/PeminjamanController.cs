@@ -21,6 +21,15 @@ namespace TubesWS.Controllers
             return Ok(peminjaman.GetAllPeminjaman());
         }
 
+        // GET: api/Peminjaman
+        [HttpGet("GetLastId", Name = "GetLastID")]
+        public IActionResult GetLastID()
+        {
+            Repository.RepositoryPeminjaman peminjaman = new Repository.RepositoryPeminjaman();
+
+            return Ok(peminjaman.GetID());
+        }
+
         // GET: api/Peminjaman/5
         [HttpGet("{id}", Name = "GetPeminjaman"), Authorize]
         public IActionResult Get(int id)

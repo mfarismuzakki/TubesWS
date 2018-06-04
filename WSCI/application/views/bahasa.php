@@ -1,4 +1,3 @@
-
 	<div class="container">
 		<h2 align="center">Bahasa</h2>
 		<table class="table table-hover">
