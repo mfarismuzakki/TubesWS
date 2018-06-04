@@ -30,7 +30,68 @@ namespace TubesWS.Controllers
             if (temp == null) return NotFound();
             return Ok(temp);
         }
-
+		
+		// GET: api/Pustakawan/GetByNamaPustakawan/{cari}
+        [HttpGet("GetByNamaPustakawan/{cari}", Name = "GetByNamaPustakawan"), Authorize]
+        public IActionResult GetByNamaPustakawan(string cari)
+        {
+            Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
+            var temp = pustakawan.GetByNamaPustakawan(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Pustakawan/GetByJenisKelamin/{cari}
+        [HttpGet("GetByJenisKelamin/{cari}", Name = "GetByJenisKelamin"), Authorize]
+        public IActionResult GetByJenisKelamin(string cari)
+        {
+            Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
+            var temp = pustakawan.GetByJenisKelamin(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Pustakawan/GetByTempatLahirPus/{cari}
+        [HttpGet("GetByTempatLahirPus/{cari}", Name = "GetByTempatLahirPus"), Authorize]
+        public IActionResult GetByTempatLahirPus(string cari)
+        {
+            Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
+            var temp = pustakawan.GetByTempatLahir(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		
+		// GET: api/Pustakawan/GetByTanggalLahirPus/{cari}
+        [HttpGet("GetByTanggalLahirPus/{cari}", Name = "GetByTanggalLahirPus"), Authorize]
+        public IActionResult GetByTanggalLahirPus(string cari)
+        {
+            Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
+            var temp = pustakawan.GetByTanggalLahir(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Pustakawan/GetByNoTelepon/{cari}
+        [HttpGet("GetByNoTelepon/{cari}", Name = "GetByNoTelepon"), Authorize]
+        public IActionResult GetByNoTelepon(string cari)
+        {
+            Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
+            var temp = pustakawan.GetByNoTelepon(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Pustakawan/GetByAlamat/{cari}
+        [HttpGet("GetByAlamat/{cari}", Name = "GetByAlamat"), Authorize]
+        public IActionResult GetByAlamat(string cari)
+        {
+            Repository.RepositoryPustakawan pustakawan = new Repository.RepositoryPustakawan();
+            var temp = pustakawan.GetByAlamat(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
         // POST: api/Pustakawan
         [HttpPost,Authorize]
         public IActionResult Post([FromBody]Object.Pustakawan value)

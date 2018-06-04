@@ -83,6 +83,138 @@ namespace TubesWS.Repository
                 return connection.Query<Object.Pustakawan>(query, new { cari }).FirstOrDefault();
             }
         }
+		
+		//get by nama pustakawan
+        public Object.Pustakawan GetByNamaPustakawan(string cari)
+        {
+            Object.Pustakawan pustakawan = new Object.Pustakawan();
+
+            try
+            {
+                string query = "select *from pustakawan where nama_pustakawan LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                pustakawan = connection.Query<Object.Pustakawan>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return pustakawan;
+        }
+		
+		//get by Jenis kelamin
+        public Object.Pustakawan GetByJenisKelamin(string cari)
+        {
+            Object.Pustakawan pustakawan = new Object.Pustakawan();
+
+            try
+            {
+                string query = "select *from pustakawan where jenis_kelamin LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                pustakawan = connection.Query<Object.Pustakawan>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return pustakawan;
+        }
+		
+		//get by tempat lahir
+        public Object.Pustakawan GetByTempatLahir(string cari)
+        {
+            Object.Pustakawan pustakawan = new Object.Pustakawan();
+
+            try
+            {
+                string query = "select *from pustakawan where tempat_lahir LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                pustakawan = connection.Query<Object.Pustakawan>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return pustakawan;
+        }
+		
+		//get by tanggal lahir
+        public Object.Pustakawan GetByTanggalLahir(string cari)
+        {
+            Object.Pustakawan pustakawan = new Object.Pustakawan();
+
+            try
+            {
+                string query = "select *from pustakawan where tanggal_lahir LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                pustakawan = connection.Query<Object.Pustakawan>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return pustakawan;
+        }
+		
+		//get by No Telepon
+        public Object.Pustakawan GetByNoTelepon(string cari)
+        {
+            Object.Pustakawan pustakawan = new Object.Pustakawan();
+
+            try
+            {
+                string query = "select *from pustakawan where notelepon LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                pustakawan = connection.Query<Object.Pustakawan>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return pustakawan;
+        }
+		
+		//get by alamat
+        public Object.Pustakawan GetByAlamat(string cari)
+        {
+            Object.Pustakawan pustakawan = new Object.Pustakawan();
+
+            try
+            {
+                string query = "select *from pustakawan where alamat LIKE '%" + cari + "%'";
+                OpenConnection();
+
+                pustakawan = connection.Query<Object.Pustakawan>(query, new { cari }).FirstOrDefault();
+
+                CloseConnection();
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return pustakawan;
+        }
 
         //update Pustakawan
         public void UpdatePustakawan(Object.Pustakawan pustakawan)

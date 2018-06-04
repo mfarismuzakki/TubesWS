@@ -33,6 +33,46 @@ namespace TubesWS.Controllers
             if (temp == null) return NotFound();
             return Ok(temp);
         }
+		
+		// GET: api/Penulis/GetByNamaPenulis/{cari}
+        [HttpGet("GetByNamaPenulis/{cari}", Name = "GetByNamaPenulis"), Authorize]
+        public IActionResult GetByNamaPenulis(string cari)
+        {
+            Repository.RepositoryPenulis penulis = new Repository.RepositoryPenulis();
+            var temp = penulis.GetByNamaPenulis(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Penulis/GetByTempatLahir/{cari}
+        [HttpGet("GetByTempatLahir/{cari}", Name = "GetByTempatLahir"), Authorize]
+        public IActionResult GetByTempatLahir(string cari)
+        {
+            Repository.RepositoryPenulis penulis = new Repository.RepositoryPenulis();
+            var temp = penulis.GetByTempatLahir(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Penulis/GetByTanggalLahir/{cari}
+        [HttpGet("GetByTanggalLahir/{cari}", Name = "GetByTanggalLahir"), Authorize]
+        public IActionResult GetByTanggalLahir(string cari)
+        {
+            Repository.RepositoryPenulis penulis = new Repository.RepositoryPenulis();
+            var temp = penulis.GetByTanggalLahir(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Penulis/GetByDomisili/{cari}
+        [HttpGet("GetByDomisili/{cari}", Name = "GetByDomisili"), Authorize]
+        public IActionResult GetByDomisili(string cari)
+        {
+            Repository.RepositoryPenulis penulis = new Repository.RepositoryPenulis();
+            var temp = penulis.GetByDomisili(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
         
         // POST: api/Penulis
         [HttpPost,Authorize]

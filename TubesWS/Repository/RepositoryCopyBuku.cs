@@ -49,14 +49,14 @@ namespace TubesWS.Repository
         public void InsertCopyBuku(Object.Copy_buku copy)
         {
             int id_buku = copy.Id_buku;
+            int status = copy.Status;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "insert into copy_buku values(null,'" + id_buku + "')";
+                string query = "insert into copy_buku values(null,'" + id_buku + "','" + status + "')";
                 connection.Execute(query);
             }
-
         }
 
         //get All Copy Buku
@@ -68,7 +68,6 @@ namespace TubesWS.Repository
                 string query = "select *from copy_buku";
                 return connection.Query<Object.Copy_buku>(query).ToList();
             }
-
         }
 
         //get One By Id Copy Buku
@@ -80,7 +79,6 @@ namespace TubesWS.Repository
                 string query = "select *from copy_buku where id_copy_buku=" + cari;
                 return connection.Query<Object.Copy_buku>(query, new { cari }).FirstOrDefault();
             }
-
         }
 
         //update Copy Buku
@@ -88,14 +86,14 @@ namespace TubesWS.Repository
         {
             int id_copy_buku = copy.Id_copy_buku;
             int id_buku = copy.Id_buku;
+            int status = copy.Status;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "update copy_buku set id_copy_buku =" + id_copy_buku + ", id_buku =" + id_buku + "";
+                string query = "update copy_buku set id_copy_buku ='" + id_copy_buku + "', id_buku ='" + id_buku + "', status ='" + status +"'";
                 connection.Execute(query);
             }
-
         }
 
         //delete Copy Buku
@@ -107,7 +105,6 @@ namespace TubesWS.Repository
                 string query = "delete from copy_buku where id_copy_buku = " + id;
                 connection.Execute(query);
             }
-
         }
     }
 }

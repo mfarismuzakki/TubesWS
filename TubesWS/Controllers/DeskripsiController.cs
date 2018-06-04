@@ -34,6 +34,26 @@ namespace TubesWS.Controllers
             return Ok(temp);
         }
 
+        // GET: api/Deskripsi/GetByIsiDeskripsi/{cari}
+        [HttpGet("GetByIsiDeskripsi/{cari}", Name = "GetByIsiDeskripsi"), Authorize]
+        public IActionResult GetByIsiDeskripsi(string cari)
+        {
+            Repository.RepositoryDeskripsi deskripsi = new Repository.RepositoryDeskripsi();
+            var temp = deskripsi.GetByIsiDeskripsi(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+
+        // GET: api/Deskripsi/GetByIdBukuDes/{cari}
+        [HttpGet("GetByIdBukuDes/{cari}", Name = "GetByIdBukuDes"), Authorize]
+        public IActionResult GetByIdBukuDes(int cari)
+        {
+            Repository.RepositoryDeskripsi deskripsi = new Repository.RepositoryDeskripsi();
+            var temp = deskripsi.GetByIDBuku(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+
         // POST: api/Deskripsi
         [HttpPost,Authorize]
         public IActionResult Post([FromBody]Object.Deskripsi value)

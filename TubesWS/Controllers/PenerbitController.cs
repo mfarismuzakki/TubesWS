@@ -21,12 +21,42 @@ namespace TubesWS.Controllers
             return Ok(penerbit.GetAllPenerbit());
         }
 
-        // GET: api/Penerbit/5
-        [HttpGet("{id}", Name = "GetPenerbit"),Authorize]
-        public IActionResult Get(int id)
+        // GET: api/Penerbit/GetByIdPenerbit/{id}
+        [HttpGet("GetByIdPenerbit/{id}", Name = "GetByIdPenerbit"),Authorize]
+        public IActionResult GetByIdPenerbit(int id)
         {
             Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
             var temp = penerbit.GetOnePenerbit(id);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Penerbit/GetByNamaPenerbit/{cari}
+        [HttpGet("GetByNamaPenerbit/{cari}", Name = "GetByNamaPenerbit"),Authorize]
+        public IActionResult GetByNamaPenerbit(string cari)
+        {
+            Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
+            var temp = penerbit.GetOneNamaPenerbit(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Penerbit/GetByLokasiPercetakan/{cari}
+        [HttpGet("GetByLokasiPercetakan/{cari}", Name = "GetByLokasiPercetakan"),Authorize]
+        public IActionResult GetByLokasiPercetakan(string cari)
+        {
+            Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
+            var temp = penerbit.GetByLokasiPercetakan(cari);
+            if (temp == null) return NotFound();
+            return Ok(temp);
+        }
+		
+		// GET: api/Penerbit/GetByNoKontak/{cari}
+        [HttpGet("GetByNoKontak/{cari}", Name = "GetByNoKontak"),Authorize]
+        public IActionResult GetByNoKontak(string cari)
+        {
+            Repository.RepositoryPenerbit penerbit = new Repository.RepositoryPenerbit();
+            var temp = penerbit.GetByNoKontak(cari);
             if (temp == null) return NotFound();
             return Ok(temp);
         }
