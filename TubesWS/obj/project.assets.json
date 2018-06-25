@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "Dapper/1.50.4": {
+      "Dapper/1.50.5": {
         "type": "package",
         "dependencies": {
           "System.Data.SqlClient": "4.4.0",
@@ -5108,12 +5108,12 @@
     }
   },
   "libraries": {
-    "Dapper/1.50.4": {
-      "sha512": "t5DMz+1aEkBcyCgkj+6hJHNsUq3k/d67lVMTNzICEhVjPUI3Gt2kgotSK8S4SpziIbFPphnOEn8M6Q75ED5hRQ==",
+    "Dapper/1.50.5": {
+      "sha512": "1vPpX7WQmQCIb7rwlGOUoVs/yWZhVKvdhuG7WrJV+V+qsP8btnrrCqVWHENAlJxBAnUw5rhWfmuba9/Egei9MA==",
       "type": "package",
-      "path": "dapper/1.50.4",
+      "path": "dapper/1.50.5",
       "files": [
-        "dapper.1.50.4.nupkg.sha512",
+        "dapper.1.50.5.nupkg.sha512",
         "dapper.nuspec",
         "lib/net451/Dapper.dll",
         "lib/net451/Dapper.xml",
@@ -13326,7 +13326,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "Dapper >= 1.50.4",
+      "Dapper >= 1.50.5",
       "Microsoft.AspNetCore.All >= 2.0.7",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.3",
@@ -13376,7 +13376,7 @@
         "dependencies": {
           "Dapper": {
             "target": "Package",
-            "version": "[1.50.4, )"
+            "version": "[1.50.5, )"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",

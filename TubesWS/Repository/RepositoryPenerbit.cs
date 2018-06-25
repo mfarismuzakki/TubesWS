@@ -48,13 +48,13 @@ namespace TubesWS.Repository
         public void InsertPenerbit(Object.Penerbit penerbit)
         {
             string nama_penerbit = penerbit.Nama_penerbit;
-            string lokasi_percetakan = penerbit.Lokasi_percetakan;
+            string lokasipercetakan = penerbit.Lokasipercetakan;
             string notelepon = penerbit.Notelepon;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "insert into penerbit values(null,'" + nama_penerbit + "','" + lokasi_percetakan + "','" + notelepon + "')";
+                string query = "insert into penerbit values(null,'" + nama_penerbit + "','" + lokasipercetakan + "','" + notelepon + "')";
                 connection.Execute(query);
             }
         }
@@ -98,7 +98,7 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from penerbit where lokasi_percetakan LIKE '%" + cari + "%'";
+                string query = "select *from penerbit where lokasipercetakan LIKE '%" + cari + "%'";
                 return connection.Query<Object.Penerbit>(query, new { cari }).FirstOrDefault();
             }
         }
@@ -119,13 +119,13 @@ namespace TubesWS.Repository
         {
             int id = penerbit.Id_penerbit;
             string nama_penerbit = penerbit.Nama_penerbit;
-            string lokasi_percetakan = penerbit.Lokasi_percetakan;
+            string lokasipercetakan = penerbit.Lokasipercetakan;
             string notelepon = penerbit.Notelepon;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "update penerbit set id_penerbit=" + id + ", nama_penerbit = '" + nama_penerbit + "', lokasi_penerbit = '" + lokasi_percetakan + "', notelepon = '" + notelepon + "' where id_penerbit =" + id;
+                string query = "update penerbit set id_penerbit=" + id + ", nama_penerbit = '" + nama_penerbit + "', lokasipercetakan = '" + lokasipercetakan + "', notelepon = '" + notelepon + "' where id_penerbit =" + id;
                 connection.Execute(query);
             }
             

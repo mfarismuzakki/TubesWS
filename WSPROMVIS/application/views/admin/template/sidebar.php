@@ -46,7 +46,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <a href="<?php echo site_url('CAdmin/Penerbit');?>">Penerbit</a>
+                                                    <a href="<?php echo site_url('CAdmin/Bahasa');?>">Bahasa</a>
                                                 </td>
                                             </tr>
                                         </table>

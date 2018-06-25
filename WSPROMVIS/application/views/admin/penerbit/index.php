@@ -15,7 +15,7 @@
     <tr>
         <td><?php echo $no;?></td>
         <td><?php echo $row->nama_penerbit;?></td>
-        <td><?php echo $row->lokasi_percetakan;?></td>
+        <td><?php echo $row->lokasipercetakan;?></td>
         <td><?php echo $row->notelepon;?></td>
         <td><a href="<?php echo site_url('CAdmin/EditPenerbit/'.$row->id_penerbit);?>"><i class="glyphicon glyphicon-edit"></i></a></td>
         <td><a href="#" class="hapus" kode="<?php echo $row->id_penerbit;?>"><i class="glyphicon glyphicon-trash"></i></a></td>

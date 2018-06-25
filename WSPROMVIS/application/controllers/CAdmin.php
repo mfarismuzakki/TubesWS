@@ -398,7 +398,7 @@
 			$info=array(
 		        'id_penerbit'=>$id,
 		        'nama_penerbit'=>$tmp->nama_penerbit,
-		        'lokasipercetakan'=>$tmp->lokasi_percetakan,
+		        'lokasipercetakan'=>$tmp->lokasipercetakan,
 		        'notelepon'=>$tmp->notelepon
 		    );
 		    return $info;
@@ -437,7 +437,7 @@
 
 			$this->Login_Check();
 
-			$query = "select peminjaman.id_peminjaman, peminjaman.tanggalpinjam, peminjaman.tanggalkembali, anggotaperpustakaan.nama_anggota, pustakawan.nama_pustakawan, detail_peminjaman.id_detail_peminjaman, detail_peminjaman.id_copy_buku, copy_buku.id_buku, judulbuku.judul_buku, penulis.nama_penulis from peminjaman join anggotaperpustakaan join pustakawan join detail_peminjaman join copy_buku join judulbuku join penulis where peminjaman.id_peminjaman=detail_peminjaman.id_peminjaman and peminjaman.id_anggota=anggotaperpustakaan.id_anggota and peminjaman.id_pustakawan=pustakawan.id_pustakawan and detail_peminjaman.id_copy_buku=copy_buku.id_copy_buku and copy_buku.id_buku=judulbuku.id_buku and judulbuku.id_penulis=penulis.id_penulis;";
+			$query = "select peminjaman.id_peminjaman, peminjaman.tanggalpinjam, peminjaman.tanggalkembali, anggotaperpustakaan.nama_anggota, pustakawan.nama_pustakawan, detail_peminjaman.id_detail_peminjaman, detail_peminjaman.id_copy_buku, copy_buku.id_buku, judulbuku.judul_buku, penulis.nama_penulis from peminjaman join anggotaperpustakaan join pustakawan join detail_peminjaman join copy_buku join judulbuku join penulis where peminjaman.id_peminjaman=detail_peminjaman.id_peminjaman and peminjaman.id_anggota=anggotaperpustakaan.id_anggota and detail_peminjaman.id_copy_buku=copy_buku.id_copy_buku and copy_buku.id_buku=judulbuku.id_buku and judulbuku.id_penulis=penulis.id_penulis;";
 
 			$data['peminjaman'] = $this->MAdmin->GetDataDB($query);
 	        $data['title']="Data Peminjaman";

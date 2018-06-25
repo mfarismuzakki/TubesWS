@@ -20,7 +20,7 @@
         <td><?php echo $row->nama_penulis;?></td>
         <td><?php echo $row->tanggalpinjam;?></td>
         <td><?php echo $row->tanggalkembali;?></td>
-        <td><a href="#" class="hapus" kode="<?php echo $row->id_detail_peminjaman;?>"><i class="glyphicon glyphicon-trash"></i>Kembalikan</a></td>
+        <td><a href="#" class="hapus" kode="<?php echo $row->id_detail_peminjaman;?>">Kembalikan</a></td>
     </tr>
     <?php endforeach;?>
 </Table>

@@ -9,12 +9,12 @@ namespace TubesWS.Object
     {
         private int id_penerbit;
         private string nama_penerbit; 
-        private string lokasi_percetakan;
+        private string lokasipercetakan;
         private string notelepon;
 
         public int Id_penerbit { get => id_penerbit; set => id_penerbit = value; }
         public string Nama_penerbit { get => nama_penerbit; set => nama_penerbit = value; }
-        public string Lokasi_percetakan { get => lokasi_percetakan; set => lokasi_percetakan = value; }
+        public string Lokasipercetakan { get => lokasipercetakan; set => lokasipercetakan = value; }
         public string Notelepon { get => notelepon; set => notelepon = value; }
     }
 }
