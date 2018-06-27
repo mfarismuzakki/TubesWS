@@ -39,7 +39,7 @@
             var kode=$("#idhapus").val();
             
             $.ajax({
-                url:"<?php echo site_url('CAdmin/HapusPeminjaman');?>",
+                url:"<?php echo site_url('CAdmin/Hapus/Peminjaman');?>",
                 type:"POST",
                 data:"id="+kode,
                 cache:false,
