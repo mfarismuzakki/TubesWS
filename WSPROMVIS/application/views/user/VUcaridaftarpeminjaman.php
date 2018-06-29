@@ -1,6 +1,6 @@
-			     <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+			    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 					<!-- pencarian -->
-					<label>Pinjam Buku</label><br><br>	
+					<label>Pinjam Buku</label><br><br>
 					<form  method="post" action="<?php echo site_url('CUsercari/CariDaftarPeminjaman'); ?>">
 						<div class="form-group row">
 							<div class="col-4">
@@ -11,13 +11,13 @@
 						<div class="row">
 							<div class="col-4">
 								<label>Pustakawan</label><br>
-								<input type="text" name="pustakawan" placeholder="pustakawan" class="form-control" readonly="" value="2" ><br>
+								<input type="text" name="pustakawan" placeholder="pustakawan" class="form-control" readonly="" value="1" ><br>
 							</div>
 							<div class="offset-3 col-2">
-								
+
 								<input type="submit" name="submit" class="form-control btn btn-primary" value="Add">
 							</div>
-						</div>	
+						</div>
 					</form>
 
 

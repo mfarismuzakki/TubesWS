@@ -1,7 +1,7 @@
-<?php 
-	
+<?php
+
 	class MAdmin extends CI_Model{
-		var $api ='http://localhost:50062/api/';
+		var $api ='http://localhost:50063/api/';
 
 		//konstruktor
 		function __construct(){
@@ -18,7 +18,7 @@
 			$ch = curl_init($uri);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 			// echo response output
@@ -27,7 +27,7 @@
 		}
 
 		public function TambahData($endLink, $data){
-			
+
 			// encode input ke json
 			$data = json_encode($data);
 
@@ -36,13 +36,13 @@
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 		}
 
 		public function UpdateData($endLink, $data){
-			
+
 			// encode input ke json
 			$data = json_encode($data);
 
@@ -51,7 +51,7 @@
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 		}
@@ -62,20 +62,20 @@
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Authorization: bearer '.$this->session->token));
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 		}
 
 		public function CekData($id, $endLink){
-			
+
 		}
 
 		public function GetDataDB($query){
 	        return $this->db->query($query)->result();
 	    }
 
-		
+
 	}
 
 

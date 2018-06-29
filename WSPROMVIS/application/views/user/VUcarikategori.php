@@ -1,11 +1,11 @@
 			     <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
 					<!-- pencarian -->
-					<label>Cari Kategori Berdasarkan</label>	
+					<label>Cari Kategori Berdasarkan</label>
 						<form action="<?php echo site_url('CUserCari/CariKategori'); ?>" method="post" class="form">
 							<div class="form-group row">
 								<div class="col-2">
 									<select class="form-control" name="berdasarkan">
-										<option>ID</option>
+										<!-- <option>ID</option> -->
 										<option>Nama Kategori</option>
 									</select>
 								</div>
