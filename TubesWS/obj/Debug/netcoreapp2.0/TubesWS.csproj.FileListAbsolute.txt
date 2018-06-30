@@ -50,3 +50,14 @@ C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.r
 C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.runtimeconfig.dev.json
 C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.dll
 C:\Users\Asus\Documents\GitHub\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.pdb
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.deps.json
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.runtimeconfig.json
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.runtimeconfig.dev.json
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.dll
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\bin\Debug\netcoreapp2.0\TubesWS.pdb
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.csprojAssemblyReference.cache
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.csproj.CoreCompileInputs.cache
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.AssemblyInfoInputs.cache
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.AssemblyInfo.cs
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.dll
+D:\Kuliah\Semester 4\Pemrograman Visual\Tugas\TubesWS - 3\TubesWS\TubesWS\obj\Debug\netcoreapp2.0\TubesWS.pdb
