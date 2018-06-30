@@ -21,13 +21,13 @@ class CUserCari extends CI_Controller {
 		//load data
 		$this->load->model('MBuku');
 	}
-		
+
 	function Login_Check(){
 
 		if(!$this->session->loged_in && $this->session->username != "admin"){
 			redirect('UserHome');
 		}
-	} 
+	}
 
 	//index
 	public function index(){
@@ -36,7 +36,7 @@ class CUserCari extends CI_Controller {
 		$active['status'] = $this->current;
 		$this->load->view('user/VUheader');
 		$this->load->view('user/VUsidebar',$active);
-	
+
 	}
 
 	//view penulis
@@ -49,7 +49,7 @@ class CUserCari extends CI_Controller {
 
 		$this->load->view('user/VUheader');
 		$this->load->view('user/VUsidebar',$active);
-		$this->load->view('user/VUcaripenulis');		
+		$this->load->view('user/VUcaripenulis');
 	}
 
 	//pencarian penulis
@@ -65,7 +65,7 @@ class CUserCari extends CI_Controller {
 
 		//load tampilan
 		$this->Penulis();
-		$this->load->view('user/VUhasilcaripenulis',$data);	
+		$this->load->view('user/VUhasilcaripenulis',$data);
 	}
 
 	public function Penerbit(){
@@ -177,10 +177,10 @@ class CUserCari extends CI_Controller {
 	public function TambahBuku($id_buku){
 
 		//memasukan data kedalam array
-		$data = $this->MBuku->CariBuku(null,$id_buku);
+		$data = $this->MBuku->CariBuku('Id',$id_buku);
 
-		$this->MBuku->TampungBuku($data);
-
+		// print_r($data[0]);
+		$this->MBuku->TampungBuku($data[0]);
 
 		$this->CariBuku();
 
@@ -211,12 +211,12 @@ class CUserCari extends CI_Controller {
 
 	public function CariDaftarPeminjaman(){
 
-		//input 
+		//input
 		$pustakawan = $this->input->post('pustakawan');
 		$peminjam = $this->input->post('peminjam');
 
-		$tanggalpinjam = date('y-m-d');
-		$tanggalkembali = date('y-m-d' ,strtotime("+1 Weeks"));
+		$tanggalpinjam = date('Y-m-d');
+		$tanggalkembali = date('Y-m-d' ,strtotime("+1 Weeks"));
 
 		//pemindahan isi keadalam array
 		$data = array(

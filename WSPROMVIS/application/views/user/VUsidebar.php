@@ -25,7 +25,7 @@
 
 		<div class="container-fluid">
 			<div class="row">
-				
+
 				<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
 		          <ul class="nav nav-pills flex-column">
 		            <li class="nav-item">
@@ -49,12 +49,12 @@
 		            <li class="nav-item">
 		              <a class="nav-link <?php echo element('daftar_peminjaman',$status)?>" href="<?php echo site_url();?>/CUserCari/DaftarPeminjaman">Daftar Peminjaman</a>
 		            </li>
-		            <li class="nav-item">
+		            <!-- <li class="nav-item">
 		              <a class="nav-link <?php echo element('waktu_pengembalian',$status)?>" href="<?php echo site_url();?>/CUserCari/Pengembalian">Waktu Pengembalian</a>
-		            </li>
-		            <li class="nav-item">
+		            </li> -->
+		            <!-- <li class="nav-item">
 		              <a class="nav-link <?php echo element('daftar_transakasi',$status)?>" href="<?php echo site_url();?>/CUserCari/Transaksi">Daftar Transaksi</a>
-		            </li>
+		            </li> -->
 		            <li class="nav-item">
 		              <a class="nav-link" href="<?php echo site_url();?>/CUserCari/Logout">Logout</a>
 		            </li>

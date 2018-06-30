@@ -437,9 +437,14 @@
 
 			$this->Login_Check();
 
-			$query = "select peminjaman.id_peminjaman, peminjaman.tanggalpinjam, peminjaman.tanggalkembali, anggotaperpustakaan.nama_anggota, pustakawan.nama_pustakawan, detail_peminjaman.id_detail_peminjaman, detail_peminjaman.id_copy_buku, copy_buku.id_buku, judulbuku.judul_buku, penulis.nama_penulis from peminjaman join anggotaperpustakaan join pustakawan join detail_peminjaman join copy_buku join judulbuku join penulis where peminjaman.id_peminjaman=detail_peminjaman.id_peminjaman and peminjaman.id_anggota=anggotaperpustakaan.id_anggota and detail_peminjaman.id_copy_buku=copy_buku.id_copy_buku and copy_buku.id_buku=judulbuku.id_buku and judulbuku.id_penulis=penulis.id_penulis;";
+			//$query = "select peminjaman.id_peminjaman, peminjaman.tanggalpinjam, peminjaman.tanggalkembali, anggotaperpustakaan.nama_anggota, pustakawan.nama_pustakawan, detail_peminjaman.id_detail_peminjaman, detail_peminjaman.id_copy_buku, copy_buku.id_buku, judulbuku.judul_buku, penulis.nama_penulis from peminjaman, anggotaperpustakaan, pustakawan, detail_peminjaman, copy_buku, judulbuku, penulis where peminjaman.id_peminjaman=detail_peminjaman.id_peminjaman and detail_peminjaman.id_copy_buku=copy_buku.id_copy_buku and copy_buku.id_buku=judulbuku.id_buku and judulbuku.id_penulis=penulis.id_penulis group by detail_peminjaman.id_peminjaman order by tanggalpinjam desc;";
 
-			$data['peminjaman'] = $this->MAdmin->GetDataDB($query);
+			//$data['peminjaman'] = $this->MAdmin->GetDataDB($query);
+	        //$data['title']="Data Peminjaman";
+
+	        $uri = "Detail_peminjaman";
+
+			$data['peminjaman'] = $this->MAdmin->GetData($uri);
 	        $data['title']="Data Peminjaman";
 	        
 	        $config['uri_segment']=3;

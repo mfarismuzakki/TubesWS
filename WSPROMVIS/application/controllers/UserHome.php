@@ -8,7 +8,7 @@ class UserHome extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->library('curl');
-		$this->curl->create('http://localhost:50062/token/CreateToken');
+		$this->curl->create('http://localhost:50063/token/CreateToken');
 	}
 
 
@@ -34,11 +34,11 @@ class UserHome extends CI_Controller {
 
 
 		$this->curl->option(CURLOPT_HTTPHEADER, array('Content-type: application/json; Charset=UTF-8'));
-		$this->curl->post($data);	
+		$this->curl->post($data);
 		$token = $this->curl->execute();
-		
+
 		if($token == ""){
-				
+
 			$this->status = "Username / password tidak valid";
 			$this->index();
 

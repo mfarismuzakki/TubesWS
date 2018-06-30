@@ -1,5 +1,6 @@
 <hr>
 <?php echo $message;?>
+<?php print_r($peminjaman); ?>
 <Table class="table table-striped">
     <thead>
         <tr>
@@ -20,7 +21,7 @@
         <td><?php echo $row->nama_penulis;?></td>
         <td><?php echo $row->tanggalpinjam;?></td>
         <td><?php echo $row->tanggalkembali;?></td>
-        <td><a href="#" class="hapus" kode="<?php echo $row->id_detail_peminjaman;?>">Kembalikan</a></td>
+        <td><a href="#" class="hapus btn btn-primary" kode="<?php echo $row->id_detail_peminjaman;?>">Kembalikan</a></td>
     </tr>
     <?php endforeach;?>
 </Table>
@@ -39,7 +40,7 @@
             var kode=$("#idhapus").val();
             
             $.ajax({
-                url:"<?php echo site_url('CAdmin/Hapus/Peminjaman');?>",
+                url:"<?php echo site_url('CAdmin/Hapus/Detail_peminjaman');?>",
                 type:"POST",
                 data:"id="+kode,
                 cache:false,

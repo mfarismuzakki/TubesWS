@@ -9,7 +9,7 @@
 							<th>Penerbit</th>
 							<th>Kategori</th>
 							<th>Bahasa</th>
-							<th>Stok</th>
+							<!-- <th>Stok</th> -->
 							<th>aksi</th>
 						</tr>
 					</thead>
@@ -23,7 +23,7 @@
 							<td><?php echo $var->penerbit; ?></td>
 							<td><?php echo $var->kategori; ?></td>
 							<td><?php echo $var->bahasa; ?></td>
-							<td></td>
+							<!-- <td></td> -->
 							<td><a href="<?php echo site_url('CUserCari/TambahBuku/'.$var->id_buku); ?>" class="btn btn-primary">Pinjam</a></td>
 						</tr>
 					<?php } ?>
@@ -31,4 +31,4 @@
 			</div>
 		</main>
 	</div>
-</div>	
+</div>

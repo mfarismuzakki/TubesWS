@@ -1,8 +1,8 @@
-<?php 
-	
+<?php
+
 	class MBuku extends CI_Model{
 
-		var $api ='http://localhost:50062/api/';
+		var $api ='http://localhost:50063/api/';
 
 		//konstruktor
 		function __construct(){
@@ -23,7 +23,7 @@
 			$ch = curl_init($uri);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 			// echo response output
@@ -43,7 +43,7 @@
 			$ch = curl_init($uri);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 			// echo response output
@@ -63,7 +63,7 @@
 			$ch = curl_init($uri);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 			// echo response output
@@ -83,7 +83,7 @@
 			$ch = curl_init($uri);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 			// echo response output
@@ -99,6 +99,8 @@
 				$uri = $this->api.'buku/GetByJudulBuku/'.$key;
 			}else if($berdasarkan == "Penulis"){
 				$uri = $this->api.'buku/GetByPenulisBuku/'.$key;
+			}else if($berdasarkan == "Id"){
+				$uri = $this->api.'buku/GetByIdBuku/'.$key;
 			}else if($berdasarkan == "Penerbit"){
 				$uri = $this->api.'buku/GetByPenerbitBuku/'.$key;
 			}else if($berdasarkan == "Bahasa"){
@@ -112,7 +114,7 @@
 			$ch = curl_init($uri);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 			// echo response output
@@ -122,7 +124,7 @@
 
 		//menambah peminjam
 		public function TambahPeminjaman($data){
-			
+
 			// encode input ke json
 			$data = json_encode($data);
 
@@ -131,11 +133,11 @@
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 
-			// $this->DetailPeminjaman($data);
+			$this->DetailPeminjaman($data);
 		}
 
 		public function DetailPeminjaman($data2){
@@ -144,11 +146,13 @@
 			$data = $this->db->get('t_tmp')->result();
 			$data = json_encode($data);
 
-			$upload = array(
-				'id_peminjaman' => $data2,
-				'id_copy_buku' => '1'.
-				''
-			);
+			foreach ($data as $value)
+			{
+				$upload = array(
+					'id_peminjaman' => $value->id_peminjaman,
+					'id_copy_buku' => '1'
+				);
+			}
 
 
 			$ch = curl_init($this->api.'Detail_Peminjaman');
@@ -156,7 +160,7 @@
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    		
+
 			$data = curl_exec($ch);
 			curl_close($ch);
 

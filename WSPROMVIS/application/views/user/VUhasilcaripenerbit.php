@@ -11,7 +11,7 @@
 						<tr>
 							<td><?php echo $i++; ?></td>
 							<td><?php echo $var->nama_penerbit; ?></td>
-							<td><?php echo $var->lokasi_percetakan; ?></td>
+							<td><?php echo $var->lokasipercetakan; ?></td>
 							<td><?php echo $var->notelepon	; ?></td>
 						</tr>
 					<?php } ?>
@@ -19,4 +19,4 @@
 			</div>
 		</main>
 	</div>
-</div>	
+</div>
