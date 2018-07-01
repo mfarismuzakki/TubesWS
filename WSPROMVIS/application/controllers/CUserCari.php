@@ -20,6 +20,7 @@ class CUserCari extends CI_Controller {
 		$this->load->helper('array');
 		//load data
 		$this->load->model('MBuku');
+		$this->load->library('pagination');
 	}
 
 	function Login_Check(){
@@ -58,14 +59,80 @@ class CUserCari extends CI_Controller {
 		$berdasarkan = $this->input->post('berdasarkan');
 		$key = $this->input->post('cari');
 
+		if($berdasarkan == 'Nama Penulis'){
+			$berdasarkan = 'nama_penulis';
+		}else if($berdasarkan == 'Tempat Lahir'){
+			$berdasarkan = 'tempat_lahir';
+		}else if($berdasarkan == 'Tanggal Lahir'){
+			$berdasarkan = 'tanggal_lahir';
+		}else if($berdasarkan == 'Domisili'){
+			$berdasarkan = 'domisili';	
+		}
 
+
+		//konfigurasi pagination
+		$config['base_url'] = site_url('CUserCari/CariPenulis');
+		$config['total_rows'] = $this->countPenulis();
+		$config['per_page'] = 5;
+		$from = $this->uri->segment(3);
+
+		$this->pagination->initialize($config);
 
 		//memasukan data kedalam array
-		$data['buku'] = $this->MBuku->CariPenulis($berdasarkan,$key);
+		$data['buku'] = $this->paginationPenulis($from);
+
+		if($berdasarkan != ''){
+			$data['buku'] = $this->MBuku->CariPenulis(null,null);
+
+			$tampung = array();
+			foreach($data['buku'] as $tmp ){
+				if($tmp->$berdasarkan == $key ){
+					array_push($tampung,$tmp);
+				}
+			}
+			$data['buku'] = $tampung;
+		}
+
+
 
 		//load tampilan
 		$this->Penulis();
 		$this->load->view('user/VUhasilcaripenulis',$data);
+	}
+
+	public function countPenulis(){
+		$data = $this->MBuku->CariPenulis(null,null);
+		
+		$i = 0;
+
+		foreach($data as $tmp){
+			$i++;
+		}
+
+		return $i;
+	}	
+
+	public function paginationPenulis($from){
+		//memasukan data kedalam array
+		$data['buku'] = $this->MBuku->CariPenulis(null,null);
+
+		if($from == ''){
+			$from = 0;
+		}
+
+		$perpage = $from + 5;
+		if($perpage > $this->countPenulis()){
+			$perpage = $this->countPenulis();
+		}
+
+		$tampung = array();
+		for($i=$from; $i<$perpage; $i++){
+			if($data['buku'][$i] != null){
+				array_push($tampung,$data['buku'][$i]);
+			}
+		}
+
+		return $tampung;
 	}
 
 	public function Penerbit(){
@@ -87,12 +154,74 @@ class CUserCari extends CI_Controller {
 		$key = $this->input->post('cari');
 
 		//memasukan data kedalam array
-		$data['buku'] = $this->MBuku->CariPenerbit($berdasarkan,$key);
+		$config['base_url'] = site_url('CUserCari/CariPenerbit');
+		$config['total_rows'] = $this->countPenerbit();
+		$config['per_page'] = 5;
+
+		$from = $this->uri->segment(3);
+
+		$this->pagination->initialize($config);
+
+		$data['buku'] = $this->paginationPenerbit($from);
+
+		//mengubah keyword pencarian
+		if($berdasarkan == 'Nama Penerbit'){
+			$berdasarkan = 'nama_penerbit';
+		}else if($berdasarkan == 'Lokasi Percetakan'){
+			$berdasarkan = 'lokasipercetakan';
+		}else if($berdasarkan == 'No Kontak'){
+			$berdasarkan = 'notelepon';
+		}
+
+		if($berdasarkan != ''){
+			$data['buku'] = $this->MBuku->CariPenerbit(null,null);
+			$tampung = array();
+			foreach($data['buku'] as $tmp){
+				if($tmp->$berdasarkan == $key){
+					array_push($tampung,$tmp);	
+				}
+			}
+			$data['buku'] = $tampung;
+		}
 
 		//load tampilan
 		$this->Penerbit();
 		$this->load->view('user/VUhasilcaripenerbit',$data);
 
+	}
+
+	public function paginationPenerbit($from){
+		$data = $this->MBuku->CariPenerbit(null,null);
+		$tampung = array();
+
+		if($from == ''){
+			$from = 0;
+		}
+
+		$perpage = $from + 5;
+
+		if($perpage > $this->countPenerbit()){
+			$perpage = $this->countPenerbit();
+		}
+
+
+		for($i=$from; $i<$perpage; $i++){
+			array_push($tampung,$data[$i]);
+		}
+
+		return $tampung;
+	}
+
+	public function countPenerbit(){
+		$data = $this->MBuku->CariPenerbit(null,null);
+		
+		$i = 0;
+
+		foreach($data as $tmp){
+			$i++;
+		}
+
+		return $i;
 	}
 
 	public function Bahasa(){
@@ -114,13 +243,69 @@ class CUserCari extends CI_Controller {
 		$key = $this->input->post('cari');
 
 		//memasukan data kedalam array
-		$data['buku'] = $this->MBuku->CariBahasa($berdasarkan,$key);
+		$config['base_url'] = site_url('CUserCari/CariBahasa');
+		$config['total_rows'] = $this->countBahasa();
+		$config['per_page'] = 5;
+
+		$from = $this->uri->segment(3);
+
+		$this->pagination->initialize($config);
+
+		$data['buku'] = $this->paginationBahasa($from);
+
+		if($berdasarkan != ''){
+			$data['buku'] = $this->MBuku->CariBahasa(null,null);
+			$tampung = array();
+			foreach($data['buku'] as $tmp){
+				if($tmp->nama_bahasa == $key){
+					array_push($tampung,$tmp);
+				}
+			}
+			$data['buku'] = $tampung;
+		}
+
 
 		//load tampilan
 		$this->Bahasa();
 		$this->load->view('user/VUhasilcaribahasa',$data);
 
 	}
+
+	public function paginationBahasa($from){
+
+		$data = $this->MBuku->CariBahasa(null,null);
+
+		if($from == ''){
+			$from = 0;
+		}
+
+		$tampung = array();
+
+		$perpage = $from + 5;
+
+		if($perpage > $this->countBahasa()){
+			$perpage = $this->countBahasa();
+		}
+
+		for($i=$from; $i<$perpage; $i++){
+			array_push($tampung,$data[$i]);
+		}
+
+		return $tampung;
+	}
+
+	public function countBahasa(){
+		$data = $this->MBuku->CariBahasa(null,null);
+
+		$i = 0;
+
+		foreach($data as $tmp){
+			$i++;
+		}
+
+		return $i;
+	}
+
 
 
 	public function Kategori(){
@@ -141,12 +326,62 @@ class CUserCari extends CI_Controller {
 		$berdasarkan = $this->input->post('berdasarkan');
 		$key = $this->input->post('cari');
 
+		$config['base_url'] = site_url('CUserCari/CariKategori');
+		$config['per_page'] = 5;
+		$config['total_rows'] = $this->countKategori();
+
+		$from = $this->uri->segment(3);
+
+		$this->pagination->initialize($config);
+
 		//memasukan data kedalam array
-		$data['buku'] = $this->MBuku->CariKategori($berdasarkan,$key);
+		$data['buku'] = $this->paginationKategori($from);
+
+		if($berdasarkan != ''){	
+			$data['buku'] = $this->MBuku->CariKategori(null,null);
+			foreach($data['buku'] as $tmp){
+				if($tmp->nama_kategori == $key){
+					$tmp = array($tmp);
+					$data['buku'] = $tmp;
+				}
+			}
+		}
 
 		//load tampilan
 		$this->Kategori();
 		$this->load->view('user/VUhasilcarikategori',$data);
+	}
+
+	public function paginationKategori($from){
+		$data = $this->MBuku->CariKategori(null,null);
+
+		if($from == ''){
+			$from = 0;
+		}
+
+		$tampung = array();
+
+		$perpage = $from + 5;
+		if($perpage > $this->countKategori()){
+			$perpage = $this->countKategori();
+		}
+
+		for($i=$from; $i<$perpage; $i++){
+			array_push($tampung,$data[$i]);
+		}
+
+		return $tampung;
+	}
+
+	public function countKategori(){
+		$data = $this->MBuku->CariKategori(null,null);
+		$i=0;
+
+		foreach($data as $tmp){
+			$i++;
+		}
+
+		return $i;
 	}
 
 	public function Buku(){
@@ -166,12 +401,61 @@ class CUserCari extends CI_Controller {
 		$berdasarkan = $this->input->post('berdasarkan');
 		$key = $this->input->post('cari');
 
+		$config['base_url'] = site_url('CUserCari/CariBuku');
+		$config['per_page'] = 5;
+		$config['total_rows'] = $this->countBuku();
+
+		$this->pagination->initialize($config);
+
+		$from = $this->uri->segment(3);
+
 		//memasukan data kedalam array
-		$data['buku'] = $this->MBuku->CariBuku($berdasarkan,$key);
+		$data['buku'] = $this->paginationBuku($from);
+
+
+		if($berdasarkan != ''){
+
+			$data['buku'] = $this->MBuku->CariBuku($berdasarkan,$key);
+		}
 
 		//load tampilan
 		$this->Buku();
 		$this->load->view('user/VUhasilcaribuku',$data);
+	}
+
+
+	public function paginationBuku($from){
+		$data = $this->MBuku->CariBuku(null,null);
+		
+		if($from == ''){
+			$from = 0;
+		}	
+
+		$perpage = $from + 5;
+		if($perpage > $this->countBuku()){
+			$perpage = $this->countBuku();
+		}
+
+		$tampung = array();
+		for($i=$from; $i<$perpage; $i++){
+			array_push($tampung,$data[$i]);
+		}
+
+
+		return $tampung;
+	}
+
+	public function countBuku(){
+		$data = $this->MBuku->CariBuku(null,null);
+
+		$i = 0;
+		foreach($data as $tmp){
+			$i++;
+		}
+
+
+
+		return $i;
 	}
 
 	public function TambahBuku($id_buku){

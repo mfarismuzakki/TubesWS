@@ -5,7 +5,7 @@
 							<div class="form-group row">
 								<div class="col-2">
 									<select class="form-control" name="berdasarkan">
-										<option>ID</option>
+										<!-- <option>ID</option> -->
 										<option>Nama Bahasa</option>
 									</select>
 								</div>
