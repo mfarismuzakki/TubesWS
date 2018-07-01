@@ -48,12 +48,12 @@ namespace TubesWS.Repository
         public void InsertDetail_peminjaman(Object.Detail_peminjaman detail_peminjaman)
         {
             int id_peminjaman = detail_peminjaman.Id_peminjaman;
-            int id_copy_buku = detail_peminjaman.Id_copy_buku;
+            int id_buku = detail_peminjaman.Id_buku;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "insert into detail_peminjaman values(null,'" + id_peminjaman + "','" + id_copy_buku + "')";
+                string query = "insert into detail_peminjaman values(null,'" + id_peminjaman + "','" + id_buku + "')";
                 connection.Execute(query);
             }
         }
@@ -85,12 +85,12 @@ namespace TubesWS.Repository
         {
             int id = detail_peminjaman.Id_detail_peminjaman;
 			int id_peminjaman = detail_peminjaman.Id_peminjaman;
-            int id_copy_buku = detail_peminjaman.Id_copy_buku;
+            int id_buku = detail_peminjaman.Id_buku;
 
             using (connection)
             {
                 OpenConnection();
-                string query = "update detail_peminjaman set id_detail_peminjaman=" + id + ", id_peminjaman = '" + id_peminjaman + "', id_copy_buku = '" + id_copy_buku + "' where id_detail_peminjaman =" + id;
+                string query = "update detail_peminjaman set id_detail_peminjaman=" + id + ", id_peminjaman = '" + id_peminjaman + "', id_buku = '" + id_buku + "' where id_detail_peminjaman =" + id;
                 connection.Execute(query);
             }
             

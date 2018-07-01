@@ -60,6 +60,18 @@ namespace TubesWS.Repository
             }
         }
 
+        //get nama transaksi
+        public List<Object.NamaTransaksi> getNama()
+        {
+
+            using (connection)
+            {
+                OpenConnection();
+                string query = "select anggotaperpustakaan.nama_anggota, judulbuku.judul_buku, penulis.nama_penulis, peminjaman.tanggalpinjam, peminjaman.tanggalkembali, detail_peminjaman.id_detail_peminjaman from anggotaperpustakaan, judulbuku, detail_peminjaman,penulis, peminjaman where anggotaperpustakaan.id_anggota = peminjaman.id_anggota and judulbuku.id_buku = detail_peminjaman.id_buku and peminjaman.id_peminjaman = detail_peminjaman.id_peminjaman and judulbuku.id_penulis = penulis.id_penulis order by peminjaman.tanggalkembali; ";
+                return connection.Query<Object.NamaTransaksi>(query).ToList();
+            }
+        }
+
         //get All Peminjaman
         public List<Object.Peminjaman> GetAllPeminjaman()
         {

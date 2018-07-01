@@ -64,7 +64,7 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from bahasa";
+                string query = "select *from bahasa order by nama_bahasa";
                 return connection.Query<Object.Bahasa>(query).ToList();
             }
             

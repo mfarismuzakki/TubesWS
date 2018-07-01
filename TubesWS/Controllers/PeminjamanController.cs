@@ -30,6 +30,15 @@ namespace TubesWS.Controllers
             return Ok(peminjaman.GetID());
         }
 
+        //get nama peminjaman
+        [HttpGet("getNama",Name ="getNama")]
+        public IActionResult getNama()
+        {
+            Repository.RepositoryPeminjaman peminjaman = new Repository.RepositoryPeminjaman();
+
+            return Ok(peminjaman.getNama());
+        }
+
         // GET: api/Peminjaman/5
         [HttpGet("{id}", Name = "GetPeminjaman"), Authorize]
         public IActionResult Get(int id)

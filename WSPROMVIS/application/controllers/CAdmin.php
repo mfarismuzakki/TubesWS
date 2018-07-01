@@ -442,7 +442,7 @@
 			//$data['peminjaman'] = $this->MAdmin->GetDataDB($query);
 	        //$data['title']="Data Peminjaman";
 
-	        $uri = "Detail_peminjaman";
+	        $uri = "peminjaman/GetNama";
 
 			$data['peminjaman'] = $this->MAdmin->GetData($uri);
 	        $data['title']="Data Peminjaman";

@@ -134,35 +134,56 @@
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-			$data = curl_exec($ch);
-			curl_close($ch);
+			// $data = curl_exec($ch);
+			// curl_close($ch);
 
 			$this->DetailPeminjaman($data);
 		}
 
 		public function DetailPeminjaman($data2){
 
-			//menampung data
+			$uri = $this->api.'Peminjaman/';
+
+			$ch = curl_init($uri);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: bearer '.$this->session->token));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+			$tmp_id = curl_exec($ch);
+			curl_close($ch);
+
+
+			$id = 0;
+
+			$tmp_id = json_decode($tmp_id);
+
+			foreach($tmp_id as $hitung){
+				$id = $hitung->id_peminjaman;
+			}
+	
+
+			// //menampung data
 			$data = $this->db->get('t_tmp')->result();
-			$data = json_encode($data);
+			// $data = json_encode($data);
 
 			foreach ($data as $value)
 			{
 				$upload = array(
-					'id_peminjaman' => $value->id_peminjaman,
-					'id_copy_buku' => '1'
+					'id_peminjaman' => $id,
+					'id_buku' => $value->id_buku
 				);
+
+				$upload = json_encode($upload);
+
+				$ch = curl_init($this->api.'Detail_Peminjaman');
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Authorization: bearer '.$this->session->token));
+				curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $upload);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+				$data = curl_exec($ch);
+				curl_close($ch);
 			}
 
-
-			$ch = curl_init($this->api.'Detail_Peminjaman');
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Authorization: bearer '.$this->session->token));
-			curl_setopt($ch, CURLOPT_POST, 1);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-			$data = curl_exec($ch);
-			curl_close($ch);
 
 		}
 

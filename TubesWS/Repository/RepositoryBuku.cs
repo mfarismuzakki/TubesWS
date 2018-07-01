@@ -93,7 +93,7 @@ namespace TubesWS.Repository
                     " where ((judulbuku.id_penulis = penulis.id_penulis) and" +
                     " (judulbuku.id_penerbit = penerbit.id_penerbit) and" +
                     " (judulbuku.id_bahasa = bahasa.id_bahasa) and" +
-                    " (judulbuku.id_kategori = kategori.id_kategori))";
+                    " (judulbuku.id_kategori = kategori.id_kategori)) order by judulbuku.judul_buku";
                 return connection.Query<Object.Buku>(query).ToList();
             }
         }

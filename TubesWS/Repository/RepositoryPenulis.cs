@@ -65,7 +65,7 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from penulis";
+                string query = "select *from penulis order by nama_penulis";
                 return connection.Query<Object.Penulis>(query).ToList();
             }
             

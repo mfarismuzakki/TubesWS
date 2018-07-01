@@ -1,6 +1,5 @@
 <hr>
 <?php echo $message;?>
-<?php print_r($peminjaman); ?>
 <Table class="table table-striped">
     <thead>
         <tr>

@@ -65,7 +65,7 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from penerbit";
+                string query = "select *from penerbit order by nama_penerbit";
                 return connection.Query<Object.Penerbit>(query).ToList();
             }
         }

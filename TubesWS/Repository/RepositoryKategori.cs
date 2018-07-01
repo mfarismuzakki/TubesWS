@@ -63,7 +63,7 @@ namespace TubesWS.Repository
             using (connection)
             {
                 OpenConnection();
-                string query = "select *from kategori";
+                string query = "select *from kategori order by nama_kategori";
                 return connection.Query<Object.Kategori>(query).ToList();
             }
         }
