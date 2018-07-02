@@ -12,7 +12,7 @@
             <td colspan="1"></td>
         </tr>
     </thead>
-    <?php $no=0; foreach($peminjaman as $row ): $no++;?>
+    <?php $no=0; if (is_array($peminjaman) || is_object($peminjaman)) foreach($peminjaman as $row ): $no++;?>
     <tr>
         <td><?php echo $no;?></td>
         <td><?php echo $row->nama_anggota;?></td>

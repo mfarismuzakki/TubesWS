@@ -43,7 +43,7 @@
 	        $this->pagination->initialize($config);
 	        $data['pagination']=$this->pagination->create_links();
 	        
-	        
+
 	        if($this->uri->segment(3)=="delete_success")
 	            $data['message']="<div class='alert alert-success'>Data berhasil dihapus</div>";
 	        else if($this->uri->segment(3)=="add_success")
@@ -437,15 +437,15 @@
 
 			$this->Login_Check();
 
-			//$query = "select peminjaman.id_peminjaman, peminjaman.tanggalpinjam, peminjaman.tanggalkembali, anggotaperpustakaan.nama_anggota, pustakawan.nama_pustakawan, detail_peminjaman.id_detail_peminjaman, detail_peminjaman.id_copy_buku, copy_buku.id_buku, judulbuku.judul_buku, penulis.nama_penulis from peminjaman, anggotaperpustakaan, pustakawan, detail_peminjaman, copy_buku, judulbuku, penulis where peminjaman.id_peminjaman=detail_peminjaman.id_peminjaman and detail_peminjaman.id_copy_buku=copy_buku.id_copy_buku and copy_buku.id_buku=judulbuku.id_buku and judulbuku.id_penulis=penulis.id_penulis group by detail_peminjaman.id_peminjaman order by tanggalpinjam desc;";
+			$query = "select peminjaman.id_peminjaman, peminjaman.tanggalpinjam, peminjaman.tanggalkembali, anggotaperpustakaan.nama_anggota, pustakawan.nama_pustakawan, detail_peminjaman.id_detail_peminjaman, detail_peminjaman.id_buku, copy_buku.id_buku, judulbuku.judul_buku, penulis.nama_penulis from peminjaman, anggotaperpustakaan, pustakawan, detail_peminjaman, copy_buku, judulbuku, penulis where peminjaman.id_peminjaman=detail_peminjaman.id_peminjaman and detail_peminjaman.id_buku=judulbuku.id_buku and judulbuku.id_penulis=penulis.id_penulis and anggotaperpustakaan.id_anggota=peminjaman.id_anggota group by detail_peminjaman.id_detail_peminjaman order by tanggalpinjam desc;";
 
-			//$data['peminjaman'] = $this->MAdmin->GetDataDB($query);
-	        //$data['title']="Data Peminjaman";
-
-	        $uri = "peminjaman/GetNama";
-
-			$data['peminjaman'] = $this->MAdmin->GetData($uri);
+			$data['peminjaman'] = $this->MAdmin->GetDataDB($query);
 	        $data['title']="Data Peminjaman";
+
+	        //$uri = "peminjaman/GetNama";
+
+			//$data['peminjaman'] = $this->MAdmin->GetData($uri);
+	        //$data['title']="Data Peminjaman";
 	        
 	        $config['uri_segment']=3;
 	        $this->pagination->initialize($config);
@@ -863,6 +863,7 @@
 		}
 
 		public function Hapus($endLink){
+
 			$id=$this->input->post('id');
 			$this->MAdmin->DeleteData($endLink.'/'.$id);
 		}
