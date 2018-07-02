@@ -74,7 +74,7 @@ namespace TubesWS.Repository
 
             try
             {
-                string query = "select *from deskripsi";
+                string query = "select deskripsi.*, judulbuku.judul_buku from judulbuku, deskripsi where judulbuku.id_buku = deskripsi.id_buku";
                 OpenConnection();
 
                 deskripsi = connection.Query<Object.Deskripsi>(query).ToList();

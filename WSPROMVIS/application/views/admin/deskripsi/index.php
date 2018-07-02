@@ -1,20 +1,21 @@
 <a href="<?php echo site_url('CAdmin/TambahDeskripsi');?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Tambah</a>
 <hr>
 <?php echo $message;?>
+
 <Table class="table table-striped">
     <thead>
         <tr>
             <td>No.</td>
-            <td>Isi</td>
-            <td>Id Buku</td>
+            <td>Judul Buku</td>
+            <td>Deskripsi</td>
             <td colspan="2"></td>
         </tr>
     </thead>
     <?php $no=0; foreach($deskripsi as $row ): $no++;?>
     <tr>
         <td><?php echo $no;?></td>
+        <td><?php echo $row->judul_buku;?></td>
         <td><?php echo $row->isi;?></td>
-        <td><?php echo $row->id_buku;?></td>
         <td><a href="<?php echo site_url('CAdmin/EditDeskripsi/'.$row->id_deskripsi);?>"><i class="glyphicon glyphicon-edit"></i></a></td>
         <td><a href="#" class="hapus" kode="<?php echo $row->id_deskripsi;?>"><i class="glyphicon glyphicon-trash"></i></a></td>
     </tr>
